@@ -1,9 +1,24 @@
 import React from 'react'
+import SignIn from './SignIn'
+import { Route, BrowserRouter as Router} from 'react-router-dom'
+import Home from './Home'
+import Register from './Register'
 
-const App = () => {
-  return (
-    <h1>React development has begun!</h1>
-  )
+class App extends React.Component {
+
+  render(){
+    return (
+      <div>
+        <Router>
+            {/* <Switch> */}
+              <Route exact path='/' component={Home} ></Route>
+              <Route path='/register' component={Register} />
+              <Route exact path='/signin' component={SignIn} ></Route>
+            {/* </Switch> */}
+        </Router>
+      </div>
+    )
+  }
 }
 
 export default App
