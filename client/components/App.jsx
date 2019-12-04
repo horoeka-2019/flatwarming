@@ -1,10 +1,10 @@
 import React from 'react'
-import SignIn from './SignIn'
+import LogIn from './LogIn'
 import { Route, BrowserRouter as Router, Switch} from 'react-router-dom'
-import Home from './Home'
 import Register from './Register'
 import Nav from './Nav'
 import { Container } from 'semantic-ui-react'
+import RegisterFlatFetails from './RegisterFlatDetails'
 
 class App extends React.Component {
 
@@ -16,9 +16,9 @@ class App extends React.Component {
               
               <Container>
                 <Switch>
-                  <Route exact path='/' component={Home} ></Route>
+                  <Route exact path='/register-flat' component={RegisterFlatFetails} ></Route>
                   <Route path='/register' component={Register} />
-                  <Route exact path='/signin' component={SignIn} ></Route>
+                  <Route exact path='/log-in' component={LogIn} ></Route>
                 </Switch>
               </Container>
         </Router>

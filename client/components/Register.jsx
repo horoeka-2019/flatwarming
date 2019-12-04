@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
-// import { GridForm, ColOne, ColTwo, Button } from './Styled'
-import { Button, Checkbox, Form, Header, Container, Grid } from 'semantic-ui-react'
+import { Button, Form, Header, Container } from 'semantic-ui-react'
 
 export default function Register (props) {
  
@@ -22,12 +21,11 @@ export default function Register (props) {
       username: form.username,
       password: form.password
     }, {
-      baseUrl: process.env.BASE_API_URL // see .env and webpack.config.js
+      baseUrl: process.env.BASE_API_URL
     })
-      .then((token) => {
-        console.log(token, 'token!')
+      .then(() => {
         if (isAuthenticated()) {
-          props.history.push('/')
+          props.history.push('/register-flat')
         }
       })
   }
