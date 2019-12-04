@@ -39,17 +39,19 @@ class Nav extends React.Component {
       <>
       <Container>
         <Menu fixed='top' style = {{ backgroundColor: '#F9B79F' }}>
-          <Menu.Item header as={Link} to='/' onClick={this.clickHome}>Flat Warming</Menu.Item >
+          <Menu.Item header onClick={this.clickHome}>
+            <Link to='/'>Flat Warming</Link>
+          </Menu.Item >
 
             <Menu.Menu position='right'>
 
-              {this.state.register && <Menu.Item as={Link} to='/register' onClick={this.clickRegister}>
-                Register
+              {this.state.register && <Menu.Item onClick={this.clickRegister}>
+                <Link to='/register'>Register</Link>
               </Menu.Item>
               }
 
-              {this.state.logIn && <Menu.Item as={Link} to='/log-in' onClick={this.clickLogin}>
-                Log In
+              {this.state.logIn && <Menu.Item onClick={this.clickLogin}>
+              <Link to='/'>Log In</Link>
               </Menu.Item>
               } 
 

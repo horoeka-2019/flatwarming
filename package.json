@@ -30,6 +30,7 @@
     ]
   },
   "dependencies": {
+    "enzyme-to-json": "^3.4.3",
     "eslint": "^6.7.2",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
