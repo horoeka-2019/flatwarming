@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
 // import { GridForm, ColOne, ColTwo, Button } from './Styled'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Header, Container, Grid } from 'semantic-ui-react'
 
 export default function Register (props) {
  
@@ -34,32 +34,38 @@ export default function Register (props) {
 
   return (
     <React.Fragment>
-      <h2>Register</h2>
-    <Form>
-    <Form.Field>
-      <label>Email</label>
-      <input name='username' type='email'
-          value={form.username}
-          onChange={handleChange} 
-       />
-    </Form.Field>
-    <Form.Field>
-      <label>Password</label>
-      <input name='password' type='password'
-          value={form.password}
-          onChange={handleChange} 
-      />
-    </Form.Field>
-    <Form.Field type='button' onClick={handleClick}
-     control={Button}
-     disabled={
-       !form.password ||
-       !form.username ||
-       !form.username.includes('@') 
-     }
-       >Register
-       </Form.Field>
-  </Form>
+      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw'}}>
+
+      <Header as='h2' textAlign='center'>Register</Header>
+
+      <Form size = 'large' style = {{paddingTop: 50}}>
+      <Form.Field required>
+        <label>Email</label>
+        <input name='username' type='email'
+            value={form.username}
+            onChange={handleChange} 
+        />
+      </Form.Field>
+
+      <Form.Field required>
+        <label>Password</label>
+        <input name='password' type='password'
+            value={form.password}
+            onChange={handleChange} 
+        />
+      </Form.Field>
+
+      <Form.Field type='button' onClick={handleClick}
+      control={Button}
+      disabled={
+        !form.password ||
+        !form.username ||
+        !form.username.includes('@') 
+      }
+        >Register
+        </Form.Field>
+    </Form>
+  </Container>
   </React.Fragment>
   )
 }
