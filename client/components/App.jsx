@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router, Switch} from 'react-router-dom'
 import Register from './Register'
 import Nav from './Nav'
 import { Container } from 'semantic-ui-react'
+// NOTE: THE COMMENTS ON THIS CAN BE UNCOMMENTED ONCE THE REGISTERFLATDETAILS COMPONENT HAS BEEN CREATED
 // import RegisterFlatFetails from './RegisterFlatDetails'
 
 class App extends React.Component {
