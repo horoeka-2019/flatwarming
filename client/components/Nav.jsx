@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Header, Menu, MenuHeader } from 'semantic-ui-react'
 import { connect } from 'react-redux' 
-import { hideLogin, showLogin, hideReg, showReg, } from '../actions/nav-buttons'
+import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 
 class Nav extends React.Component {
 
@@ -16,13 +16,17 @@ class Nav extends React.Component {
     this.props.dispatch(showReg())
 }
 
+  clickLogout = () => {
+    this.props.dispatch(hideLogin())
+    this.props.dispatch(showReg())
+  }
+
   clickHome = () => {
     this.props.dispatch(showReg())
     this.props.dispatch(showLogin())
   }
   
   render() {
-    console.log(this.props.register)
     return (
       <>
       <Container>
@@ -41,6 +45,11 @@ class Nav extends React.Component {
               </Menu.Item>
               } 
 
+              {this.props.logout && <Menu.Item as={Link} to='/log-in' onClick={this.clickLogout}>
+                Log Out
+              </Menu.Item>
+              } 
+
             </Menu.Menu>
         </Menu>
       </Container>
@@ -53,7 +62,8 @@ class Nav extends React.Component {
 const mapStateToProps = state => {
   return {
     login: state.login,
-    register: state.register
+    register: state.register,
+    logout: state.logout
   }
 }
 
