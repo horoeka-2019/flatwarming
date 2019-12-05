@@ -1,9 +1,11 @@
 import React from 'react'
 import LogIn from './LogIn'
-import { Route, BrowserRouter as Router} from 'react-router-dom'
-import Home from './Home'
+import { Route, BrowserRouter as Router, Switch} from 'react-router-dom'
 import Register from './Register'
 import Nav from './Nav'
+import { Container } from 'semantic-ui-react'
+// NOTE: THE COMMENTS ON THIS CAN BE UNCOMMENTED ONCE THE REGISTERFLATDETAILS COMPONENT HAS BEEN CREATED
+// import RegisterFlatFetails from './RegisterFlatDetails'
 
 class App extends React.Component {
 
@@ -12,9 +14,14 @@ class App extends React.Component {
       <div>
         <Router>
               <Route path='/' component={Nav} />
-              <Route exact path='/' component={Home} ></Route>
-              <Route path='/register' component={Register} />
-              <Route exact path='/log-in' component={LogIn} ></Route>
+              
+              <Container>
+                <Switch>
+                  {/* <Route exact path='/register-flat' component={RegisterFlatFetails} ></Route> */}
+                  <Route path='/register' component={Register} />
+                  <Route exact path='/log-in' component={LogIn} ></Route>
+                </Switch>
+              </Container>
         </Router>
       </div>
     )
