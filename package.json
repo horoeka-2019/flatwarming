@@ -12,6 +12,11 @@
     "dev:client": "webpack --config webpack.config.js --watch",
     "client": "webpack-dev-server --hot --inline",
     "build": "webpack --config webpack.config.js",
+    "knex": "knex --knexfile knexfile.js",
+    "db:reset": "run-s db:delete db:migrate db:seed",
+    "db:migrate": "npm run knex migrate:latest",
+    "db:seed": "npm run knex seed:run",
+    "db:delete": "rm -f dev.sqlite3",
     "server": "node server",
     "start": "webpack && node server",
     "test": "jest --watchAll"
