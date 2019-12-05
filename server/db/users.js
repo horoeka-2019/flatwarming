@@ -47,7 +47,7 @@ function getUserDetail (id, db = connection) {
           .join('flatmates','users.id', 'flatmates.usersId')
           .join('expense','users.id','expense.usersId')
           .join('jobs', 'users.id','jobs.usersId')
-          .select('address', 'suburb','dayOfWeek as rubbishDay','names','powerDay','waterDay','wifiDay','job')
+          .select('address', 'rubbishUsers.suburb','dayOfWeek as rubbishDay','flatmates.names','powerDay','waterDay','wifiDay','job')
           .first()
 }
 
