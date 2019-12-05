@@ -1,6 +1,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable("rubbishUsers", table => {
-    table.increments("usersId");
+    table.increments("id");
+    table.integer("usersId");
     table.string("address");
     table.string("suburb");
   });
