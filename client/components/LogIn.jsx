@@ -18,7 +18,7 @@ export default function LogIn (props){
 
   const handleClick = () => {
     signIn({
-      username: form.username,
+      username: form.email,
       password: form.password
     }, {
       baseUrl: process.env.BASE_API_URL
@@ -33,37 +33,37 @@ export default function LogIn (props){
     <React.Fragment>
       <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw'}}>
 
-        <Header as='h2' textAlign='center'>Log In</Header>
-        
-        <Form size = 'large'>
-        
-        <Form.Field>
-          <label>Email</label>
-          <input name='username' type='email'
-            value={form.username}
-            onChange={handleChange} 
-          />
-        </Form.Field>
+      <Header as='h2' textAlign='center'>Log In</Header>
 
-        <Form.Field>
-          <label>Password</label>
-          <input name='password' type='password'
-            value={form.password}
-            onChange={handleChange} 
-          />
-        </Form.Field>
+      <Form size = 'large'>
 
-        <Form.Field type='button' onClick={handleClick}
-        control={Button}
-        disabled={
-        !form.password ||
-        !form.username ||
-        !form.username.includes('@') 
-        }
-        >Login
-        </Form.Field>
-        
-        </Form>
+      <Form.Field>
+        <label>Email</label>
+        <input name='email' type='email'
+        value={form.email}
+        onChange={handleChange} 
+      />
+      </Form.Field>
+
+      <Form.Field>
+      <label>Password</label>
+      <input name='password' type='password'
+      value={form.password}
+      onChange={handleChange} 
+      />
+      </Form.Field>
+
+      <Form.Field type='button' onClick={handleClick}
+      control={Button}
+      disabled={
+      !form.password ||
+      !form.email ||
+      !form.email.includes('@') 
+      }
+      >Login
+      </Form.Field>
+
+      </Form>
       </Container>
     </React.Fragment>
   )

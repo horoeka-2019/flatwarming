@@ -1,9 +1,10 @@
 exports.up = function(knex) {
   return knex.schema.createTable("expense", table => {
-    table.increments("usersId");
-    table.integer("powerDay");
-    table.integer("waterDay");
-    table.integer("wifiDay");
+    table.increments("id");
+    table.integer("usersId");
+    table.string("powerDay");
+    table.string("waterDay");
+    table.string("wifiDay");
   });
 };
 
