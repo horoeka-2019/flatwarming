@@ -30,6 +30,7 @@
     ]
   },
   "dependencies": {
+    "enzyme-to-json": "^3.4.3",
     "@babel/polyfill": "^7.7.0",
     "authenticare": "^0.4.5",
     "babel-polyfill": "^6.26.0",
