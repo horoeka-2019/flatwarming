@@ -9,15 +9,11 @@ module.exports = router
 router.get('/:id', (req, res) => {
     const id = Number(req.params.id)
     return db.getUserDetail(id)
-    .then(console.log('here'))
-        // .then(userDetail => res.render('userDetail', userDetail))
         .then(userDetail => res.json(userDetail))
 })
 
-router.post('/', (req, res) => {
-    
-    return db.addAddress(req.body)
-    .then(console.log('here'))
-        // .then(userDetail => res.render('userDetail', userDetail))
+router.post('/register/:id', (req, res) => {
+    const id = Number(req.params.id)
+    return db.addDetail(req.body)
         .then(userDetail => res.json(userDetail))
 })

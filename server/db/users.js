@@ -47,7 +47,7 @@ function getUserDetail (id, db = connection) {
           .join('flatmates','users.id', 'flatmates.usersId')
           .join('expense','users.id','expense.usersId')
           .join('jobs', 'users.id','jobs.usersId')
-          .select('address', 'rubbishUsers.suburb','dayOfWeek as rubbishDay','flatmates.names','powerDay','waterDay','wifiDay','job')
+          .select()
           .first()
 }
 
@@ -98,7 +98,7 @@ function addDetail(user,db = connection) {
       suburb: suburb,
     })
     .then(([id])=> 
-      addAddress(id, suburb, suburb,db)
+      addAddress(id, address, suburb,db)
         .then(() => 
           addName(id, names,db)
             .then(()=> 
