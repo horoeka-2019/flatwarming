@@ -31,7 +31,7 @@ export default function LogIn (props){
   }
   return (
     <React.Fragment>
-      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw'}}>
+      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 125, maxWidth: '40vw'}}>
 
       <Header as='h2' textAlign='center'>Log In</Header>
 
