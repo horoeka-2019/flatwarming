@@ -6,104 +6,177 @@ import {
   Form, 
   Input, 
   Container,
-  Header,
   FormField,
   Dropdown
 } from 'semantic-ui-react'
 
 
 class RegisterFlatDetails extends React.Component {
+  // state = {
+  //   address:  '',
+  //   names:    '',
+  //   powerDay: null, 
+  //   waterDay: null,
+  //   wifiDay:  null
+  // }
 
-  onChange = (event) => {
-    setForm({
-      ...form, 
-      [event.target.name]: event.target.value
-    })
-  }
+  // onChange = (event) => {
+  //   setForm({
+  //     ...form, 
+  //     [event.target.name]: event.target.value
+  //   })
+  // }
 
-  eventHandler = () => {
-    this.setState({
-      usersId:  users ? users.id : null,
-      address:  form.address,
-      names:    form.names,
-      powerDay: form.powerDay, 
-      waterDay: form.waterDay,
-      wifiDay:  form.wifiDay
-    })
-  }
+  // eventHandler = () => {
+  //   this.setState({
+  //     usersId:  users ? users.id : null,
+  //   })
+  // }
 
-  onChange = () => {
-    const { address, names, powerDay, waterDay, wifiDay } = this.props
-    const newFlat = this.state
+  // onSubmit = () => {
+  //   const { address, names, powerDay, waterDay, wifiDay } = this.props
+  //   const newFlat = this.state
 
-    addUser(newFlat)
-      .then(() => history.push('/'))
-      .catch(setError)
-  }
+  //   addUser(newFlat)
+  //     .then(() => push('/'))
+  //     .catch(setError)
+  // }
 
   render () {
+
     return (
-      <Form>
-        <Form.Group widths='equal'>
-        
-          <Form.Field 
-          control={Input}
-          name='address'
-          type='text'
-          label='Address: '
-          placeholder='123 Onehunga Mall'
-          required={true}
-          onChange={this.onChange}
-          />
+     <Container> 
+       <Form>
+       <FormField 
+              control={Input}
+              name='address'
+              type='text'
+              label='Address: '
+              placeholder='123 Onehunga Mall'
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+            <FormField 
+              control={Input}
+              name='address'
+              type='text'
+              label='Address: '
+              placeholder='123 Onehunga Mall'
+              required={true}
+              onChange={this.onChange}>
+            </FormField>    
+            <FormField 
+              control={Input}
+              name='address'
+              type='text'
+              label='Address: '
+              placeholder='123 Onehunga Mall'
+              required={true}
+              onChange={this.onChange}>
+            </FormField>  
+            <FormField
+              control={Input}
+              name='names'
+              type='text'
+              label='Flat Mate 1: '
+              placeholder='Name your Mates'
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+            <FormField
+              control={Input}
+              name='names'
+              type='text'
+              label='Flat Mate 1: '
+              placeholder='Name your Mates'
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+            <FormField
+              control={Input}
+              name='names'
+              type='text'
+              label='Flat Mate 2: '
+              placeholder='Name your Mates'
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+
+            <FormField
+              control={Input}
+              name='names'
+              type='text'
+              label='Flat Mate 3: '
+              placeholder='Name your Mates'
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+
+            <FormField
+              control={Input}
+              name='names'
+              type='text'
+              label='Flat Mate 4: '
+              placeholder='Name your Mates'
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+
+       </Form>
+        {/* <Form>
+          <Form.Group widths='equal'>
+          </Form.Group>
+          <Form.Group widths='equal'>
+          
+            <FormField 
+              control={Input} 
+              name='powerDay'
+              type='dropdown'
+              label='Power Due Date: '
+              placeholder=''
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+            
+            <FormField
+              control={Input} 
+              name='waterDay'
+              type='dropdown'
+              label='Water Due Date: '
+              placeholder=''
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+
+            <FormField 
+              control={Input} 
+              name='wifiDay'
+              type='dropdown'
+              label='Internet Due Date: '
+              placeholder=''
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+          
+          </Form.Group>
 
           <FormField
-            control={input}
-            name='names'
-            type='text'
-            label='Flat Mates: '
-            placeholder='Name your Mates'
-            required={true}
-            onChange={this.onChange}
-            />
-            
-        </Form.Group>
-        
-        <Form.Group widths='equal'>
-        
-          <Form.Field 
-            control={Input} 
-            name='powerDay'
-            type='dropdown'
-            label='Power Due Date: '
-            placeholder=''
-            required={true}
-            onChange={this.onChange}
-            />
-          
-          <Form.Field 
-            control={Input} 
-            name='waterDay'
-            type='dropdown'
-            label='Water Due Date: '
-            placeholder=''
-            required={true}
-            onChange={this.onChange}
-            />
-
-          <Form.Field 
-            control={Input} 
-            name='wifiDay'
-            type='dropdown'
-            label='Internet Due Date: '
-            placeholder=''
-            required={true}
-            onChange={this.onChange}
-            />
-        
-        </Form.Group>
-      </Form>
+            control={Button}
+            disabled={
+              !this.state.name || 
+              !this.state.address ||
+              !this.state.powerDay ||
+              !this.state.categoryId
+            }
+            > Submit 
+          </FormField>
+        </Form> */}
+    </Container>
     )
   }
 }
+// const mapDispatchToProps = {
+//   newFlat
+// }
 
-export default connect(null, mapDispatchToProps)(RegisterFlatDetails)
+export default connect(null)(RegisterFlatDetails)
