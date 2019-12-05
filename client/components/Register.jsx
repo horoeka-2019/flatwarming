@@ -36,7 +36,7 @@ export default function Register (props) {
 
       <Header as='h2' textAlign='center'>Register</Header>
 
-      <Form size = 'large' style = {{paddingTop: 50}}>
+      <Form size = 'large'>
       <Form.Field required>
         <label>Email</label>
         <input name='email' type='email'
@@ -62,8 +62,8 @@ export default function Register (props) {
       }
         >Register
         </Form.Field>
-    </Form>
-  </Container>
+      </Form>
+      </Container>
   </React.Fragment>
   )
 }

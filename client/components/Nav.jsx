@@ -1,40 +1,28 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Header, Menu, MenuHeader } from 'semantic-ui-react'
-
-
-// if needed!
-// import { connect } from 'react-redux' 
+import { connect } from 'react-redux' 
+import { hideLogin, showLogin, hideReg, showReg, } from '../actions/nav-buttons'
 
 class Nav extends React.Component {
-  state = {
-    register: true,
-    logIn: true
-  }
-  
+
   clickRegister = () => {
-      this.setState({
-        register: !this.state.register,
-        logIn: true
-      })
-  }
+    this.props.dispatch(hideReg())
+    this.props.dispatch(showLogin())
+}
 
   clickLogin = () => {
-      this.setState({
-      register: true,
-      logIn: !this.state.logIn
-      })
-  }
+    this.props.dispatch(hideLogin())
+    this.props.dispatch(showReg())
+}
 
   clickHome = () => {
-    this.setState({
-    register: true,
-    logIn: true
-    })
+    this.props.dispatch(showReg())
+    this.props.dispatch(showLogin())
   }
   
   render() {
-
+    console.log(this.props.register)
     return (
       <>
       <Container>
@@ -43,12 +31,12 @@ class Nav extends React.Component {
 
             <Menu.Menu position='right'>
 
-              {this.state.register && <Menu.Item as={Link} to='/register' onClick={this.clickRegister}>
+              {this.props.register && <Menu.Item as={Link} to='/register' onClick={this.clickRegister}>
                 Register
               </Menu.Item>
               }
 
-              {this.state.logIn && <Menu.Item as={Link} to='/log-in' onClick={this.clickLogin}>
+              {this.props.login && <Menu.Item as={Link} to='/log-in' onClick={this.clickLogin}>
                 Log In
               </Menu.Item>
               } 
@@ -62,4 +50,11 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav
+const mapStateToProps = state => {
+  return {
+    login: state.login,
+    register: state.register
+  }
+}
+
+export default connect(mapStateToProps)(Nav)
