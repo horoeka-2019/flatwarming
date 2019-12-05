@@ -36,7 +36,7 @@ export default function Register (props) {
 
       <Header as='h2' textAlign='center'>Register</Header>
 
-      <Form size = 'large' style = {{paddingTop: 50}}>
+      <Form size = 'large'>
       <Form.Field required>
         <label>Email</label>
         <input name='username' type='email'
