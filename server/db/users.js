@@ -8,7 +8,8 @@ module.exports = {
 }
 
 function createUser (user, db = connection) {
-  return userExists(user.username, db)
+  console.log('hahaha createUser')
+  return userExists(user.email, db)
     .then(exists => {
       if (exists) {
         return Promise.reject(new Error('User exists'))
@@ -16,22 +17,27 @@ function createUser (user, db = connection) {
     })
     .then(() => generateHash(user.password))
     .then(passwordHash => {
-      return db('users').insert({ username: user.username, hash: passwordHash })
+      console.log('passwordHash', passwordHash)
+      console.log('user.email', user.email)
+      console.log('password', passwordHash)
+      return db('users').insert({ email: user.email, password: passwordHash })
     })
 }
 
-function userExists (username, db = connection) {
+function userExists (email, db = connection) {
+  console.log('userExists!')
   return db('users')
     .count('id as n')
-    .where('username', username)
+    .where('email', email)
     .then(count => {
       return count[0].n > 0
     })
 }
 
-function getUserByName (username, db = connection) {
+function getUserByName (email, db = connection) {
+  console.log('email db', email)
   return db('users')
     .select()
-    .where('username', username)
+    .where('email', email)
     .first()
 }

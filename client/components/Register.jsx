@@ -5,7 +5,7 @@ import { Button, Form, Header, Container } from 'semantic-ui-react'
 export default function Register (props) {
  
   const [form, setForm] = useState({
-    username: '',
+    email: '',
     password: ''
   })
 
@@ -18,7 +18,7 @@ export default function Register (props) {
 
   const handleClick = () => {
     register({
-      username: form.username,
+      email: form.email,
       password: form.password
     }, {
       baseUrl: process.env.BASE_API_URL
@@ -39,8 +39,8 @@ export default function Register (props) {
       <Form size = 'large' style = {{paddingTop: 50}}>
       <Form.Field required>
         <label>Email</label>
-        <input name='username' type='email'
-            value={form.username}
+        <input name='email' type='email'
+            value={form.email}
             onChange={handleChange} 
         />
       </Form.Field>
@@ -57,8 +57,8 @@ export default function Register (props) {
       control={Button}
       disabled={
         !form.password ||
-        !form.username ||
-        !form.username.includes('@') 
+        !form.email ||
+        !form.email.includes('@') 
       }
         >Register
         </Form.Field>

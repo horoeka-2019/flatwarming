@@ -5,7 +5,7 @@ import { Button, Form } from 'semantic-ui-react'
 export default function LogIn (props){
 
   const [form, setForm] = useState({
-    username: '',
+    email: '',
     password: ''
   })
 
@@ -18,7 +18,7 @@ export default function LogIn (props){
 
   const handleClick = () => {
     signIn({
-      username: form.username,
+      email: form.email,
       password: form.password
     }, {
       baseUrl: process.env.BASE_API_URL
@@ -35,8 +35,8 @@ export default function LogIn (props){
       <Form>
       <Form.Field>
         <label>Email</label>
-        <input name='username' type='email'
-          value={form.username}
+        <input name='email' type='email'
+          value={form.email}
           onChange={handleChange} 
         />
       </Form.Field>
@@ -51,8 +51,8 @@ export default function LogIn (props){
       control={Button}
       disabled={
        !form.password ||
-       !form.username ||
-       !form.username.includes('@') 
+       !form.email ||
+       !form.email.includes('@') 
       }
        >Login
       </Form.Field>
