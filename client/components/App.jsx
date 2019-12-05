@@ -16,11 +16,11 @@ class App extends React.Component {
               <Route path='/' component={Nav} />
               
               <Container>
-                <Switch>
+                {/* <Switch> */}
                   {/* <Route exact path='/register-flat' component={RegisterFlatFetails} ></Route> */}
                   <Route path='/register' component={Register} />
                   <Route exact path='/log-in' component={LogIn} ></Route>
-                </Switch>
+                {/* </Switch> */}
               </Container>
         </Router>
       </div>

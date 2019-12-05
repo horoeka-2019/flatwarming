@@ -16,22 +16,22 @@ function createUser (user, db = connection) {
     })
     .then(() => generateHash(user.password))
     .then(passwordHash => {
-      return db('users').insert({ username: user.username, hash: passwordHash })
+      return db('users').insert({ email: user.username, password: passwordHash })
     })
 }
 
-function userExists (username, db = connection) {
+function userExists (email, db = connection) {
   return db('users')
     .count('id as n')
-    .where('username', username)
+    .where('email', email)
     .then(count => {
       return count[0].n > 0
     })
 }
 
-function getUserByName (username, db = connection) {
+function getUserByName (email, db = connection) {
   return db('users')
-    .select()
-    .where('username', username)
+    .select('id as id', 'email as email', 'password as hash')
+    .where('email', email)
     .first()
 }
