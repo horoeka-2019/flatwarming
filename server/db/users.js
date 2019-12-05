@@ -4,7 +4,10 @@ const { generateHash } = require('authenticare/server')
 module.exports = {
   createUser,
   userExists,
-  getUserByName
+  getUserByName,
+  getUserDetail,
+  addDetail,
+  editName
 }
 
 function createUser (user, db = connection) {
@@ -35,3 +38,72 @@ function getUserByName (username, db = connection) {
     .where('username', username)
     .first()
 }
+
+function getUserDetail (id, db = connection) {
+  return db('users')
+          .where('users.id',id)
+          .join('rubbishUsers','users.id', 'rubbishUsers.usersId')
+            .join('rubbishPlan', 'rubbishUsers.suburb','rubbishPlan.suburb')
+          .join('flatmates','users.id', 'flatmates.usersId')
+          .join('expense','users.id','expense.usersId')
+          .join('jobs', 'users.id','jobs.usersId')
+          .select('address', 'suburb','dayOfWeek as rubbishDay','names','powerDay','waterDay','wifiDay','job')
+          .first()
+}
+
+function addAddress (id, address, suburb, db = connection) {
+  return db ('rubbishUsers')
+    .insert({
+      usersId: id,
+      address:address,
+      suburb:suburb
+    })
+}
+
+function addName(id,names,db = connection) {
+  return db ('flatmates')
+    .insert({
+      usersId: id,
+      names: names
+    })
+}
+
+function editName(editedName, db = connection) {
+  const { id } = editedName
+  return db('flatmates')
+    .where('id', id)
+    .update({
+      usersId:id,
+      names: editedName.names
+    })
+    .then(() => getUserDetail(id, db))
+}
+
+function addExpenseDay(expense, db = connection) {
+  const { powerDay, waterDay, wifiDay } = expense
+  return db('expense')
+    .insert({
+      powerDay: powerDay,
+      waterDay: waterDay,
+      wifiDay:wifiDay
+
+    })
+}
+
+function addDetail(user,db = connection) {
+  const {address, suburb, names,expense} = user  
+  return db('users')
+    .insert({
+      address: address,
+      suburb: suburb,
+    })
+    .then(([id])=> 
+      addAddress(id, suburb, suburb,db)
+        .then(() => 
+          addName(id, names,db)
+            .then(()=> 
+              addExpenseDay(expense,db)
+                .then(() => getUserDetail(id,db)))))
+    
+}
+
