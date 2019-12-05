@@ -1,6 +1,6 @@
 import { HIDE_REG, SHOW_REG } from '../actions/nav-buttons'
 
-export default function login (state = true, action) {
+export default function register (state = true, action) {
   switch (action.type) {
     case SHOW_REG:
       return true
