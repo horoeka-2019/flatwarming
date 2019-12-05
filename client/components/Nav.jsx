@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Header, Menu, MenuHeader } from 'semantic-ui-react'
+import { Container, Header, Menu } from 'semantic-ui-react'
 import { connect } from 'react-redux' 
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 
@@ -30,10 +30,10 @@ class Nav extends React.Component {
     return (
       <>
       <Container>
-        <Menu fixed='top' style = {{ backgroundColor: '#F9B79F' }}>
-          <Menu.Item header as={Link} to='/' onClick={this.clickHome}>Flat Warming</Menu.Item >
+        <Menu inverted fixed='top'>
+          <Menu.Item header as={Link} to='/' onClick={this.clickHome} style={{fontSize: '1.3rem'}}>Flat Warming<img src='/favicon.png'></img></Menu.Item >
 
-            <Menu.Menu position='right'>
+            <Menu.Menu position='right' style={{fontSize: '1.2rem'}}>
 
               {this.props.register && <Menu.Item as={Link} to='/register' onClick={this.clickRegister}>
                 Register
