@@ -5,7 +5,7 @@ import { Button, Form, Header, Container } from 'semantic-ui-react'
 export default function Register (props) {
  
   const [form, setForm] = useState({
-    email: '',
+    username: '',
     password: ''
   })
 
@@ -18,7 +18,7 @@ export default function Register (props) {
 
   const handleClick = () => {
     register({
-      email: form.email,
+      username: form.email,
       password: form.password
     }, {
       baseUrl: process.env.BASE_API_URL
