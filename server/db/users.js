@@ -16,11 +16,13 @@ function createUser (user, db = connection) {
     })
     .then(() => generateHash(user.password))
     .then(passwordHash => {
+      console.log('here 5')
       return db('users').insert({ email: user.username, password: passwordHash })
     })
 }
 
 function userExists (email, db = connection) {
+  console.log('here 6')
   return db('users')
     .count('id as n')
     .where('email', email)
@@ -30,6 +32,7 @@ function userExists (email, db = connection) {
 }
 
 function getUserByName (email, db = connection) {
+  console.log('getUserByName')
   return db('users')
     .select('id as id', 'email as email', 'password as hash')
     .where('email', email)
