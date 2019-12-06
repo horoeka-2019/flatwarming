@@ -1,4 +1,9 @@
 import React from 'react';
+import { Container, Grid, Image } from 'semantic-ui-react'
+import Power from './Power'
+import Internet from './Internet'
+import Water from './Water'
+import Rubbish from './Rubbish'
 
 class Dashboard extends React.Component {
   state = { 
@@ -7,11 +12,46 @@ class Dashboard extends React.Component {
   render() { 
     return ( 
       <>
-        <h1 style = {{marginTop: 150}}>
-          I'm a dashboard!
-        </h1>
+        <Grid columns={4} style = {{marginTop: 100}}>
+          <Grid.Row>
+
+            <Grid.Column>
+              <Power />
+            </Grid.Column>
+
+            <Grid.Column>
+              <Internet />
+            </Grid.Column>
+
+            <Grid.Column>
+              <Water />
+            </Grid.Column>
+
+            <Grid.Column>
+              <Rubbish />
+            </Grid.Column>
+
+          </Grid.Row>
+        </Grid>
       </>
-     );
+      //   <Grid columns={3} divided>
+      // <Grid.Row>
+      //   <Grid.Column>
+      //   <Power />
+      //   </Grid.Column>
+      //   <Grid.Column>
+      //     <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      //   </Grid.Column>
+      //   <Grid.Column>
+      //     <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      //   </Grid.Column>
+      // </Grid.Row>
+      // <Grid />
+
+        // <Container style = {{marginTop: 100}}>
+        //   <Power />
+        // </Container>
+     )
   }
 }
  

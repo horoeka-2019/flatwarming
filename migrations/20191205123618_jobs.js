@@ -4,6 +4,7 @@ exports.up = function(knex) {
     table.integer("usersId");
     table.string("job");
     table.string("names");
+    table.string("dueDay");
   });
 };
 
