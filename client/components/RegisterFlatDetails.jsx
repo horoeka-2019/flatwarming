@@ -67,7 +67,7 @@ class RegisterFlatDetails extends React.Component {
   //   )
   // }
 
-  // new onSubmit
+  // new onSubmit, handleSubmit
   onSubmit = () => {
     const { address, suburb, names } = this.state
 
