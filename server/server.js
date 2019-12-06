@@ -8,6 +8,7 @@ const users = require('./routes/users')
 server.use(express.json())
 server.use('/', authRoutes)
 server.use('/api/v1/users', users)
+// server.use('/api/v1/register/:id', users)
 server.use(express.static(path.join(__dirname, './public')))
 
 server.get('*', (req, res) => {

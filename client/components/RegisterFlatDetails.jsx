@@ -1,43 +1,44 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import FlatMate from './FlatMate'
-import {addFlatmate, removeFlatmate} from '../actions/flatmate.action'
+import { addFlatmate, removeFlatmate } from '../actions/flatmate.action'
 
 import {
-  Button, 
-  Form, 
-  Input, 
+  Button,
+  Form,
+  Input,
   Container,
   FormField,
   List
 } from 'semantic-ui-react'
 
-
 class RegisterFlatDetails extends React.Component {
-  state = {
-    address: '',
-    suburb: '',
-    names:  '',
-    powerDay: null, 
-    waterDay: null,
-    wifiDay:  null,
-    inputValue:''
+  constructor () {
+    super()
+    this.state = {
+      address: '',
+      suburb: '',
+      names: '',
+      powerDay: null,
+      waterDay: null,
+      wifiDay: null,
+      inputValue: ''
+    }
   }
 
   onChange = (e) => {
-    setForm({
-      ...form, 
-      [e.target.value]: e.target.value
+    this.setState({
+      ...Form({ [e.target.value]: e.target.value })
     })
   }
   onClick = e => {
     e.preventDefault()
-      this.setState({
-      
+    this.setState({
+
     })
   }
-  
-  changeHandle(value) {
+
+  changeHandle (value) {
     this.setState(
       {
         inputValue: value
@@ -47,27 +48,49 @@ class RegisterFlatDetails extends React.Component {
 
   eventHandler = () => {
     this.setState({
-      usersId:  users ? users.id : null,
+      usersId: users ? users.id : null
     })
   }
 
-  onSubmit = () => {
-    const newFlat = this.state
+  // to be decided if this needs to be used or not
+  // onSubmit = (e) => {
+  //   event.preventDefault()
+  //   const newFlat = Form.Data(e.target)
 
-    addUser(newFlat)
-      .then(() => push('/'))
-      .catch(setError)
+  //   fetch('/api/register/:id', {
+  //     method: 'POST',
+  //     body: newFlat,
+  //     id: users.Id
+  //   }
+  //     .then(() => push('/api/users:id'))
+  //     .catch(setError)
+  //   )
+  // }
+
+  // new onSubmit
+  onSubmit = () => {
+    const { address, suburb, names } = this.state
+
+    return (
+      address.length < 0 &&
+      suburb.length < 0 &&
+      names.length < 0
+    )
+  }
+
+  handleSubmit = (e) => {
+    if (!this.onSubmit()) {
+      e.preventDefault()
+    }
   }
 
   render () {
-
-    console.log('flatmates', this.props.flatmates)
-    console.log('input', this.state.inputValue)
+    const isEnabled = this.onSubmit
     return (
-     <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw'}}> 
-       <Form>
-        <Form.Group>
-            <FormField 
+      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw' }}>
+        <Form>
+          <Form.Group>
+            <FormField
               control={Input}
               name='address'
               type='text'
@@ -77,7 +100,7 @@ class RegisterFlatDetails extends React.Component {
               onChange={this.onChange}>
             </FormField>
 
-            <FormField 
+            <FormField
               control={Input}
               name='address'
               type='text'
@@ -86,56 +109,52 @@ class RegisterFlatDetails extends React.Component {
               required={true}
               onChange={this.onChange}>
             </FormField>
-        </Form.Group>
-        <Form.Group>
+          </Form.Group>
+          <Form.Group>
             <FormField>
               <List as='ol'>
                 {
-                this.props.flatmates.map((flatmate, index) => 
-                <FlatMate id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
+                  this.props.flatmates.map((flatmate, index) =>
+                    <FlatMate id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
                 }
               </List>
               <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
-              
+
               <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
             </FormField>
-        </Form.Group>
-        <Form.Group>  
-             <FormField 
-               control={Input} 
-               name='powerDay'
-               type='date'
-               label='Power Due Date: '>
-             </FormField>
-            
-             <FormField
-               control={Input} 
-               name='waterDay'
-               type='date'
-               label='Water Due Date: '>
-             </FormField>
+          </Form.Group>
+          <Form.Group>
+            <FormField
+              control={Input}
+              name='powerDay'
+              type='date'
+              label='Power Due Date: '>
+            </FormField>
 
-             <FormField 
-               control={Input} 
-               name='wifiDay'
-               type='date'
-               label='Internet Due Date: '>
-             </FormField>
-        </Form.Group>
-        <Form.Group> 
-           <FormField
-             control={Button}
-             disabled={
-               !this.state.name || 
-               !this.state.address ||
-               !this.state.powerDay ||
-               !this.state.categoryId
-             }
-             > Submit 
-           </FormField>
-        </Form.Group>
-      </Form> 
-    </Container>
+            <FormField
+              control={Input}
+              name='waterDay'
+              type='date'
+              label='Water Due Date: '>
+            </FormField>
+
+            <FormField
+              control={Input}
+              name='wifiDay'
+              type='date'
+              label='Internet Due Date: '>
+            </FormField>
+          </Form.Group>
+          <Form.Group>
+            <FormField
+              control={Button}
+              type='submit'
+              disabled={!isEnabled}
+            > Submit
+            </FormField>
+          </Form.Group>
+        </Form>
+      </Container>
 
     )
   }
