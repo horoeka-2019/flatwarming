@@ -9,13 +9,14 @@ class Power extends React.Component {
     return ( 
       <>
     <Card color='orange'>
-      <Image src='/power.png' wrapped ui={false} rounded />
+      <Image src='/power.png' size='medium' rounded style={{backgroundColor: 'blue'}} />
       <Card.Content>
-        <Card.Header>DUE IN 15 DAYS</Card.Header>
-        {/* <Card.Meta>
-          <span className='date'>Joined in 2015</span>
+        <Card.Header>POWER BILL</Card.Header>
+        {/* <Card.Header>DUE IN 15 DAYS</Card.Header> */}
+        <Card.Meta>
+          <span className='date'>DUE IN 15 DAYS</span>
         </Card.Meta>
-        <Card.Description>
+        {/* <Card.Description>
           Matthew is a musician living in Nashville.
         </Card.Description>
       </Card.Content> */}

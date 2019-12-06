@@ -1,6 +1,8 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react'
+import { Container, Grid, Image } from 'semantic-ui-react'
 import Power from './Power'
+import Internet from './Internet'
+import Water from './Water'
 
 class Dashboard extends React.Component {
   state = { 
@@ -9,11 +11,41 @@ class Dashboard extends React.Component {
   render() { 
     return ( 
       <>
-        <Container style = {{marginTop: 100}}>
-          <Power />
-        </Container>
+        <Grid columns={4} divided style = {{marginTop: 100}}>
+          <Grid.Row>
+            <Grid.Column>
+              <Power />
+            </Grid.Column>
+            <Grid.Column>
+              <Internet />
+            </Grid.Column>
+            <Grid.Column>
+              <Water />
+            </Grid.Column>
+            <Grid.Column>
+              <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </>
-     );
+      //   <Grid columns={3} divided>
+      // <Grid.Row>
+      //   <Grid.Column>
+      //   <Power />
+      //   </Grid.Column>
+      //   <Grid.Column>
+      //     <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      //   </Grid.Column>
+      //   <Grid.Column>
+      //     <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      //   </Grid.Column>
+      // </Grid.Row>
+      // <Grid />
+
+        // <Container style = {{marginTop: 100}}>
+        //   <Power />
+        // </Container>
+     )
   }
 }
  
