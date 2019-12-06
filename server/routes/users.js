@@ -25,3 +25,39 @@ router.post('/register/:id', (req, res) => {
     return db.addDetail(obj)
         .then(userDetail => res.json(userDetail))
 })
+
+router.post('/jobs/:id',(req, res) => {
+    const id = Number(req.params.id)
+    const newJob = {
+        id:req.body.usersId,
+        job:req.body.job,
+        names:req.body.job,
+        dueDay:req.body.dueDay
+    }
+
+    return db.addJobs(newJob)
+        .then(newJob => res.json(newJob))
+})
+
+// router.post('/setting/:id',(req, res) => {
+//     const id = Number(req.params.id)
+//     const powerDay=req.body.powerDay
+//     const waterDay=req.body.waterDay
+//     const wifiDay=req.body.wifiDay
+
+// })
+
+//need to be finished, to edit expense due day.
+
+router.post('/flatmate/:id',(req,res)=> {
+    const id = Number(req.params.id)
+    const names = req.body.names
+    const newName = {
+        id:id,
+        names:names
+    }
+    return db.addName(newName)
+        .then(newName => res.json(newName))
+})
+
+

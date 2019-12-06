@@ -97,7 +97,7 @@ class RegisterFlatDetails extends React.Component {
               <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
             </FormField>
         </Form.Group>
-        <Form.Group>
+        <Form.Group>  
              <FormField 
                control={Input} 
                name='powerDay'
@@ -119,6 +119,7 @@ class RegisterFlatDetails extends React.Component {
                label='Internet Due Date: '>
              </FormField>
         </Form.Group>
+        <Form.Group> 
            <FormField
              control={Button}
              disabled={
@@ -129,7 +130,7 @@ class RegisterFlatDetails extends React.Component {
              }
              > Submit 
            </FormField>
-        
+        </Form.Group>
       </Form> 
     </Container>
 
