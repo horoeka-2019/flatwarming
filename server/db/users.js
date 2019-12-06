@@ -7,7 +7,14 @@ module.exports = {
   getUserByName,
   getUserDetail,
   addDetail,
-  editName
+  editName,
+  addJobs,
+  deleteJobs,
+  addName,
+  deleteName,
+  editPower,
+  editWater,
+  editWifi
 }
 
 function createUser (user, db = connection) {
@@ -73,12 +80,43 @@ function addAddress (id, address, suburb, db = connection) {
     })
 }
 
-function addName (id, names, db = connection) {
+function addName (newName, db = connection) {
+  const {id, names} = newName
   return db('flatmates')
     .insert({
       usersId: id,
       names: names
     })
+}
+
+
+function addExpenseDay (id, powerDay,waterDay,wifiDay, db = connection) {
+  console.log('userId', id)
+  return db('expense')
+    .insert({
+      usersId: id,
+      powerDay: powerDay,
+      waterDay: waterDay,
+      wifiDay: wifiDay
+    })
+}
+
+function addJobs (newJob,db = connection) {
+  const {id,job,names,dueDay} = newJob
+  return db('jobs')
+    .insert({
+      usersId: id,
+      job:job,
+      names:names,
+      dueDay:dueDay
+    })
+    .then(()=> getUserDetail(id,db))
+}
+
+function deleteJobs(id,db = connection) {
+  return db('jobs')
+    .where('jobs.id',id)
+    .del()
 }
 
 function editName (editedName, db = connection) {
@@ -94,13 +132,33 @@ function editName (editedName, db = connection) {
 
 // editName has not been checked func yet
 
-function addExpenseDay (id, powerDay,waterDay,wifiDay, db = connection) {
-  console.log('userId', id)
+function deleteName(id,db = connection) {
+  return db('flatmates')
+    .where('flatmates.id',id)
+    .del()
+}
+
+function editPower(id,powerDay,db = connection) {
   return db('expense')
-    .insert({
-      usersId: id,
-      powerDay: powerDay,
-      waterDay: waterDay,
-      wifiDay: wifiDay
+    .where('expense.usersId',id)
+    .update({
+      powerDay:powerDay
     })
 }
+
+function editWater(id,waterDay,db = connection) {
+  return db('expense')
+    .where('expense.usersId', id)
+    .update({
+      waterDay:waterDay
+    })
+}
+
+function editWifi(id,wifiDay, db= connection) {
+  return db('expense')
+    .where('expense.usesId', id)
+    .update({
+      wifiDay:wifiDay
+    })
+}
+
