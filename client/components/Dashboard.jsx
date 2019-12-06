@@ -3,6 +3,7 @@ import { Container, Grid, Image } from 'semantic-ui-react'
 import Power from './Power'
 import Internet from './Internet'
 import Water from './Water'
+import Rubbish from './Rubbish'
 
 class Dashboard extends React.Component {
   state = { 
@@ -11,20 +12,25 @@ class Dashboard extends React.Component {
   render() { 
     return ( 
       <>
-        <Grid columns={4} divided style = {{marginTop: 100}}>
+        <Grid columns={4} style = {{marginTop: 100}}>
           <Grid.Row>
+
             <Grid.Column>
               <Power />
             </Grid.Column>
+
             <Grid.Column>
               <Internet />
             </Grid.Column>
+
             <Grid.Column>
               <Water />
             </Grid.Column>
+
             <Grid.Column>
-              <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+              <Rubbish />
             </Grid.Column>
+
           </Grid.Row>
         </Grid>
       </>

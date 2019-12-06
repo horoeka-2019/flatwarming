@@ -9,7 +9,7 @@ class Water extends React.Component {
     return ( 
       <>
       <Card color='yellow'>
-        <Image src='/water.png' size='large' rounded style={{backgroundColor: 'green'}} />
+        <img src='/water.png' rounded style={{backgroundColor: '#acdf87', height: '30vh', width: 'auto'}} />
         <Card.Content>
 
           <Card.Header>WATER BILL</Card.Header>

@@ -8,8 +8,10 @@ class Power extends React.Component {
   render() { 
     return ( 
       <>
-    <Card color='orange'>
-      <Image src='/power.png' size='medium' rounded style={{backgroundColor: 'blue'}} />
+    <Card color='red'>
+      <img src='/power.png' rounded style={{backgroundColor: '#99fadc', height: '30vh', width: 'auto'}} />
+
+      {/* <Image src='/power.png' size='medium' rounded style={{backgroundColor: 'blue'}} /> */}
       <Card.Content>
         <Card.Header>POWER BILL</Card.Header>
         {/* <Card.Header>DUE IN 15 DAYS</Card.Header> */}
