@@ -4,6 +4,7 @@ import Power from './Power'
 import Internet from './Internet'
 import Water from './Water'
 import Rubbish from './Rubbish'
+import Names from './Names'
 
 class Dashboard extends React.Component {
   state = { 
@@ -12,7 +13,8 @@ class Dashboard extends React.Component {
   render() { 
     return ( 
       <>
-        <Grid columns={4} style = {{marginTop: 100}}>
+        <Names style = {{marginTop: 100}}/>
+        <Grid columns={4} >
           <Grid.Row>
 
             <Grid.Column>
