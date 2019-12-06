@@ -5,9 +5,9 @@ exports.seed = function(knex) {
     .then(function() {
       // Inserts seed entries
       return knex("expense").insert([
-        { usersId: 1, powerDay: 11, waterDay: 22, wifiDay: 33 },
-        { usersId: 2, powerDay: 11, waterDay: 22, wifiDay: 33 },
-        { usersId: 3, powerDay: 11, waterDay: 22, wifiDay: 33 }
+        { id:1,usersId: 1, powerDay: '11', waterDay: '22', wifiDay: '33' },
+        { id:2,usersId: 2, powerDay: '11', waterDay: '22', wifiDay: '33' },
+        { id:3,usersId: 3, powerDay: '11', waterDay: '22', wifiDay: '33' }
       ]);
     });
 };

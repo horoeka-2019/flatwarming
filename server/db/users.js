@@ -4,7 +4,10 @@ const { generateHash } = require('authenticare/server')
 module.exports = {
   createUser,
   userExists,
-  getUserByName
+  getUserByName,
+  getUserDetail,
+  addDetail,
+  editName
 }
 
 function createUser (user, db = connection) {
@@ -37,4 +40,67 @@ function getUserByName (email, db = connection) {
     .select('id as id', 'email as email', 'password as hash')
     .where('email', email)
     .first()
+}
+
+function getUserDetail (id, db = connection) {
+  return db('users')
+    .where('users.id', id)
+    .join('rubbishUsers', 'users.id', 'rubbishUsers.usersId')
+    .join('rubbishPlan', 'rubbishUsers.suburb', 'rubbishPlan.suburb')
+    .join('flatmates', 'users.id', 'flatmates.usersId')
+    .join('expense', 'users.id', 'expense.usersId')
+    .join('jobs', 'users.id', 'jobs.usersId')
+    .select()
+    .first()
+}
+
+function addDetail (obj, db = connection) {
+  const { id, address, suburb, names, powerDay, waterDay, wifiDay } = obj
+  return addAddress(id, address, suburb, db)
+    .then(() =>
+      addName(id, names, db)
+        .then(() =>
+          addExpenseDay(id, powerDay, waterDay, wifiDay, db)
+            .then(() => getUserDetail(id, db))))
+}
+
+function addAddress (id, address, suburb, db = connection) {
+  return db('rubbishUsers')
+    .insert({
+      usersId: id,
+      address: address,
+      suburb: suburb
+    })
+}
+
+function addName (id, names, db = connection) {
+  return db('flatmates')
+    .insert({
+      usersId: id,
+      names: names
+    })
+}
+
+function editName (editedName, db = connection) {
+  const { id } = editedName
+  return db('flatmates')
+    .where('id', id)
+    .update({
+      usersId: id,
+      names: editedName.names
+    })
+    .then(() => getUserDetail(id, db))
+}
+
+// editName has not been checked func yet
+
+function addExpenseDay (id, powerDay,waterDay,wifiDay, db = connection) {
+  console.log('userId', id)
+  return db('expense')
+    .insert({
+      usersId: id,
+      powerDay: powerDay,
+      waterDay: waterDay,
+      wifiDay: wifiDay
+    })
 }

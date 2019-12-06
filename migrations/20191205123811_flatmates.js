@@ -1,6 +1,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable("flatmates", table => {
-      table.increments("usersId");
+      table.increments("id");
+      table.integer("usersId");
       table.string("names");
     });
   };
