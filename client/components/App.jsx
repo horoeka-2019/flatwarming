@@ -6,7 +6,6 @@ import Nav from './Nav'
 import { Container } from 'semantic-ui-react'
 import RegisterFlatFetails from './RegisterFlatDetails'
 // NOTE: THE COMMENTS ON THIS CAN BE UNCOMMENTED ONCE THE REGISTERFLATDETAILS COMPONENT HAS BEEN CREATED
-// import RegisterFlatFetails from './RegisterFlatDetails'
 
 class App extends React.Component {
 
@@ -17,11 +16,11 @@ class App extends React.Component {
               <Route path='/' component={Nav} />
               
               <Container>
-                {/* <Switch> */}
+                <Switch>
                   <Route exact path='/register-flat' component={RegisterFlatFetails} ></Route>
                   <Route path='/register' component={Register} />
                   <Route exact path='/log-in' component={LogIn} ></Route>
-                {/* </Switch> */}
+                </Switch>
               </Container>
         </Router>
       </div>

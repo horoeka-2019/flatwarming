@@ -88,21 +88,17 @@ class RegisterFlatDetails extends React.Component {
               onChange={this.onChange}>
             </FormField>
 
-            <Form>
-            <List as='ol'>
-              {
-              this.props.flatmates.map((flatmate, index) => 
-              <FlatMate id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
-              }
-            </List>
-            <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
-            
-            <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
-            </Form>
-         <Form>
-           <Form.Group widths='equal'>
-           </Form.Group>
-           <Form.Group widths='equal'>
+            <FormField>
+              <List as='ol'>
+                {
+                this.props.flatmates.map((flatmate, index) => 
+                <FlatMate id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
+                }
+              </List>
+              <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
+              
+              <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
+            </FormField>
      
              <FormField 
                control={Input} 
@@ -124,8 +120,6 @@ class RegisterFlatDetails extends React.Component {
                type='date'
                label='Internet Due Date: '>
              </FormField>
-          
-           </Form.Group>
 
            <FormField
              control={Button}
@@ -137,8 +131,9 @@ class RegisterFlatDetails extends React.Component {
              }
              > Submit 
            </FormField>
-         </Form> 
-      </Container>
+        </Form.Group>
+      </Form> 
+    </Container>
 
     )
   }
