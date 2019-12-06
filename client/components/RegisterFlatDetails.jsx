@@ -31,12 +31,6 @@ class RegisterFlatDetails extends React.Component {
       ...Form({ [e.target.value]: e.target.value })
     })
   }
-  onClick = e => {
-    e.preventDefault()
-    this.setState({
-
-    })
-  }
 
   changeHandle (value) {
     this.setState(
