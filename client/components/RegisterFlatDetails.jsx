@@ -6,26 +6,33 @@ import {
   Form, 
   Input, 
   Container,
-  FormField
+  FormField,
+  FormGroup
 } from 'semantic-ui-react'
 
 
 class RegisterFlatDetails extends React.Component {
   state = {
-    address:  '',
-    names:    '',
+    address: '',
+    suburb: '',
+    names:  '',
     powerDay: null, 
     waterDay: null,
     wifiDay:  null
   }
 
-  onChange = (event) => {
+  onChange = (e) => {
     setForm({
       ...form, 
-      [event.target.name]: event.target.value
+      [e.target.value]: e.target.value
     })
   }
-
+  onClick = e => {
+    e.preventDefault()
+      this.setState({
+      
+    })
+  }
   eventHandler = () => {
     this.setState({
       usersId:  users ? users.id : null,
@@ -33,7 +40,6 @@ class RegisterFlatDetails extends React.Component {
   }
 
   onSubmit = () => {
-    const { address, names, powerDay, waterDay, wifiDay } = this.props
     const newFlat = this.state
 
     addUser(newFlat)
@@ -44,8 +50,9 @@ class RegisterFlatDetails extends React.Component {
   render () {
 
     return (
-     <Container> 
+     <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw'}}> 
        <Form>
+        <Form.Group>
             <FormField 
               control={Input}
               name='address'
@@ -55,22 +62,34 @@ class RegisterFlatDetails extends React.Component {
               required={true}
               onChange={this.onChange}>
             </FormField>
-      
+
+            <FormField 
+              control={Input}
+              name='address'
+              type='text'
+              label='Suburb: '
+              placeholder='Onehunga'
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+
             <FormField
               control={Input}
               name='names'
               type='text'
               label='Flat Mate: '
               placeholder='Name your Mates'
-              required={true}
               onChange={this.onChange}>
             </FormField>
 
-       </Form>
-        <Form>
-          <Form.Group widths='equal'>
-          </Form.Group>
-          <Form.Group widths='equal'>
+            <FormField
+            control={Button}
+            onClick={
+              this.newFlatMate
+            }
+            > 
+            Add Flat Mate 
+            </FormField>
           
             <FormField 
               control={Input} 
@@ -92,11 +111,11 @@ class RegisterFlatDetails extends React.Component {
               type='date'
               label='Internet Due Date: '>
             </FormField>
+        
           
-          </Form.Group>
-
           <FormField
             control={Button}
+            onSubmit={this.addNewFlat}
             disabled={
               !this.state.name || 
               !this.state.address ||
@@ -104,8 +123,10 @@ class RegisterFlatDetails extends React.Component {
               !this.state.categoryId
             }
             > Submit 
-          </FormField>
-        </Form>
+          </FormField> 
+
+        </Form.Group>
+      </Form>
     </Container>
     )
   }
