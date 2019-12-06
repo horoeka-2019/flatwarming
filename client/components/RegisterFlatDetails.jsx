@@ -15,21 +15,28 @@ import {
 
 class RegisterFlatDetails extends React.Component {
   state = {
-    address:  '',
-    names:    '',
+    address: '',
+    suburb: '',
+    names:  '',
     powerDay: null, 
     waterDay: null,
     wifiDay:  null,
     inputValue:''
   }
 
-  onChange = (event) => {
+  onChange = (e) => {
     setForm({
       ...form, 
-      [event.target.name]: event.target.value
+      [e.target.value]: e.target.value
     })
   }
-
+  onClick = e => {
+    e.preventDefault()
+      this.setState({
+      
+    })
+  }
+  
   changeHandle(value) {
     this.setState(
       {
@@ -45,7 +52,6 @@ class RegisterFlatDetails extends React.Component {
   }
 
   onSubmit = () => {
-    const { address, names, powerDay, waterDay, wifiDay } = this.props
     const newFlat = this.state
 
     addUser(newFlat)
@@ -58,8 +64,10 @@ class RegisterFlatDetails extends React.Component {
     console.log('flatmates', this.props.flatmates)
     console.log('input', this.state.inputValue)
     return (
-     <Container> 
-       
+     <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw'}}> 
+       <Form>
+        <Form.Group>
+          
             <FormField 
               control={Input}
               name='address'
@@ -69,22 +77,29 @@ class RegisterFlatDetails extends React.Component {
               required={true}
               onChange={this.onChange}>
             </FormField>
-            <Form>
-            <List as='ol'>
-              {
-              this.props.flatmates.map((flatmate, index) => 
-              <FlatMate id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
-              }
-            </List>
-            <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
-            
-            <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
-            </Form>
-         <Form>
-           <Form.Group widths='equal'>
-           </Form.Group>
-           <Form.Group widths='equal'>
-          
+
+            <FormField 
+              control={Input}
+              name='address'
+              type='text'
+              label='Suburb: '
+              placeholder='Onehunga'
+              required={true}
+              onChange={this.onChange}>
+            </FormField>
+
+            <FormField>
+              <List as='ol'>
+                {
+                this.props.flatmates.map((flatmate, index) => 
+                <FlatMate id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
+                }
+              </List>
+              <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
+              
+              <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
+            </FormField>
+     
              <FormField 
                control={Input} 
                name='powerDay'
@@ -105,8 +120,6 @@ class RegisterFlatDetails extends React.Component {
                type='date'
                label='Internet Due Date: '>
              </FormField>
-          
-           </Form.Group>
 
            <FormField
              control={Button}
@@ -118,8 +131,10 @@ class RegisterFlatDetails extends React.Component {
              }
              > Submit 
            </FormField>
-         </Form> 
-      </Container>
+        </Form.Group>
+      </Form> 
+    </Container>
+
     )
   }
 }
