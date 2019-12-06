@@ -9,7 +9,8 @@ import {
   Input, 
   Container,
   FormField,
-  List
+  List,
+  FormGroup
 } from 'semantic-ui-react'
 
 
@@ -33,7 +34,7 @@ class RegisterFlatDetails extends React.Component {
   onClick = e => {
     e.preventDefault()
       this.setState({
-      
+      onSubmit: onSubmit
     })
   }
   
@@ -52,87 +53,101 @@ class RegisterFlatDetails extends React.Component {
   }
 
   onSubmit = () => {
-    const newFlat = this.state
-
     addUser(newFlat)
       .then(() => push('/'))
       .catch(setError)
   }
 
   render () {
-
-    console.log('flatmates', this.props.flatmates)
-    console.log('input', this.state.inputValue)
     return (
      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw'}}> 
-       <Form>
-        <Form.Group>
+
+      <Form>
+      <FormGroup>
           
-            <FormField 
-              control={Input}
-              name='address'
-              type='text'
-              label='Address: '
-              placeholder='123 Onehunga Mall'
-              required={true}
-              onChange={this.onChange}>
-            </FormField>
+          <Form.Field 
+            control={Input}
+            name='address'
+            type='text'
+            label='Address: '
+            placeholder='123 Onehunga Mall'
+            required={true}
+            onChange={this.onChange}>
+          </Form.Field>
 
-            <FormField 
-              control={Input}
-              name='address'
-              type='text'
-              label='Suburb: '
-              placeholder='Onehunga'
-              required={true}
-              onChange={this.onChange}>
-            </FormField>
+          <Form.Field 
+            control={Input}
+            name='address'
+            type='text'
+            label='Suburb: '
+            placeholder='Onehunga'
+            required={true}
+            onChange={this.onChange}>
+          </Form.Field>
 
-            <FormField>
-              <List as='ol'>
-                {
-                this.props.flatmates.map((flatmate, index) => 
-                <FlatMate id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
-                }
-              </List>
-              <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
-              
-              <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
-            </FormField>
-     
-             <FormField 
-               control={Input} 
-               name='powerDay'
-               type='date'
-               label='Power Due Date: '>
-             </FormField>
+      </FormGroup>
+
+      <FormGroup>
+
+          <FormField>
+            <List as='ol'>
+              {
+              this.props.flatmates.map((flatmate, index) => 
+              <FlatMate id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
+              }
+            </List>
+            <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
             
-             <FormField
-               control={Input} 
-               name='waterDay'
-               type='date'
-               label='Water Due Date: '>
-             </FormField>
+            <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
+          </FormField>
+          
+      </FormGroup>
 
-             <FormField 
-               control={Input} 
-               name='wifiDay'
-               type='date'
-               label='Internet Due Date: '>
-             </FormField>
+      <FormGroup>
 
+           <FormField 
+             control={Input} 
+             name='powerDay'
+             type='date'
+             label='Power Due Date: '>
+           </FormField>
+          
+           <FormField
+             control={Input} 
+             name='waterDay'
+             type='date'
+             label='Water Due Date: '>
+           </FormField>
+
+           <FormField 
+             control={Input} 
+             name='wifiDay'
+             type='date'
+             label='Internet Due Date: '>
+           </FormField>
+
+       </FormGroup>
+
+       <FormGroup>
+           
            <FormField
              control={Button}
+             onSubmit={this.state.inputValue}
              disabled={
-               !this.state.name || 
-               !this.state.address ||
-               !this.state.powerDay ||
-               !this.state.categoryId
-             }
-             > Submit 
-           </FormField>
-        </Form.Group>
-      </Form> 
+              !this.state.name || 
+              !this.state.address ||
+              !this.state.powerDay ||
+              !this.state.waterDay ||
+              !this.state.wifiDay
+            }
+            > Submit
+          </FormField>
+    
+       </FormGroup>
+   
+
+      </Form>
+
     </Container>
 
     )
