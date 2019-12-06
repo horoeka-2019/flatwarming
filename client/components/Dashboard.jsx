@@ -1,4 +1,6 @@
 import React from 'react';
+import { Container } from 'semantic-ui-react'
+import Power from './Power'
 
 class Dashboard extends React.Component {
   state = { 
@@ -7,9 +9,9 @@ class Dashboard extends React.Component {
   render() { 
     return ( 
       <>
-        <h1 style = {{marginTop: 150}}>
-          I'm a dashboard!
-        </h1>
+        <Container style = {{marginTop: 100}}>
+          <Power />
+        </Container>
       </>
      );
   }
