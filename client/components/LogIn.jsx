@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { signIn, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Container } from 'semantic-ui-react'
 
-export default function LogIn (props){
-
+export default function LogIn (props) {
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -25,45 +24,45 @@ export default function LogIn (props){
     })
       .then((token) => {
         if (isAuthenticated()) {
-          props.history.push('/')
+          props.history.push('/dashboard')
         }
       })
   }
   return (
     <React.Fragment>
-      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 125, maxWidth: '40vw'}}>
+      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 125, maxWidth: '40vw' }}>
 
-      <Header as='h2' textAlign='center'>Log In</Header>
+        <Header as='h2' textAlign='center'>Log In</Header>
 
-      <Form size = 'large'>
+        <Form size = 'large'>
 
-      <Form.Field>
-        <label>Email</label>
-        <input name='email' type='email'
-        value={form.email}
-        onChange={handleChange} 
-      />
-      </Form.Field>
+          <Form.Field>
+            <label>Email</label>
+            <input name='email' type='email'
+              value={form.email}
+              onChange={handleChange}
+            />
+          </Form.Field>
 
-      <Form.Field>
-      <label>Password</label>
-      <input name='password' type='password'
-      value={form.password}
-      onChange={handleChange} 
-      />
-      </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input name='password' type='password'
+              value={form.password}
+              onChange={handleChange}
+            />
+          </Form.Field>
 
-      <Form.Field type='button' onClick={handleClick}
-      control={Button}
-      disabled={
-      !form.password ||
+          <Form.Field type='button' onClick={handleClick}
+            control={Button}
+            disabled={
+              !form.password ||
       !form.email ||
-      !form.email.includes('@') 
-      }
-      >Login
-      </Form.Field>
+      !form.email.includes('@')
+            }
+          >Login
+          </Form.Field>
 
-      </Form>
+        </Form>
       </Container>
     </React.Fragment>
   )
