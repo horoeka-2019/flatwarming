@@ -27,24 +27,29 @@ class RegisterFlatDetails extends React.Component {
   }
 
   onChange = (e) => {
-    this.setState({
-      ...Form({ [e.target.value]: e.target.value })
+    this.changeHandle({
+      [e.target.value]: e.target.value
     })
   }
 
   changeHandle (value) {
     this.setState(
       {
-        inputValue: value
+        address: '',
+        suburb: '',
+        inputValue: value,
+        powerDay: value,
+        waterDay: value,
+        wifiDay: value
       }
     )
   }
 
-  eventHandler = () => {
-    this.setState({
-      usersId: users ? users.id : null
-    })
-  }
+  // eventHandler = (e) => {
+  //   this.setState({
+  //     usersId: users ? users.id : null
+  //   })
+  // }
 
   // to be decided if this needs to be used or not
   // onSubmit = (e) => {
