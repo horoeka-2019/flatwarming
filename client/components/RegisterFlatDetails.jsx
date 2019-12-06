@@ -60,14 +60,10 @@ class RegisterFlatDetails extends React.Component {
   }
 
   render () {
-
-    console.log('flatmates', this.props.flatmates)
-    console.log('input', this.state.inputValue)
     return (
      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw'}}> 
        <Form>
         <Form.Group>
-          
             <FormField 
               control={Input}
               name='address'
@@ -87,7 +83,8 @@ class RegisterFlatDetails extends React.Component {
               required={true}
               onChange={this.onChange}>
             </FormField>
-
+        </Form.Group>
+        <Form.Group>
             <FormField>
               <List as='ol'>
                 {
@@ -99,7 +96,8 @@ class RegisterFlatDetails extends React.Component {
               
               <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
             </FormField>
-     
+        </Form.Group>
+        <Form.Group>
              <FormField 
                control={Input} 
                name='powerDay'
@@ -120,7 +118,7 @@ class RegisterFlatDetails extends React.Component {
                type='date'
                label='Internet Due Date: '>
              </FormField>
-
+        </Form.Group>
            <FormField
              control={Button}
              disabled={
@@ -131,7 +129,7 @@ class RegisterFlatDetails extends React.Component {
              }
              > Submit 
            </FormField>
-        </Form.Group>
+        
       </Form> 
     </Container>
 
