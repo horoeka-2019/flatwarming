@@ -1,27 +1,29 @@
 import React from 'react'
 import {Image} from 'semantic-ui-react'
-import { Z_FIXED } from 'zlib'
+import WelcomeText from './WelcomeText'
 
 
 
 
-const welcomeImg = () => (
-  
-    // <Image 
-    //   style={{
-    //     poistion: 'absolute',
-    //     width: '100%',
-    //     height:940,
-    //     backgroundImage: `url(${'/welcomeimg.jpg'})`,
-    //     backgroundSize: 'cover',
-    //     display: 'flex',
-    //     alignItems: 'center'
-    // }}
-    // />
 
-    <Image src='welcomeimg.jpg'/>
+class welcomeImg extends React.Component {
+  render() {
+    return(
+      <div>
+   
+      <Image style={{
+        marginBottom:0,
+        // marginTop:mobile ? '1.5em':'3em'
+      }}
+      src='welcomeimg.jpg'
+      />
+      <WelcomeText /> 
+      </div>
+    )
+    }
 
-)
+    }
+
 
 export default welcomeImg
 
