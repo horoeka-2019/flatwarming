@@ -10,7 +10,7 @@ class Rubbish extends React.Component {
     return ( 
       <>
         <Card color='green'>
-        <img src='/rubbish.png' rounded style={{backgroundColor: 'lavender', height: '30vh', width: 'auto'}} />
+        <img src='/rubbish.png' style={{backgroundColor: 'lavender', height: '30vh', width: 'auto'}} />
         <Card.Content>
 
           <Card.Header>RUBBISH DAY</Card.Header>

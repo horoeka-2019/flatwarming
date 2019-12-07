@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
-import { Button, Form, Header, Container } from 'semantic-ui-react'
+import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 
 export default function Register (props) {
   const [form, setForm] = useState({
@@ -31,38 +31,57 @@ export default function Register (props) {
 
   return (
     <React.Fragment>
-      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 125, maxWidth: '40vw' }}>
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 600 }}>
+          <Header as='h1' color='orange' textAlign='center'>
+            <Image src='/favicon.png' /> Register To Flat Warming
+          </Header>
+          <Form size='huge'>
+            <Segment stacked>
+              
+              <Form.Input 
+                name='email'
+                type='email'
+                value={form.email}
+                onChange={handleChange}
+                fluid 
+                icon='user' 
+                iconPosition='left' 
+                placeholder='E-mail address' 
+              />
 
-        <Header as='h2' textAlign='center'>Register</Header>
+              <Form.Input
+                name='password'
+                type='password'
+                value={form.password}
+                onChange={handleChange}
+                fluid
+                icon='lock'
+                iconPosition='left'
+                placeholder='Password'
+                type='password'
+              />
 
-        <Form size = 'large'>
-          <Form.Field required>
-            <label>Email</label>
-            <input name='email' type='email'
-              value={form.email}
-              onChange={handleChange}
-            />
-          </Form.Field>
-
-          <Form.Field required>
-            <label>Password</label>
-            <input name='password' type='password'
-              value={form.password}
-              onChange={handleChange}
-            />
-          </Form.Field>
-
-          <Form.Field type='button' onClick={handleClick}
-            control={Button}
-            disabled={
-              !form.password ||
-        !form.email ||
-        !form.email.includes('@')
-            }
-          >Register
-          </Form.Field>
-        </Form>
-      </Container>
-    </React.Fragment>
+              <Button 
+                color='orange' 
+                fluid size='large'
+                onClick={handleClick}
+                disabled={
+                !form.password ||
+                !form.email ||
+                !form.email.includes('@')
+                }
+              >
+                Register
+              </Button>
+            </Segment>
+          </Form>
+          <Message>
+            Already have an account? <a href='/register'>Log In </a>
+          </Message>
+        </Grid.Column>
+      </Grid>
+      
+  </React.Fragment>
   )
 }
