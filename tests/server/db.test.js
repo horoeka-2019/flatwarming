@@ -21,6 +21,7 @@ describe('getUserDetail database function', () => {
       address: "rowValue1 street",
       suburb: "suburb1",
       dayOfWeek: "day1",
+      dueDay:"1234",
       names: "rowValue1",
       powerDay: "11",
       waterDay: "22",
