@@ -6,7 +6,7 @@ on:
       - master
 env:
   HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
-  HEROKU_APP_NAME: "flatwarming-app"
+  HEROKU_APP_NAME: "flatwarming-1"
     
 jobs:
   release:
