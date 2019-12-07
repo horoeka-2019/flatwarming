@@ -17,7 +17,7 @@ class Nav extends React.Component {
 }
 
   clickLogout = () => {
-    this.props.dispatch(hideLogin())
+    this.props.dispatch(hideLogout())
     this.props.dispatch(showReg())
   }
 

@@ -30,6 +30,7 @@ function LogIn (props) {
           props.history.push('/dashboard')
           props.dispatch(hideReg())
           props.dispatch(hideLogin())
+          props.dispatch(showLogout())
         }
       })
   }
