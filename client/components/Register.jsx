@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
+import { getUserByName } from '../api/registerFlatDetails'
 
 export default function Register (props) {
   const [form, setForm] = useState({
@@ -24,7 +25,9 @@ export default function Register (props) {
     })
       .then(() => {
         if (isAuthenticated()) {
-          props.history.push('/register-flat')
+          getUserByName(form.email)
+            .then(user => props.history.push(`/register-flat/${user.id}`))
+            .catch(error => console.log(error))
         }
       })
   }
