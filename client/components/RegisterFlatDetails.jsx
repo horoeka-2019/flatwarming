@@ -81,7 +81,7 @@ class RegisterFlatDetails extends React.Component {
   }
 
   onSubmit = () => {
-    const userId = this.props.match.params.userId
+    const userId = this.props.match.params.userid
     const names = this.props.flatmates
     const obj = { ...this.state, userId, names }
 

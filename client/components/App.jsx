@@ -19,7 +19,7 @@ class App extends React.Component {
 
           <Container>
             <Switch>
-              <Route exact path='/register-flat' component={RegisterFlatFetails} ></Route>
+              <Route exact path='/register-flat/:userid' component={RegisterFlatFetails} ></Route>
               <Route path='/register' component={Register} />
               <Route exact path='/log-in' component={LogIn} ></Route>
               <Route path='/dashboard' component={Dashboard} ></Route>

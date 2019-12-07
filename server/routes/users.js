@@ -12,6 +12,12 @@ router.get('/:id', (req, res) => {
     .then(userDetail => res.json(userDetail))
 })
 
+router.get('/user/:username', (req, res) => {
+  const username = req.params.username
+  return db.getUserByName(username)
+    .then(user => res.json(user))
+})
+
 router.post('/register/:id', (req, res) => {
   const id = Number(req.params.id)
   const obj = {}
