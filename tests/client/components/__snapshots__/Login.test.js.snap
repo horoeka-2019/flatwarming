@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> component tests render unchanged from previous snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ConnectFunction>
+    <LogIn
+      dispatch={[Function]}
+      login={true}
+      register={true}
+    >
+      <Grid
+        style={
+          Object {
+            "height": "100vh",
+          }
+        }
+        textAlign="center"
+        verticalAlign="middle"
+      >
+        <div
+          className="ui center aligned middle aligned grid"
+          style={
+            Object {
+              "height": "100vh",
+            }
+          }
+        >
+          <GridColumn
+            style={
+              Object {
+                "maxWidth": 600,
+              }
+            }
+          >
+            <div
+              className="column"
+              style={
+                Object {
+                  "maxWidth": 600,
+                }
+              }
+            >
+              <Header
+                as="h1"
+                color="orange"
+                textAlign="center"
+              >
+                <h1
+                  className="ui orange center aligned header"
+                >
+                  <Image
+                    as="img"
+                    src="/favicon.png"
+                    ui={true}
+                  >
+                    <img
+                      className="ui image"
+                      src="/favicon.png"
+                    />
+                  </Image>
+                   Log-in to your account
+                </h1>
+              </Header>
+              <Form
+                as="form"
+                size="huge"
+              >
+                <form
+                  className="ui huge form"
+                  onSubmit={[Function]}
+                >
+                  <Segment
+                    stacked={true}
+                  >
+                    <div
+                      className="ui stacked segment"
+                    >
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        fluid={true}
+                        icon="user"
+                        iconPosition="left"
+                        name="email"
+                        onChange={[Function]}
+                        placeholder="E-mail address"
+                        type="email"
+                      >
+                        <FormField
+                          control={[Function]}
+                          fluid={true}
+                          icon="user"
+                          iconPosition="left"
+                          name="email"
+                          onChange={[Function]}
+                          placeholder="E-mail address"
+                          type="email"
+                        >
+                          <div
+                            className="field"
+                          >
+                            <Input
+                              fluid={true}
+                              icon="user"
+                              iconPosition="left"
+                              name="email"
+                              onChange={[Function]}
+                              placeholder="E-mail address"
+                              type="email"
+                            >
+                              <div
+                                className="ui fluid left icon input"
+                              >
+                                <input
+                                  name="email"
+                                  onChange={[Function]}
+                                  placeholder="E-mail address"
+                                  type="email"
+                                />
+                                <Icon
+                                  as="i"
+                                  name="user"
+                                >
+                                  <i
+                                    aria-hidden="true"
+                                    className="user icon"
+                                    onClick={[Function]}
+                                  />
+                                </Icon>
+                              </div>
+                            </Input>
+                          </div>
+                        </FormField>
+                      </FormInput>
+                      <FormInput
+                        as={[Function]}
+                        control={[Function]}
+                        fluid={true}
+                        icon="lock"
+                        iconPosition="left"
+                        name="password"
+                        onChange={[Function]}
+                        placeholder="Password"
+                        type="password"
+                        value=""
+                      >
+                        <FormField
+                          control={[Function]}
+                          fluid={true}
+                          icon="lock"
+                          iconPosition="left"
+                          name="password"
+                          onChange={[Function]}
+                          placeholder="Password"
+                          type="password"
+                          value=""
+                        >
+                          <div
+                            className="field"
+                          >
+                            <Input
+                              fluid={true}
+                              icon="lock"
+                              iconPosition="left"
+                              name="password"
+                              onChange={[Function]}
+                              placeholder="Password"
+                              type="password"
+                              value=""
+                            >
+                              <div
+                                className="ui fluid left icon input"
+                              >
+                                <input
+                                  name="password"
+                                  onChange={[Function]}
+                                  placeholder="Password"
+                                  type="password"
+                                  value=""
+                                />
+                                <Icon
+                                  as="i"
+                                  name="lock"
+                                >
+                                  <i
+                                    aria-hidden="true"
+                                    className="lock icon"
+                                    onClick={[Function]}
+                                  />
+                                </Icon>
+                              </div>
+                            </Input>
+                          </div>
+                        </FormField>
+                      </FormInput>
+                      <Button
+                        as="button"
+                        color="orange"
+                        disabled={true}
+                        fluid={true}
+                        onClick={[Function]}
+                        size="large"
+                      >
+                        <Ref
+                          innerRef={
+                            Object {
+                              "current": <button
+                                class="ui orange large fluid disabled button"
+                                disabled=""
+                                tabindex="-1"
+                              >
+                                Login
+                              </button>,
+                            }
+                          }
+                        >
+                          <RefFindNode
+                            innerRef={
+                              Object {
+                                "current": <button
+                                  class="ui orange large fluid disabled button"
+                                  disabled=""
+                                  tabindex="-1"
+                                >
+                                  Login
+                                </button>,
+                              }
+                            }
+                          >
+                            <button
+                              className="ui orange large fluid disabled button"
+                              disabled={true}
+                              onClick={[Function]}
+                              tabIndex={-1}
+                            >
+                              Login
+                            </button>
+                          </RefFindNode>
+                        </Ref>
+                      </Button>
+                    </div>
+                  </Segment>
+                </form>
+              </Form>
+              <Message>
+                <div
+                  className="ui message"
+                >
+                  New to us? 
+                  <a
+                    href="/register"
+                  >
+                    Register
+                  </a>
+                </div>
+              </Message>
+            </div>
+          </GridColumn>
+        </div>
+      </Grid>
+    </LogIn>
+  </ConnectFunction>
+</Provider>
+`;
