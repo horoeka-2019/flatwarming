@@ -7,7 +7,7 @@ import { Container } from 'semantic-ui-react'
 import RegisterFlatFetails from './RegisterFlatDetails'
 import Dashboard from './Dashboard'
 import Welcome from './Welcome'
-import Footer from './Footer'
+
 // NOTE: THE COMMENTS ON THIS CAN BE UNCOMMENTED ONCE THE REGISTERFLATDETAILS COMPONENT HAS BEEN CREATED
 
 class App extends React.Component {
@@ -27,7 +27,7 @@ class App extends React.Component {
                   <Route path='/dashboard' component={Dashboard} ></Route>
                 </Switch>
               </Container>
-              <Route path='/' component={Footer}/>
+            
         </Router>
       </div>
     )
