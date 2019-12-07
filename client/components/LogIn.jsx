@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { signIn, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Container } from 'semantic-ui-react'
+import { connect } from 'react-redux' 
+import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 
-export default function LogIn (props) {
+
+function LogIn (props) {
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -25,6 +28,9 @@ export default function LogIn (props) {
       .then((token) => {
         if (isAuthenticated()) {
           props.history.push('/dashboard')
+          props.dispatch(hideReg())
+          props.dispatch(hideLogin())
+          props.dispatch(showLogout())
         }
       })
   }
@@ -67,3 +73,13 @@ export default function LogIn (props) {
     </React.Fragment>
   )
 }
+
+const mapStateToProps = state => {
+  return {
+    login: state.login,
+    register: state.register,
+    logout: state.logout
+  }
+}
+
+export default connect(mapStateToProps)(LogIn)
