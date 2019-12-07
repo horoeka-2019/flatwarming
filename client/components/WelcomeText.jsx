@@ -4,12 +4,12 @@ import {Segment, Grid,Header} from 'semantic-ui-react'
 const WelcomeText =()=> {
   const textStyle ={
     fontSize:'2em',
-    color:'#FF0000',
+    color:'#FFA500',
     textAlign:'center'
   }
   return(
     
-      <Segment style={{padding: '8em 0em'}} vertical>
+      <Segment style={{padding: '8em 18em'}} vertical>
         <Grid container stackable verticalAlign='center'>
           <Grid.Row>
             <Header as='h1' style={textStyle}>
