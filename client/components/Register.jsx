@@ -25,7 +25,8 @@ export default function Register (props) {
     })
       .then(() => {
         if (isAuthenticated()) {
-          props.history.push('/register-flat')
+          // get user by id => if email is not found, add to database with new id
+          props.history.push('/register-flat/:id')
         }
       })
   }
