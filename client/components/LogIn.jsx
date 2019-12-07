@@ -58,7 +58,6 @@ function LogIn (props) {
               />
 
               <Form.Input
-                style={{fontFamily: 'Icons'}}
                 name='password'
                 type='password'
                 value={form.password}
