@@ -162,7 +162,7 @@ class RegisterFlatDetails extends React.Component {
               onClick={() => this.onSubmit()}
               control={Button}
               disabled={
-                this.props.flatmates.length > 0 ||
+                this.props.flatmates.length <= 0 ||
                 !this.state.address ||
                 !this.state.powerDay ||
                 !this.state.wifiDay ||
