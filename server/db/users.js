@@ -65,7 +65,7 @@ function addDetail (obj, db = connection) {
   const { id, address, suburb, names, powerDay, waterDay, wifiDay } = obj
   return addAddress(id, address, suburb, db)
     .then(() =>
-      addName(id, names, db)
+      addName(newName, db)
         .then(() =>
           addExpenseDay(id, powerDay, waterDay, wifiDay, db)
             .then(() => getUserDetail(id, db))))
