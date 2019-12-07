@@ -3,7 +3,6 @@ import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 
 export default function Register (props) {
- 
   const [form, setForm] = useState({
     username: '',
     password: ''
