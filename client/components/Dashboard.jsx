@@ -13,8 +13,10 @@ class Dashboard extends React.Component {
   render() { 
     return ( 
       <>
-        <Names style = {{marginTop: 100}}/>
-        <Grid columns={4} >
+        <Container textAlign='center' style = {{marginTop: 100}}>
+          <Names />
+        </Container>
+        <Grid columns={4} style = {{marginTop: 20}}>
           <Grid.Row>
 
             <Grid.Column>
