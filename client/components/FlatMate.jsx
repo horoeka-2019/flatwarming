@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import {
-  Button, 
+  Button,
   List
 } from 'semantic-ui-react'
 
-class FlatMate extends React.Component{
-
-  render(){
-    const {removeFlatmate, id, flatmate} = this.props
+class FlatMate extends React.Component {
+  render () {
+    const { removeFlatmate, id, flatmate } = this.props
     return (
       <List.Item as='li' key={id}>
         <label>Flatmate:</label><input value={flatmate}/>
-        <Button onClick={()=> removeFlatmate(id)}>-</Button>
+        <Button onClick={() => removeFlatmate(id)}>-</Button>
       </List.Item>
     )
   }

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import FlatMate from './FlatMate'
 import { addFlatmate, removeFlatmate } from '../actions/flatmate.action'
+import { addUserDetail } from '../api/registerFlatDetails'
 
 import {
   Button,
@@ -54,14 +55,9 @@ class RegisterFlatDetails extends React.Component {
     powerDay: null,
     waterDay: null,
     wifiDay: null,
-    inputValue: ''
+    inputValue: '',
+    userId: null
   }
-
-  handleChangeDate = (date, event) => {
-    this.setState({
-      date
-    })
-  };
 
   onChange = (e) => {
     e.preventDefault()
@@ -84,10 +80,19 @@ class RegisterFlatDetails extends React.Component {
     })
   }
 
+  onSubmit = () => {
+    const userId = this.props.match.params.userId
+    const names = this.props.flatmates
+    const obj = { ...this.state, userId, names }
+
+    addUserDetail(obj)
+      .then(() => this.props.history.push('/'))
+      .catch(error => console.log(error))
+  }
   render () {
     return (
       <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw' }}>
-        <Form>
+        <Form >
           <Form.Group>
             <FormField
               control={Input}
@@ -117,7 +122,6 @@ class RegisterFlatDetails extends React.Component {
                 }
               </List>
               <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
-
               <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
             </FormField>
           </Form.Group>
@@ -155,6 +159,7 @@ class RegisterFlatDetails extends React.Component {
           </Form.Group>
           <Form.Group>
             <FormField
+              onClick={() => this.onSubmit()}
               control={Button}
               disabled={
                 this.props.flatmates.length <= 0 ||

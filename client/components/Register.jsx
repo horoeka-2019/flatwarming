@@ -3,7 +3,6 @@ import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Container } from 'semantic-ui-react'
 
 export default function Register (props) {
- 
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -32,38 +31,38 @@ export default function Register (props) {
 
   return (
     <React.Fragment>
-      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 125, maxWidth: '40vw'}}>
+      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 125, maxWidth: '40vw' }}>
 
-      <Header as='h2' textAlign='center'>Register</Header>
+        <Header as='h2' textAlign='center'>Register</Header>
 
-      <Form size = 'large'>
-      <Form.Field required>
-        <label>Email</label>
-        <input name='email' type='email'
-            value={form.email}
-            onChange={handleChange} 
-        />
-      </Form.Field>
+        <Form size = 'large'>
+          <Form.Field required>
+            <label>Email</label>
+            <input name='email' type='email'
+              value={form.email}
+              onChange={handleChange}
+            />
+          </Form.Field>
 
-      <Form.Field required>
-        <label>Password</label>
-        <input name='password' type='password'
-            value={form.password}
-            onChange={handleChange} 
-        />
-      </Form.Field>
+          <Form.Field required>
+            <label>Password</label>
+            <input name='password' type='password'
+              value={form.password}
+              onChange={handleChange}
+            />
+          </Form.Field>
 
-      <Form.Field type='button' onClick={handleClick}
-      control={Button}
-      disabled={
-        !form.password ||
+          <Form.Field type='button' onClick={handleClick}
+            control={Button}
+            disabled={
+              !form.password ||
         !form.email ||
-        !form.email.includes('@') 
-      }
-        >Register
-        </Form.Field>
-      </Form>
+        !form.email.includes('@')
+            }
+          >Register
+          </Form.Field>
+        </Form>
       </Container>
-  </React.Fragment>
+    </React.Fragment>
   )
 }
