@@ -3,7 +3,6 @@ import { signIn, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux' 
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
-import { format } from 'path'
 
 
 function LogIn (props) {
