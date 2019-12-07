@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
+import { getUserByName } from '../api/registerFlatDetails'
 
 export default function Register (props) {
   const [form, setForm] = useState({
@@ -24,7 +25,9 @@ export default function Register (props) {
     })
       .then(() => {
         if (isAuthenticated()) {
-          props.history.push('/register-flat')
+          getUserByName(form.email)
+            .then(user => props.history.push(`/register-flat/${user.id}`))
+            .catch(error => console.log(error))
         }
       })
   }
@@ -38,16 +41,16 @@ export default function Register (props) {
           </Header>
           <Form size='huge'>
             <Segment stacked>
-              
-              <Form.Input 
+
+              <Form.Input
                 name='email'
                 type='email'
                 value={form.email}
                 onChange={handleChange}
-                fluid 
-                icon='user' 
-                iconPosition='left' 
-                placeholder='E-mail address' 
+                fluid
+                icon='user'
+                iconPosition='left'
+                placeholder='E-mail address'
               />
 
               <Form.Input
@@ -62,12 +65,12 @@ export default function Register (props) {
                 type='password'
               />
 
-              <Button 
-                color='orange' 
+              <Button
+                color='orange'
                 fluid size='large'
                 onClick={handleClick}
                 disabled={
-                !form.password ||
+                  !form.password ||
                 !form.email ||
                 !form.email.includes('@')
                 }
@@ -81,7 +84,7 @@ export default function Register (props) {
           </Message>
         </Grid.Column>
       </Grid>
-      
-  </React.Fragment>
+
+    </React.Fragment>
   )
 }

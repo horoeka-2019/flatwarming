@@ -81,7 +81,7 @@ class RegisterFlatDetails extends React.Component {
   }
 
   onSubmit = () => {
-    const userId = this.props.match.params.userId
+    const userId = this.props.match.params.userid
     const names = this.props.flatmates
     const obj = { ...this.state, userId, names }
 
@@ -162,7 +162,7 @@ class RegisterFlatDetails extends React.Component {
               onClick={() => this.onSubmit()}
               control={Button}
               disabled={
-                this.props.flatmates.length > 0 ||
+                this.props.flatmates.length <= 0 ||
                 !this.state.address ||
                 !this.state.powerDay ||
                 !this.state.wifiDay ||
