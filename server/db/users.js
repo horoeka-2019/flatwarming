@@ -128,7 +128,6 @@ function editName (editedName, db = connection) {
 }
 
 // editName has not been checked func yet
-
 function deleteName (id, db = connection) {
   return db('flatmates')
     .where('flatmates.id', id)
