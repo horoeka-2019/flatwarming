@@ -8,9 +8,6 @@ import RegisterFlatFetails from './RegisterFlatDetails'
 import Dashboard from './Dashboard'
 import Welcome from './Welcome'
 
-// NOTE: THE COMMENTS ON THIS CAN BE UNCOMMENTED ONCE THE REGISTERFLATDETAILS COMPONENT HAS BEEN CREATED
-
-
 class App extends React.Component {
   render () {
     return (
@@ -20,14 +17,12 @@ class App extends React.Component {
           <Route path='/' component={Nav} />
           <Route exact path='/' component={Welcome} />
 
-          <Container>
             <Switch>
               <Route exact path='/register-flat/:userid' component={RegisterFlatFetails} ></Route>
               <Route path='/register' component={Register} />
               <Route exact path='/log-in' component={LogIn} ></Route>
               <Route path='/dashboard' component={Dashboard} ></Route>
             </Switch>
-          </Container>
 
         </Router>
       </div>

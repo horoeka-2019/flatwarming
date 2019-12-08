@@ -17,7 +17,7 @@ exports[`<Register /> component tests render unchanged from previous snapshot 1`
     <Grid
       style={
         Object {
-          "height": "100vh",
+          "height": "80vh",
         }
       }
       textAlign="center"
@@ -27,7 +27,7 @@ exports[`<Register /> component tests render unchanged from previous snapshot 1`
         className="ui center aligned middle aligned grid"
         style={
           Object {
-            "height": "100vh",
+            "height": "80vh",
           }
         }
       >
@@ -264,6 +264,224 @@ exports[`<Register /> component tests render unchanged from previous snapshot 1`
         </GridColumn>
       </div>
     </Grid>
+    <footer>
+      <div>
+        <Responsive
+          getWidth={[Function]}
+          maxWidth={2559}
+          minWidth={320}
+        >
+          <div>
+            <Segment
+              fixed="bottom"
+              inverted={true}
+              style={
+                Object {
+                  "padding": "3em 0em",
+                  "width": "100%",
+                }
+              }
+              vertical={true}
+            >
+              <div
+                className="ui inverted vertical segment"
+                fixed="bottom"
+                style={
+                  Object {
+                    "padding": "3em 0em",
+                    "width": "100%",
+                  }
+                }
+              >
+                <Grid>
+                  <div
+                    className="ui grid"
+                  >
+                    <GridRow>
+                      <div
+                        className="row"
+                      >
+                        <GridColumn
+                          width={2}
+                        >
+                          <div
+                            className="two wide column"
+                          >
+                            <Image
+                              as="img"
+                              size="large"
+                              src="/favicon.png"
+                              ui={true}
+                            >
+                              <img
+                                className="ui large image"
+                                src="/favicon.png"
+                              />
+                            </Image>
+                          </div>
+                        </GridColumn>
+                        <GridColumn
+                          width={8}
+                        >
+                          <div
+                            className="eight wide column"
+                          >
+                            <Header
+                              as="h4"
+                              content="About"
+                              inverted={true}
+                            >
+                              <h4
+                                className="ui inverted header"
+                              >
+                                About
+                              </h4>
+                            </Header>
+                            <List
+                              inverted={true}
+                              link={true}
+                            >
+                              <div
+                                className="ui inverted link list"
+                                role="list"
+                              >
+                                <ListItem>
+                                  <div
+                                    className="item"
+                                    onClick={[Function]}
+                                    role="listitem"
+                                  >
+                                    Office: 12 Morgan St, New Market
+                                  </div>
+                                </ListItem>
+                                <ListItem>
+                                  <div
+                                    className="item"
+                                    onClick={[Function]}
+                                    role="listitem"
+                                  >
+                                    Phone Us @ 021 123456
+                                  </div>
+                                </ListItem>
+                                <ListItem>
+                                  <div
+                                    className="item"
+                                    onClick={[Function]}
+                                    role="listitem"
+                                  >
+                                    Email us @ FlatWarming@gmail.com
+                                  </div>
+                                </ListItem>
+                              </div>
+                            </List>
+                          </div>
+                        </GridColumn>
+                        <GridColumn
+                          width={2}
+                        >
+                          <div
+                            className="two wide column"
+                          >
+                            <Icon
+                              as="i"
+                              name="facebook"
+                              style={
+                                Object {
+                                  "marginLeft": "0.5em",
+                                  "paddingTop": "1em",
+                                }
+                              }
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="facebook icon"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "marginLeft": "0.5em",
+                                    "paddingTop": "1em",
+                                  }
+                                }
+                              />
+                            </Icon>
+                            <Icon
+                              as="i"
+                              name="twitter square"
+                              style={
+                                Object {
+                                  "marginLeft": "0.5em",
+                                  "paddingTop": "1em",
+                                }
+                              }
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="twitter square icon"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "marginLeft": "0.5em",
+                                    "paddingTop": "1em",
+                                  }
+                                }
+                              />
+                            </Icon>
+                            <Icon
+                              as="i"
+                              name="mail"
+                              style={
+                                Object {
+                                  "marginLeft": "0.5em",
+                                  "paddingTop": "1em",
+                                }
+                              }
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="mail icon"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "marginLeft": "0.5em",
+                                    "paddingTop": "1em",
+                                  }
+                                }
+                              />
+                            </Icon>
+                            <Icon
+                              as="i"
+                              name="instagram"
+                              style={
+                                Object {
+                                  "marginLeft": "0.5em",
+                                  "paddingTop": "1em",
+                                }
+                              }
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="instagram icon"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "marginLeft": "0.5em",
+                                    "paddingTop": "1em",
+                                  }
+                                }
+                              />
+                            </Icon>
+                          </div>
+                        </GridColumn>
+                      </div>
+                    </GridRow>
+                  </div>
+                </Grid>
+              </div>
+            </Segment>
+          </div>
+        </Responsive>
+      </div>
+    </footer>
   </Register>
 </Provider>
 `;
