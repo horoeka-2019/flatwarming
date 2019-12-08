@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { getUserByName } from '../api/registerFlatDetails'
+import Footer from './Footer'
 
 export default function Register (props) {
   const [form, setForm] = useState({
@@ -34,7 +35,7 @@ export default function Register (props) {
 
   return (
     <React.Fragment>
-      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 600 }}>
           <Header as='h1' color='orange' textAlign='center'>
             <Image src='/favicon.png' /> Register To Flat Warming
@@ -84,6 +85,7 @@ export default function Register (props) {
           </Message>
         </Grid.Column>
       </Grid>
+      <Footer />
 
     </React.Fragment>
   )

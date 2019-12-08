@@ -3,7 +3,7 @@ import { signIn, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux' 
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
-import { format } from 'path'
+import Footer from './Footer'
 
 
 function LogIn (props) {
@@ -37,8 +37,8 @@ function LogIn (props) {
   }
 
   return (
-    <React.Fragment>
-      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+    <>
+      <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 600 }}>
           <Header as='h1' color='orange' textAlign='center'>
             <Image src='/favicon.png' /> Log-in to your account
@@ -88,37 +88,8 @@ function LogIn (props) {
           </Message>
         </Grid.Column>
       </Grid>
-
-
-          {/* <Form.Field>
-            <label>Email</label>
-            <input name='email' type='email'
-              value={form.email}
-              onChange={handleChange}
-            />
-          </Form.Field>
-
-          <Form.Field>
-            <label>Password</label>
-            <input name='password' type='password'
-              value={form.password}
-              onChange={handleChange}
-            />
-          </Form.Field>
-
-          <Form.Field type='button' onClick={handleClick}
-            control={Button}
-            disabled={
-              !form.password ||
-      !form.email ||
-      !form.email.includes('@')
-            }
-          >Login
-          </Form.Field>
-
-        </Form>
-      </Container> */}
-    </React.Fragment>
+    <Footer />
+    </>
   )
 }
 
