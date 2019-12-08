@@ -6,12 +6,14 @@ class Names extends React.Component {
 
   }
 
-  render () {
-    return (
-      <>'       '<Header>
+  render() { 
+    return ( 
+      <>
+        <Header>
           Welcome back Elly, Matt, Pat, Rhiannon, Emma and Brittany!
-        </Header>'     '</>
-    )
+        </Header>
+      </>
+     )
   }
 }
 

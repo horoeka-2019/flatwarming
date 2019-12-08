@@ -50,10 +50,10 @@ function getUserDetail (id, db = connection) {
   return db('users')
     .where('users.id', id)
     .join('rubbishUsers', 'users.id', 'rubbishUsers.usersId')
-    .join('rubbishPlan', 'rubbishUsers.suburb', 'rubbishPlan.suburb')
+    // .join('rubbishPlan', 'rubbishUsers.suburb', 'rubbishPlan.suburb')
     .join('flatmates', 'users.id', 'flatmates.usersId')
     .join('expense', 'users.id', 'expense.usersId')
-    .join('jobs', 'users.id', 'jobs.usersId')
+    // .join('jobs', 'users.id', 'jobs.usersId')
     .select()
     .first()
 }

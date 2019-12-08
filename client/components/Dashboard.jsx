@@ -6,12 +6,37 @@ import Water from './Water'
 import Rubbish from './Rubbish'
 import Names from './Names'
 import Footer from './Footer'
+import { connect } from 'react-redux'
+import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
+
+import { getUserDetails } from '../api/registerFlatDetails'
+
 
 class Dashboard extends React.Component {
+  
   state = { 
+    details: ''
+  }
+  
+  removeNavButtons = () => {
+    this.props.dispatch(hideReg())
+    this.props.dispatch(hideLogin())
+    this.props.dispatch(showLogout())
+  }
+  
 
-   }
+  componentDidMount () {
+      this.removeNavButtons()
+      getUserDetails(this.props.match.params.usersId)
+        .then(res => {
+          this.setState({
+            details: res
+          })
+        })
+  } 
+
   render() { 
+    console.log(this.state.details)
     return ( 
       <>
         <Container textAlign='center' style = {{marginTop: 100}}>
@@ -42,25 +67,17 @@ class Dashboard extends React.Component {
         </Container>
         <Footer />
       </>
-      //   <Grid columns={3} divided>
-      // <Grid.Row>
-      //   <Grid.Column>
-      //   <Power />
-      //   </Grid.Column>
-      //   <Grid.Column>
-      //     <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
-      //   </Grid.Column>
-      //   <Grid.Column>
-      //     <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
-      //   </Grid.Column>
-      // </Grid.Row>
-      // <Grid />
-
-        // <Container style = {{marginTop: 100}}>
-        //   <Power />
-        // </Container>
      )
   }
 }
  
-export default Dashboard
+const mapStateToProps = state => {
+  return {
+    login: state.login,
+    register: state.register,
+    logout: state.logout,
+    flatmateDetail: state.flatmateDetailReducer
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard)
