@@ -33,8 +33,23 @@ describe('Gets user detail by id', () => {
   })
 })
 
-describe('add register detail by userId', () => {
+describe('Add more detail to a user', () => {
   it('POST /register/:id', () => {
-    
+    const moreDetail = {
+      address: 'test for route post register/:id',
+      suburb: 'test4',
+      names: ['test4', 'test5'],
+      powerDay: 'test power day',
+      waterDay: 'test water day',
+      wifiDay: 'test wifi day'
+
+    }
+
+    return request(server)
+      .post('/api/v1/users/register/4')
+      .send(moreDetail)
+      .then((res) => {
+        expect(res.body).toEqual(mockUser)
+      })
   })
 })
