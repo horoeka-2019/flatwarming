@@ -41,6 +41,7 @@ router.post('/register/:id', (req, res) => {
     .then(userDetail => res.json(userDetail))
     .catch(() => sendGenericErrorMessage(res))
 })
+//done
 
 router.post('/jobs/:id', (req, res) => {
   const id = Number(req.params.id)

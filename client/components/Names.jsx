@@ -1,20 +1,18 @@
 import React from 'react'
 import { Header } from 'semantic-ui-react'
 
-
 class Names extends React.Component {
-  state = { 
+  state = {
 
-   }
-  render() { 
-    return ( 
-      <>
-        <Header>
+  }
+
+  render () {
+    return (
+      <>'       '<Header>
           Welcome back Elly, Matt, Pat, Rhiannon, Emma and Brittany!
-        </Header>
-      </>
-     )
+        </Header>'     '</>
+    )
   }
 }
- 
+
 export default Names
