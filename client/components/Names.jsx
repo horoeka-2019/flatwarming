@@ -1,11 +1,11 @@
 import React from 'react'
 import { Header } from 'semantic-ui-react'
 
-
 class Names extends React.Component {
-  state = { 
+  state = {
 
-   }
+  }
+
   render() { 
     // console.log(this.props.userTest)
     return ( 
@@ -18,5 +18,5 @@ class Names extends React.Component {
      )
   }
 }
- 
+
 export default Names
