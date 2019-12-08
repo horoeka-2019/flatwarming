@@ -9,13 +9,13 @@ import Footer from './Footer'
 import { connect } from 'react-redux'
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 
-import { getUserByName } from '../api/registerFlatDetails'
+import { getUserDetails } from '../api/registerFlatDetails'
 
 
 class Dashboard extends React.Component {
   
   state = { 
-    user: ''
+    details: ''
   }
   
   removeNavButtons = () => {
@@ -27,18 +27,20 @@ class Dashboard extends React.Component {
 
   componentDidMount () {
       this.removeNavButtons()
-      getUserByName('eloise.mcintyre2@outlook.com')
-      .then(res => {
-        this.setState({ user: res })
-      })
+      getUserDetails(this.props.match.params.usersId)
+        .then(res => {
+          this.setState({
+            details: res
+          })
+        })
   } 
 
   render() { 
-
+    console.log(this.state.details)
     return ( 
       <>
         <Container textAlign='center' style = {{marginTop: 100}}>
-          <Names userTest={this.state.user}/>
+          <Names />
         </Container>
         <Container>
         <Grid columns={4} style = {{marginTop: 20}}>
@@ -73,7 +75,8 @@ const mapStateToProps = state => {
   return {
     login: state.login,
     register: state.register,
-    logout: state.logout
+    logout: state.logout,
+    flatmateDetail: state.flatmateDetailReducer
   }
 }
 

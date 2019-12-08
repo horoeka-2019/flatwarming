@@ -7,12 +7,10 @@ class Names extends React.Component {
   }
 
   render() { 
-    // console.log(this.props.userTest)
     return ( 
       <>
         <Header>
           Welcome back Elly, Matt, Pat, Rhiannon, Emma and Brittany!
-          Test email is {this.props.userTest.email}
         </Header>
       </>
      )
