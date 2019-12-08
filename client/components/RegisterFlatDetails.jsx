@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import FlatMate from './FlatMate'
 import { addFlatmate, removeFlatmate } from '../actions/flatmate.action'
-import { addUserDetail } from '../api/registerFlatDetails'
+import { addRegisterFlatmateDetail } from '../actions/flatmateDetails.action'
+import { setError } from '../actions/error'
 
 import {
   Button,
@@ -85,10 +86,11 @@ class RegisterFlatDetails extends React.Component {
     const names = this.props.flatmates
     const obj = { ...this.state, userId, names }
 
-    addUserDetail(obj)
+    this.props.addRegisterFlatmateDetail(obj)
       .then(() => this.props.history.push('/'))
-      .catch(error => console.log(error))
+      .catch(setError)
   }
+
   render () {
     return (
       <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw' }}>
@@ -180,12 +182,14 @@ class RegisterFlatDetails extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  flatmates: state.flatmateReducer.flatmates
+  flatmates: state.flatmateReducer.flatmates,
+  flatmateDetail: state.flatmateDetailReducer.flatmateDetail
 })
 
 const mapDispatchToProps = dispatch => ({
   addFlatmate: flatmate => dispatch(addFlatmate(flatmate)),
-  removeFlatmate: index => dispatch(removeFlatmate(index))
+  removeFlatmate: index => dispatch(removeFlatmate(index)),
+  addRegisterFlatmateDetail: obj => dispatch(addRegisterFlatmateDetail(obj))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterFlatDetails)

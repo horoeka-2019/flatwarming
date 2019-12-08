@@ -2,24 +2,23 @@ import React from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
 
 class Power extends React.Component {
-  state = { 
+  state = {
 
-   }
-  render() { 
-    return ( 
-      <>
-    <Card color='red'>
-      <img src='/power.png' style={{backgroundColor: '#99fadc', height: '30vh', width: 'auto'}} />
+  }
+
+  render () {
+    return (
+      <>'   '<Card color='red'>
+      <img src='/power.png' style={{ backgroundColor: '#99fadc', height: '30vh', width: 'auto' }} />
       <Card.Content>
         <Card.Header>POWER BILL</Card.Header>
         <Card.Meta>
           <span className='date'>DUE IN 15 DAYS</span>
         </Card.Meta>
-      </Card.Content> 
-    </Card>
-      </>
-     )
+      </Card.Content>
+    </Card>'     '</>
+    )
   }
 }
- 
+
 export default Power
