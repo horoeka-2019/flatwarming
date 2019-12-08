@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import FlatMate from './FlatMate'
+import Footer from './Footer'
 import { addFlatmate, removeFlatmate } from '../actions/flatmate.action'
-import { addUserDetail } from '../api/registerFlatDetails'
+import { addRegisterFlatmateDetail } from '../actions/flatmateDetails.action'
+import { setError } from '../actions/error'
 
 import {
   Button,
@@ -11,7 +13,13 @@ import {
   Container,
   FormField,
   List,
-  Dropdown
+  Dropdown,
+  Grid,
+  Segment,
+  Header,
+  Image,
+  Divider,
+  Icon
 } from 'semantic-ui-react'
 
 const options = [
@@ -85,107 +93,123 @@ class RegisterFlatDetails extends React.Component {
     const names = this.props.flatmates
     const obj = { ...this.state, userId, names }
 
-    addUserDetail(obj)
+    this.props.addRegisterFlatmateDetail(obj)
       .then(() => this.props.history.push('/'))
-      .catch(error => console.log(error))
+      .catch(setError)
   }
+
   render () {
     return (
-      <Container text style={{ border: '1px', borderStyle: 'solid', padding: '30px', marginTop: 75, maxWidth: '40vw' }}>
-        <Form >
-          <Form.Group>
-            <FormField
-              control={Input}
-              name='address'
-              type='text'
-              label='Address: '
-              placeholder='123 Onehunga Mall'
-              required={true}
-              onChange={this.onChange}>
-            </FormField>
-            <FormField
-              control={Input}
-              name='suburb'
-              type='text'
-              label='Suburb: '
-              placeholder='Onehunga'
-              required={true}
-              onChange={this.onChange}>
-            </FormField>
-          </Form.Group>
-          <Form.Group>
-            <FormField>
-              <List as='ol'>
-                {
-                  this.props.flatmates.map((flatmate, index) =>
-                    <FlatMate key={index} id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
-                }
-              </List>
-              <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
-              <button onClick={() => this.props.addFlatmate(this.state.inputValue)}>+</button>
-            </FormField>
-          </Form.Group>
-          <Form.Group>
-            <Form.Field control={Dropdown}
-              selection
-              clearable
-              placeholder="Power Due Date:"
-              onChange={this.onChangeDropdownList}
-              options={options}
-              name="powerDay"
-              label= "Power Due Date"
-              required={true}
-            />
-            <Form.Field control={Dropdown}
-              selection
-              clearable
-              placeholder="Water Due Date:"
-              onChange={this.onChangeDropdownList}
-              options={options}
-              name="waterDay"
-              label="Water Due Date:"
-              required={true}
-            />
-            <Form.Field control={Dropdown}
-              selection
-              clearable
-              placeholder="Internet Due Date:"
-              onChange={this.onChangeDropdownList}
-              options={options}
-              name="wifiDay"
-              label="Internet Due Date:"
-              required={true}
-            />
-          </Form.Group>
-          <Form.Group>
-            <FormField
-              onClick={() => this.onSubmit()}
-              control={Button}
-              disabled={
-                this.props.flatmates.length <= 0 ||
-                !this.state.address ||
-                !this.state.powerDay ||
-                !this.state.wifiDay ||
-                !this.state.waterDay ||
-                !this.state.suburb
-              }
-            > Submit
-            </FormField>
-          </Form.Group>
-        </Form>
-      </Container>
+      <>
+      <Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 800 }}>
+        <Header as='h1' color='orange' textAlign='center'>
+        <Image src='/favicon.png' /> Almost There! Register Your Flat Details Below:
+        </Header>
+        <Form size='huge'>
+          <Segment stacked>
+            <Divider horizontal style={{padding: 20}}>Where Is Your Flat Located?</Divider>
+              <FormField
+                control={Input}
+                name='address'
+                type='text'
+                label='Address: '
+                placeholder='123 Onehunga Mall'
+                required={true}
+                onChange={this.onChange}
+                >
+              </FormField>
 
+              <FormField
+                control={Input}
+                name='suburb'
+                type='text'
+                label='Suburb: '
+                placeholder='Onehunga'
+                required={true}
+                onChange={this.onChange}>
+              </FormField>             
+
+            <Divider horizontal style={{padding: 20}}>Who Lives There?</Divider>
+              <FormField>
+                <List as='ol'>
+                  {
+                    this.props.flatmates.map((flatmate, index) =>
+                      <FlatMate key={index} id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
+                  }
+                </List>
+                <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
+                <Button style={{ margin: 5 }} onClick={() => this.props.addFlatmate(this.state.inputValue)}>Add Flatmate</Button>
+              </FormField>
+
+            <Divider horizontal style={{padding: 20}}>What Date Do You Pay There Bills?</Divider>
+              <Form.Field control={Dropdown}
+                selection
+                clearable
+                placeholder="Power Due Date:"
+                onChange={this.onChangeDropdownList}
+                options={options}
+                name="powerDay"
+                label= "Power Due Date"
+                required={true}
+              />
+              <Form.Field control={Dropdown}
+                selection
+                clearable
+                placeholder="Water Due Date:"
+                onChange={this.onChangeDropdownList}
+                options={options}
+                name="waterDay"
+                label="Water Due Date:"
+                required={true}
+              />
+              <Form.Field control={Dropdown}
+                selection
+                clearable
+                placeholder="Internet Due Date:"
+                onChange={this.onChangeDropdownList}
+                options={options}
+                name="wifiDay"
+                label="Internet Due Date:"
+                required={true}
+              />
+
+              <Button
+                color='orange'
+                fluid size = 'large'
+                onClick={() => this.onSubmit()}
+                control={Button}
+                disabled={
+                  this.props.flatmates.length <= 0 ||
+                  !this.state.address ||
+                  !this.state.powerDay ||
+                  !this.state.wifiDay ||
+                  !this.state.waterDay ||
+                  !this.state.suburb
+                }
+              > Submit
+              </Button>
+
+            </Segment>
+          </Form>
+        </Grid.Column>
+      </Grid>
+
+      <Footer />
+      </>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  flatmates: state.flatmateReducer.flatmates
+  flatmates: state.flatmateReducer.flatmates,
+  flatmateDetail: state.flatmateDetailReducer.flatmateDetail
 })
 
 const mapDispatchToProps = dispatch => ({
   addFlatmate: flatmate => dispatch(addFlatmate(flatmate)),
-  removeFlatmate: index => dispatch(removeFlatmate(index))
+  removeFlatmate: index => dispatch(removeFlatmate(index)),
+  addRegisterFlatmateDetail: obj => dispatch(addRegisterFlatmateDetail(obj))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterFlatDetails)
