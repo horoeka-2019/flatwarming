@@ -131,17 +131,17 @@ class RegisterFlatDetails extends React.Component {
 
               <Divider horizontal style={{ padding: 20 }}>Who Lives There?</Divider>
               <FormField>
-                <List as='ol'>
+                <List>
                   {
                     this.props.flatmates.map((flatmate, index) =>
                       <FlatMate key={index} id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
                   }
                 </List>
-                <label>FlatMate:</label><Input type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
+                <label>FlatMate: </label><Input type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
                 <Button style={{ margin: 5 }} onClick={() => this.props.addFlatmate(this.state.inputValue)}>Add Flatmate</Button>
               </FormField>
 
-              <Divider horizontal style={{ padding: 20 }}>What Date Do You Pay There Bills?</Divider>
+              <Divider horizontal style={{ padding: 20 }}>What Date Do You Pay Your Bills?</Divider>
               <Form.Field control={Dropdown}
                 selection
                 clearable
