@@ -5,6 +5,8 @@ import register from './reg-button'
 import logout from './logout-button'
 import flatmateReducer from './flatmate.reducer'
 import flatmateDetailReducer from './flatmateDetails.reducer'
+import jobsReducer from './jobs.reducer'
+import flatmatesReducer from './flatmates.reducer'
 import error from './error'
 
 export default combineReducers({
@@ -13,5 +15,7 @@ export default combineReducers({
   logout,
   flatmateReducer,
   flatmateDetailReducer,
+  jobsReducer,
+  flatmatesReducer,
   error
 })

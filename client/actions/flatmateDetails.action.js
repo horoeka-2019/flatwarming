@@ -4,7 +4,7 @@ import * as api from '../api/registerFlatDetails'
 export function addFlatmateDetail (flatmateDetail) {
   return {
     type: 'ADD_FLATMATE_DETAIL',
-    flatmateDetail
+    payload: flatmateDetail
   }
 }
 
