@@ -40,5 +40,3 @@ export function showLogout () {
     type: SHOW_LOGOUT
   }
 }
-
-
