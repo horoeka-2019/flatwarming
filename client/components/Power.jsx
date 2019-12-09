@@ -4,8 +4,8 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 class Power extends React.Component {
   render () {
     return (
-      <>'     '<Card color='red'>
-        <img src='/power-1.jpg' style={{ height: '50vh', width: 'auto' }} />
+      <><Card color='red'>
+        <img src='/power-1 (1).jpg' style={{ height: '40vh', width: 'auto' }} />
         <Card.Content>
           <Card.Header>POWER BILL</Card.Header>
           <Card.Meta>

@@ -8,8 +8,8 @@ class Water extends React.Component {
 
   render () {
     return (
-    <>'   '<Card color='yellow'>
-      <img src='/water-1.jpg' style={{ height: '50vh', width: 'auto' }} />
+    <><Card color='yellow'>
+      <img src='/water-1 (1).jpg' style={{ height: '40vh', width: 'auto' }} />
       <Card.Content>
 
         <Card.Header>WATER BILL</Card.Header>
@@ -19,7 +19,7 @@ class Water extends React.Component {
         </Card.Meta>
 
       </Card.Content>
-    </Card>'   '</>
+    </Card></>
     )
   }
 }

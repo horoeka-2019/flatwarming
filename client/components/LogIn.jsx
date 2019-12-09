@@ -42,56 +42,56 @@ function LogIn (props) {
 
   return (
     <>
-    <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign='middle'>
-      <Grid.Column style={{ maxWidth: 600 }}>
-        <Header as='h1' color='orange' textAlign='center'>
-          <Image src='/favicon.png' /> Log-in to your account
+      <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 600 }}>
+          <Header as='h1' color='orange' textAlign='center'>
+            <Image src='/favicon.png' /> Log-in to your account
         </Header>
-        <Form size='huge'>
-          <Segment stacked>
+          <Form size='huge'>
+            <Segment stacked>
 
-            <Form.Input
-              name='email'
-              type='email'
-              value={form.email}
-              onChange={handleChange}
-              fluid
-              icon='user'
-              iconPosition='left'
-              placeholder='E-mail address'
-            />
+              <Form.Input
+                name='email'
+                type='email'
+                value={form.email}
+                onChange={handleChange}
+                fluid
+                icon='user'
+                iconPosition='left'
+                placeholder='E-mail address'
+              />
 
-            <Form.Input
-              name='password'
-              type='password'
-              value={form.password}
-              onChange={handleChange}
-              fluid
-              icon='lock'
-              iconPosition='left'
-              placeholder='Password'
-            />
+              <Form.Input
+                name='password'
+                type='password'
+                value={form.password}
+                onChange={handleChange}
+                fluid
+                icon='lock'
+                iconPosition='left'
+                placeholder='Password'
+              />
 
-            <Button
-              color='orange'
-              fluid size='large'
-              onClick={handleClick}
-              disabled={
-                !form.password ||
+              <Button
+                color='orange'
+                fluid size='large'
+                onClick={handleClick}
+                disabled={
+                  !form.password ||
                   !form.email ||
                   !form.email.includes('@')
-              }
-            >
+                }
+              >
                 Login
             </Button>
-          </Segment>
-        </Form>
-        <Message>
+            </Segment>
+          </Form>
+          <Message>
             New to us? <a href='/register'>Register</a>
-        </Message>
-      </Grid.Column>
-    </Grid>
-    <Footer />
+          </Message>
+        </Grid.Column>
+      </Grid>
+      <Footer />
     </>
   )
 }
