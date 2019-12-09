@@ -9,13 +9,13 @@ class Internet extends React.Component {
   render () {
     return (
       <>'   '<Card color='orange'>
-        <img src='/wifi.png' size='large' rounded style={{ backgroundColor: '#ffaf7a', height: '30vh', width: 'auto' }} />
+        <img src='/wifi-1.jpg' size='large' rounded style={{ height: '50vh', width: 'auto' }} />
         <Card.Content>
 
           <Card.Header>INTERNET BILL</Card.Header>
 
           <Card.Meta>
-          DUE DAY IN {this.props.dueWifiDay} days
+        DUE DAY IN {this.props.dueWifiDay} DAYS
           </Card.Meta>
 
         </Card.Content>
