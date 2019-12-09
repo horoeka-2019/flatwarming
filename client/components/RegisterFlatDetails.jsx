@@ -95,8 +95,8 @@ class RegisterFlatDetails extends React.Component {
     const obj = { ...this.state, userId, names }
 
     this.props.addRegisterFlatmateDetail(obj)
-      .then(() => this.props.history.push('/'))
-      // .catch(err => this.props.setError(err.message))
+      .then(() => this.props.history.push(`/dashboard/${userId}`))
+      .catch(err => this.props.setError('Oops! An unknown error has occured. Please refresh this page', err))
   }
 
   render () {
@@ -179,7 +179,6 @@ class RegisterFlatDetails extends React.Component {
                   color='orange'
                   fluid size='large'
                   onClick={() => this.onSubmit()}
-                  // control={Button}
                   disabled={
                     this.props.flatmates.length <= 0 ||
                     !this.state.address ||
@@ -195,7 +194,6 @@ class RegisterFlatDetails extends React.Component {
             </Form>
           </Grid.Column>
         </Grid>
-
         <Footer />
       </>
     )

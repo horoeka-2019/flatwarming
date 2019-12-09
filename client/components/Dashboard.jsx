@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Grid, Image, Button } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
 
 import Power from './Power'
 import Internet from './Internet'
@@ -10,48 +10,28 @@ import Footer from './Footer'
 import Jobs from './Jobs'
 import AddNewJob from './AddNewJob'
 import { connect } from 'react-redux'
-import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
+import { hideLogin, hideReg, showLogout } from '../actions/nav-buttons'
 
 import { getUserDetails } from '../api/registerFlatDetails'
+import { setError } from '../actions/error'
+import { getJobs } from '../actions/jobs.action'
+import { getFlatmates } from '../actions/flatmates.action'
 
 const getDaysInMonth = function (month, year) {
   return new Date(year, month, 0).getDate()
 }
 
-const calculateDueDays = function (powerDayPay, waterDayPay, wifiDayPay) {
+const calculateDueDay = function (dayPay) {
   const newDate = new Date()
   const date = newDate.getDate()
   const month = newDate.getMonth() + 1
   const year = newDate.getFullYear()
   const days = getDaysInMonth(month, year)
-  let duePowerDay = 0
-  let dueWaterDay = 0
-  let dueWifiDay = 0
-  const powerDay = Number(powerDayPay)
-  const waterDay = Number(waterDayPay)
-  const wifiDay = Number(wifiDayPay)
-  if (date <= powerDay) {
-    duePowerDay = powerDay - date
+  const daypay = Number(dayPay)
+  if (date <= daypay) {
+    return daypay - date
   } else {
-    duePowerDay = days - date + powerDay
-  }
-
-  if (date <= waterDay) {
-    dueWaterDay = waterDay - date
-  } else {
-    dueWaterDay = days - date + waterDay
-  }
-
-  if (date <= wifiDay) {
-    dueWifiDay = wifiDay - date
-  } else {
-    dueWifiDay = days - date + wifiDay
-  }
-
-  return {
-    duePowerDay: duePowerDay,
-    dueWaterDay: dueWaterDay,
-    dueWifiDay: dueWifiDay
+    return (days - date + daypay)
   }
 }
 
@@ -66,7 +46,6 @@ class Dashboard extends React.Component {
     this.props.dispatch(showLogout())
   }
 
-
   componentDidMount () {
     this.removeNavButtons()
     getUserDetails(this.props.match.params.usersId)
@@ -75,54 +54,68 @@ class Dashboard extends React.Component {
           details: res
         })
       })
+
+    this.props.dispatch(getJobs())
+      .catch(setError)
+
+    this.props.dispatch(getFlatmates(this.props.match.params.usersId))
+      .catch(setError)
   }
 
   render () {
-    const dueDays = calculateDueDays(this.state.details.powerDay, this.state.details.waterDay, this.state.details.wifiDay)
+    if (this.state.details === '') {
+      return null
+    }
+
+    const { powerDay, waterDay, wifiDay } = this.state.details
+    const duePowerDay = calculateDueDay(powerDay)
+    const dueWaterDay = calculateDueDay(waterDay)
+    const dueWifiDay = calculateDueDay(wifiDay)
+
     return (
       <>
-      <Container textAlign='center' style = {{ marginTop: 100 }}>
-        <Names />
-      </Container>
-      
-      <Container>
-        <Grid columns='equal' style = {{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          marginTop: 20
-        }}>
-          <Grid.Row>
+        <Container textAlign='center' style = {{ marginTop: 100 }}>
+          <Names />
+        </Container>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Power duePowerDay={dueDays.duePowerDay}/>
-            </Grid.Column>
+        <Container>
+          <Grid columns='equal' style = {{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            marginTop: 20
+          }}>
+            <Grid.Row>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Internet dueWifiDay={dueDays.dueWifiDay}/>
-            </Grid.Column>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <Power duePowerDay={duePowerDay}/>
+              </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Water dueWaterDay={dueDays.dueWaterDay}/>
-            </Grid.Column>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <Internet dueWifiDay={dueWifiDay}/>
+              </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Rubbish />
-            </Grid.Column>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <Water dueWaterDay={dueWaterDay}/>
+              </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Jobs />
-            </Grid.Column>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <Rubbish day={this.state.details.dayOfWeek}/>
+              </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <AddNewJob />
-            </Grid.Column>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <Jobs userId={this.props.match.params.usersId}/>
+              </Grid.Column>
 
-          </Grid.Row>
-        </Grid>
-      </Container>
-      <Footer />
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <AddNewJob userId={this.props.match.params.usersId}/>
+              </Grid.Column>
+
+            </Grid.Row>
+          </Grid>
+        </Container>
+        <Footer />
       </>
     )
   }
