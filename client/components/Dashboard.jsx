@@ -65,6 +65,9 @@ class Dashboard extends React.Component {
           </Grid.Row>
         </Grid>
         </Container>
+        <Container>
+          <Rubbish />
+        </Container>
         <Footer />
       </>
      )
