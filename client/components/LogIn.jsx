@@ -46,7 +46,7 @@ function LogIn (props) {
         <Grid.Column style={{ maxWidth: 600 }}>
           <Header as='h1' color='orange' textAlign='center'>
             <Image src='/favicon.png' /> Log-in to your account
-        </Header>
+          </Header>
           <Form size='huge'>
             <Segment stacked>
 
@@ -83,7 +83,7 @@ function LogIn (props) {
                 }
               >
                 Login
-            </Button>
+              </Button>
             </Segment>
           </Form>
           <Message>
