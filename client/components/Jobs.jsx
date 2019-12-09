@@ -17,7 +17,7 @@ class Jobs extends React.Component {
   render () {
     return (
       <><Card>
-        <Image src='#' wrapped ui={false} />
+        <img src='/jobs-1.jpg' size='large' wrapped ui={false} rounded style={{ height: '40vh', width: 'auto' }}/>
         <Card.Content>
           <Card.Header>
               JOBS
