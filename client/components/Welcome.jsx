@@ -24,7 +24,7 @@ class welcomeImg extends React.Component {
         marginBottom:0,
         // marginTop:mobile ? '1.5em':'3em'
       }}
-      src='welcomeimg.jpg'
+      src='welcome-2.jpg'
       />
       <WelcomeText /> 
       </div>
