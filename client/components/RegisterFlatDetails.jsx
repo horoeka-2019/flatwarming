@@ -96,7 +96,7 @@ class RegisterFlatDetails extends React.Component {
 
     this.props.addRegisterFlatmateDetail(obj)
       .then(() => this.props.history.push('/'))
-      .catch(setError)
+      .catch(err => this.props.setError(err.message))
   }
 
   render () {
@@ -106,7 +106,7 @@ class RegisterFlatDetails extends React.Component {
           <Grid.Column style={{ maxWidth: 800 }}>
             <Header as='h1' color='orange' textAlign='center'>
               <Image src='/favicon.png' /> Almost There! Register Your Flat Details Below:
-        </Header>
+            </Header>
             <Form size='huge'>
               <Segment stacked>
                 <Divider horizontal style={{ padding: 20 }}>Where Is Your Flat Located?</Divider>
@@ -179,7 +179,7 @@ class RegisterFlatDetails extends React.Component {
                   color='orange'
                   fluid size='large'
                   onClick={() => this.onSubmit()}
-                  control={Button}
+                  // control={Button}
                   disabled={
                     this.props.flatmates.length <= 0 ||
                     !this.state.address ||
@@ -189,7 +189,7 @@ class RegisterFlatDetails extends React.Component {
                     !this.state.suburb
                   }
                 > Submit
-              </Button>
+                </Button>
 
               </Segment>
             </Form>
@@ -204,13 +204,15 @@ class RegisterFlatDetails extends React.Component {
 
 const mapStateToProps = state => ({
   flatmates: state.flatmateReducer.flatmates,
-  flatmateDetail: state.flatmateDetailReducer.flatmateDetail
+  flatmateDetail: state.flatmateDetailReducer.flatmateDetail,
+  error: state.error
 })
 
 const mapDispatchToProps = dispatch => ({
   addFlatmate: flatmate => dispatch(addFlatmate(flatmate)),
   removeFlatmate: index => dispatch(removeFlatmate(index)),
-  addRegisterFlatmateDetail: obj => dispatch(addRegisterFlatmateDetail(obj))
+  addRegisterFlatmateDetail: obj => dispatch(addRegisterFlatmateDetail(obj)),
+  setError
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterFlatDetails)
