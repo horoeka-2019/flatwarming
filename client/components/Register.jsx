@@ -37,11 +37,15 @@ function Register (props) {
       .catch(err => props.setError(err.message))
   }
 
+  const color = {
+    orangeColor: 'orange'
+  }
+
   return (
     <React.Fragment>
       <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 600 }}>
-          <Header as='h1' color='orange' textAlign='center'>
+          <Header as='h1' color={color.orangeColor} textAlign='center'>
             <Image src='/favicon.png' /> Register To Flat Warming
           </Header>
           <Form size='huge'>
@@ -70,7 +74,7 @@ function Register (props) {
               />
 
               <Button
-                color='orange'
+                color={color.orangeColor}
                 fluid size='large'
                 onClick={handleClick}
                 disabled={
