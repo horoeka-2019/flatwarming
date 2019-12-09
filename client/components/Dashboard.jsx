@@ -63,50 +63,60 @@ class Dashboard extends React.Component {
   }
 
   render () {
+    if (this.state.details === '') {
+      return null
+    }
+
     const { powerDay, waterDay, wifiDay } = this.state.details
     const duePowerDay = calculateDueDay(powerDay)
     const dueWaterDay = calculateDueDay(waterDay)
     const dueWifiDay = calculateDueDay(wifiDay)
+
     return (
-      <><Container textAlign='center' style = {{ marginTop: 100 }}>
-        <Names />
-      </Container><Container>
-        <Grid columns='equal' style = {{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          marginTop: 20
-        }}>
-          <Grid.Row>
+      <>
+        <Container textAlign='center' style = {{ marginTop: 100 }}>
+          <Names />
+        </Container>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Power duePowerDay={duePowerDay}/>
-            </Grid.Column>
+        <Container>
+          <Grid columns='equal' style = {{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            marginTop: 20
+          }}>
+            <Grid.Row>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Internet dueWifiDay={dueWaterDay}/>
-            </Grid.Column>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <Power duePowerDay={duePowerDay}/>
+              </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Water dueWaterDay={dueWifiDay}/>
-            </Grid.Column>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <Internet dueWifiDay={dueWifiDay}/>
+              </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Rubbish />
-            </Grid.Column>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <Water dueWaterDay={dueWaterDay}/>
+              </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Jobs userId={this.props.match.params.usersId}/>
-            </Grid.Column>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <Rubbish day={this.state.details.dayOfWeek}/>
+              </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <AddNewJob userId={this.props.match.params.usersId}/>
-            </Grid.Column>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <Jobs userId={this.props.match.params.usersId}/>
+              </Grid.Column>
 
-          </Grid.Row>
-        </Grid>
-      </Container><Footer /></>
+              <Grid.Column mobile={12} tablet={8} computer={4}>
+                <AddNewJob userId={this.props.match.params.usersId}/>
+              </Grid.Column>
+
+            </Grid.Row>
+          </Grid>
+        </Container>
+        <Footer />
+      </>
     )
   }
 }

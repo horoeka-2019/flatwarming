@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import { signIn, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
-import { connect } from 'react-redux' 
+import { connect } from 'react-redux'
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 import Footer from './Footer'
 import { getUserByName } from '../api/registerFlatDetails'
 
 import { setError } from '../actions/error'
 
-
 function LogIn (props) {
-  
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -39,10 +37,10 @@ function LogIn (props) {
           props.dispatch(showLogout())
         }
       })
-    .catch(setError)
-      if (!isAuthenticated()) {
-        props.dispatch(setError)
-      }   
+      .catch(setError)
+    if (!isAuthenticated()) {
+      props.dispatch(setError)
+    }
   }
 
   return (
@@ -54,7 +52,7 @@ function LogIn (props) {
           </Header>
           <Form size='huge'>
             <Segment stacked>
-              
+
               <Form.Input
                 name='email'
                 type='email'
@@ -96,7 +94,7 @@ function LogIn (props) {
           </Message>
         </Grid.Column>
       </Grid>
-    <Footer />
+      <Footer />
     </>
   )
 }
