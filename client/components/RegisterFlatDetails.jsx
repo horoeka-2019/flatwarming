@@ -95,7 +95,7 @@ class RegisterFlatDetails extends React.Component {
     const obj = { ...this.state, userId, names }
 
     this.props.addRegisterFlatmateDetail(obj)
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push(`/dashboard/${userId}`))
       .catch(setError)
   }
 
