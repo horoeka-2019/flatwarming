@@ -66,6 +66,7 @@ class Dashboard extends React.Component {
     this.props.dispatch(showLogout())
   }
 
+
   componentDidMount () {
     this.removeNavButtons()
     getUserDetails(this.props.match.params.usersId)
@@ -79,9 +80,12 @@ class Dashboard extends React.Component {
   render () {
     const dueDays = calculateDueDays(this.state.details.powerDay, this.state.details.waterDay, this.state.details.wifiDay)
     return (
-      <>'     '<Container textAlign='center' style = {{ marginTop: 100 }}>
+      <>
+      <Container textAlign='center' style = {{ marginTop: 100 }}>
         <Names />
-      </Container>'     '<Container>
+      </Container>
+      
+      <Container>
         <Grid columns='equal' style = {{
           display: 'flex',
           justifyContent: 'center',
@@ -117,7 +121,9 @@ class Dashboard extends React.Component {
 
           </Grid.Row>
         </Grid>
-      </Container>'     '<Footer />'   '</>
+      </Container>
+      <Footer />
+      </>
     )
   }
 }
