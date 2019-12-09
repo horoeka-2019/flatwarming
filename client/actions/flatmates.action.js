@@ -1,5 +1,5 @@
 import { setError } from './error'
-import * as api from '../api/registerFlatDetails'
+import * as api from '../api/flatmates'
 
 export const GET_FLATMATES_PENDING = 'GET_FLATMATES_PENDING'
 export const GET_FLATMATES_SUCCESS = 'GET_FLATMATES_SUCCESS'

@@ -13,7 +13,6 @@ class JobList extends React.Component {
   }
 
   render () {
-    console.log('jobs', this.props.jobs)
     const options = this.props.jobs.map(job => ({
       key: job.id,
       value: job.job,
