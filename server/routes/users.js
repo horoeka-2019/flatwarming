@@ -43,7 +43,7 @@ router.post('/register/:id', (req, res) => {
 })
 //done
 
-router.post('/jobs/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = Number(req.params.id)
   const newJob = {
     id: req.body.usersId,

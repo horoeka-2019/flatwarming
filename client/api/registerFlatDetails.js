@@ -49,3 +49,7 @@ export function getUserByName (email) {
       }
     })
 }
+
+export function addJobs () {
+  return request.post(`${apiURL}/${id}`)
+}

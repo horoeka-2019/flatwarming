@@ -6,6 +6,8 @@ import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '
 import Footer from './Footer'
 import { getUserByName } from '../api/registerFlatDetails'
 
+import { setError } from '../actions/error'
+
 
 function LogIn (props) {
   
@@ -37,6 +39,10 @@ function LogIn (props) {
           props.dispatch(showLogout())
         }
       })
+    .catch(setError)
+      if (!isAuthenticated()) {
+        props.dispatch(setError)
+      }   
   }
 
   return (
@@ -49,15 +55,15 @@ function LogIn (props) {
           <Form size='huge'>
             <Segment stacked>
               
-              <Form.Input 
+              <Form.Input
                 name='email'
                 type='email'
                 value={form.email}
                 onChange={handleChange}
-                fluid 
-                icon='user' 
-                iconPosition='left' 
-                placeholder='E-mail address' 
+                fluid
+                icon='user'
+                iconPosition='left'
+                placeholder='E-mail address'
               />
 
               <Form.Input
@@ -69,17 +75,16 @@ function LogIn (props) {
                 icon='lock'
                 iconPosition='left'
                 placeholder='Password'
-                type='password'
               />
 
-              <Button 
-                color='orange' 
+              <Button
+                color='orange'
                 fluid size='large'
                 onClick={handleClick}
                 disabled={
-                !form.password ||
-                !form.email ||
-                !form.email.includes('@')
+                  !form.password ||
+                  !form.email ||
+                  !form.email.includes('@')
                 }
               >
                 Login
@@ -100,7 +105,8 @@ const mapStateToProps = state => {
   return {
     login: state.login,
     register: state.register,
-    logout: state.logout
+    logout: state.logout,
+    error: state.error
   }
 }
 

@@ -1,29 +1,27 @@
-import React from 'react';
+import React from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
 
-
 class Internet extends React.Component {
-  state = { 
+  state = {
 
-   }
-  render() { 
-    return ( 
-      <>
-    <Card color='orange'>
-      <img src='/wifi-1.jpg' size='large' rounded style={{ height: '50vh', width: 'auto'}} />
-      <Card.Content>
+  }
 
-        <Card.Header>INTERNET BILL</Card.Header>
+  render () {
+    return (
+      <>'   '<Card color='orange'>
+        <img src='/wifi-1.jpg' size='large' rounded style={{ height: '50vh', width: 'auto' }} />
+        <Card.Content>
 
-        <Card.Meta>
-          DUE IN 3 DAYS
-        </Card.Meta>
+          <Card.Header>INTERNET BILL</Card.Header>
 
-      </Card.Content> 
-    </Card>
-      </>
-     );
+          <Card.Meta>
+        DUE DAY IN {this.props.dueWifiDay} DAYS
+          </Card.Meta>
+
+        </Card.Content>
+      </Card>'     '</>
+    )
   }
 }
- 
-export default Internet;
+
+export default Internet

@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { getUserByName } from '../api/registerFlatDetails'
-import Footer from './Footer'
 
-export default function Register (props) {
+import { setError } from '../actions/error'
+
+import Footer from './Footer'
+import { connect } from 'react-redux'
+
+function Register (props) {
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -28,16 +32,20 @@ export default function Register (props) {
         if (isAuthenticated()) {
           getUserByName(form.email)
             .then(user => props.history.push(`/register-flat/${user.id}`))
-            .catch(error => console.log(error))
         }
       })
+      .catch(err => props.setError(err.message))
+  }
+
+  const color = {
+    orangeColor: 'orange'
   }
 
   return (
     <React.Fragment>
       <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 600 }}>
-          <Header as='h1' color='orange' textAlign='center'>
+          <Header as='h1' color={color.orangeColor} textAlign='center'>
             <Image src='/favicon.png' /> Register To Flat Warming
           </Header>
           <Form size='huge'>
@@ -63,11 +71,10 @@ export default function Register (props) {
                 icon='lock'
                 iconPosition='left'
                 placeholder='Password'
-                type='password'
               />
 
               <Button
-                color='orange'
+                color={color.orangeColor}
                 fluid size='large'
                 onClick={handleClick}
                 disabled={
@@ -90,3 +97,15 @@ export default function Register (props) {
     </React.Fragment>
   )
 }
+
+const mapDispatchToProps = {
+  setError
+}
+
+const mapStateToProps = state => {
+  return {
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)
