@@ -213,4 +213,4 @@ const mapDispatchToProps = dispatch => ({
   addRegisterFlatmateDetail: obj => dispatch(addRegisterFlatmateDetail(obj))
 })
 
-export default connect(null, mapStateToProps, mapDispatchToProps)(RegisterFlatDetails)
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterFlatDetails)
