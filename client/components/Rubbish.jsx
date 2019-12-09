@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Segment } from 'semantic-ui-react'
 // import Countdown from 'react-countdown-now'
 // import { getSeconds, startTimer, tick } from '../helperFunctions'
 
@@ -9,25 +9,25 @@ var ticker
 
 function getSeconds (day) {
   let corrDay
-  if (day === 'monday') {
+  if (day === 'Monday') {
     corrDay = 1
-  } else if (day === 'tuesday') {
+  } else if (day === 'Tuesday') {
     corrDay = 2
-  } else if (day === 'wednesday') {
+  } else if (day === 'Wednesday') {
     corrDay = 3
-  } else if (day === 'thursday') {
+  } else if (day === 'Thursday') {
     corrDay = 4
-  } else if (day === 'friday') {
+  } else if (day === 'Friday') {
     corrDay = 5
-  } else if (day === 'saturday') {
+  } else if (day === 'Saturday') {
     corrDay = 6
-  } else if (day === 'sunday') {
+  } else if (day === 'Sunday') {
     corrDay = 0
   }
 
   var nowDate = new Date()
   var dy = corrDay // Sunday through Saturday, 0 to 6
-  var countertime = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 20, 0, 0) // 20 out of 24 hours = 8pm
+  var countertime = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 7, 0, 0) // 6 out of 24 hours = 7am
 
   var curtime = nowDate.getTime() // current time
   var atime = countertime.getTime() // countdown time
@@ -85,7 +85,14 @@ class Rubbish extends React.Component {
       <>
         <Card color='green'>
           <img src='/rubbish-1.jpg' style={{ height: '50vh', width: 'auto' }} />
-          <Card.Content>
+          <div id="countholder">
+            <h3>Rubbish Pickup: {this.props.day}</h3>
+          <div><span className="days" id="days"></span><div className="smalltext">Days</div></div>
+          <div><span className="hours" id="hours"></span><div className="smalltext">Hours</div></div>
+          <div><span className="minutes" id="minutes"></span><div className="smalltext">Mins</div></div>
+          <div><span className="seconds" id="seconds"></span><div className="smalltext">Secs</div></div>
+        </div>
+          {/* <Card.Content>
 
             <Card.Header>RUBBISH DAY</Card.Header>
 
@@ -93,14 +100,8 @@ class Rubbish extends React.Component {
             Your Rubbish Day is {this.props.day}
             </Card.Meta>
 
-          </Card.Content>
+          </Card.Content> */}
         </Card>
-        <div id="countholder">
-          <div><span className="days" id="days"></span><div className="smalltext">Days</div></div>
-          <div><span className="hours" id="hours"></span><div className="smalltext">Hours</div></div>
-          <div><span className="minutes" id="minutes"></span><div className="smalltext">Minutes</div></div>
-          <div><span className="seconds" id="seconds"></span><div className="smalltext">Seconds</div></div>
-        </div>
       </>
     )
   }
