@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 import Footer from './Footer'
 
+import { setError } from '../actions/error'
+import ErrorComponent from './ErrorComponent'
+
 
 function LogIn (props) {
   const [form, setForm] = useState({
@@ -34,6 +37,7 @@ function LogIn (props) {
           props.dispatch(showLogout())
         }
       })
+      .catch(setError)
   }
 
   return (
@@ -46,12 +50,12 @@ function LogIn (props) {
           <Form size='huge'>
             <Segment stacked>
               
-              <Form.Input 
+              <Form.Input
                 name='email'
                 type='email'
                 value={form.email}
                 onChange={handleChange}
-                fluid 
+                fluid
                 icon='user' 
                 iconPosition='left' 
                 placeholder='E-mail address' 
@@ -66,10 +70,9 @@ function LogIn (props) {
                 icon='lock'
                 iconPosition='left'
                 placeholder='Password'
-                type='password'
               />
 
-              <Button 
+              <Button
                 color='orange' 
                 fluid size='large'
                 onClick={handleClick}
@@ -97,7 +100,8 @@ const mapStateToProps = state => {
   return {
     login: state.login,
     register: state.register,
-    logout: state.logout
+    logout: state.logout,
+    error: state.error
   }
 }
 

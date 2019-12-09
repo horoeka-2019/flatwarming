@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { getUserByName } from '../api/registerFlatDetails'
+
+import { setError } from '../actions/error'
+
 import Footer from './Footer'
 
 export default function Register (props) {
@@ -28,7 +31,7 @@ export default function Register (props) {
         if (isAuthenticated()) {
           getUserByName(form.email)
             .then(user => props.history.push(`/register-flat/${user.id}`))
-            .catch(error => console.log(error))
+            .catch(setError)
         }
       })
   }
@@ -63,7 +66,6 @@ export default function Register (props) {
                 icon='lock'
                 iconPosition='left'
                 placeholder='Password'
-                type='password'
               />
 
               <Button

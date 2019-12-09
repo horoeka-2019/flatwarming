@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import FlatMate from './FlatMate'
 import Footer from './Footer'
+
 import { addFlatmate, removeFlatmate } from '../actions/flatmate.action'
 import { addRegisterFlatmateDetail } from '../actions/flatmateDetails.action'
 import { setError } from '../actions/error'
@@ -212,4 +213,4 @@ const mapDispatchToProps = dispatch => ({
   addRegisterFlatmateDetail: obj => dispatch(addRegisterFlatmateDetail(obj))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterFlatDetails)
+export default connect(null, mapStateToProps, mapDispatchToProps)(RegisterFlatDetails)
