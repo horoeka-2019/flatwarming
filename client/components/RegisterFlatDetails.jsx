@@ -75,7 +75,7 @@ class RegisterFlatDetails extends React.Component {
     })
   }
 
-  changeHandle(value) {
+  changeHandle (value) {
     this.setState(
       {
         inputValue: value
@@ -99,7 +99,7 @@ class RegisterFlatDetails extends React.Component {
       .catch(err => this.props.setError('Oops! An unknown error has occured. Please refresh this page', err))
   }
 
-  render() {
+  render () {
     return (
       <>
         <Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
