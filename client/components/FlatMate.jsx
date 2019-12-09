@@ -10,8 +10,9 @@ class FlatMate extends React.Component {
     const { removeFlatmate, id, flatmate } = this.props
     return (
       <List.Item as='li' key={id}>
-        <label>Flatmate:</label><input value={flatmate}/>
-        <Button onClick={() => removeFlatmate(id)}>-</Button>
+        <label>Flatmate:</label>
+        <input value={flatmate}/>
+        <Button style={{ margin: 5 }} onClick={() => removeFlatmate(id)}>Remove Flatmate</Button>
       </List.Item>
     )
   }

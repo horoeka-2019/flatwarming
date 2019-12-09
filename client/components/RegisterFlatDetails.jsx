@@ -99,6 +99,11 @@ class RegisterFlatDetails extends React.Component {
       .catch(setError)
   }
 
+  clearFields = () => {
+
+    document.getElementById("textfield1").value = "";
+}
+
   render () {
     return (
       <>'       '<Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
@@ -138,8 +143,16 @@ class RegisterFlatDetails extends React.Component {
                       <FlatMate key={index} id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
                   }
                 </List>
-                <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
-                <Button style={{ margin: 5 }} onClick={() => this.props.addFlatmate(this.state.inputValue)}>Add Flatmate</Button>
+                <label>FlatMate:</label>
+                <input id="textfield1" type="text" onChange={(e) => this.changeHandle(e.target.value)}/>
+                
+                <Button style={{ margin: 5 }} 
+                onClick={() => {
+                  this.props.addFlatmate(this.state.inputValue)
+                  this.clearFields()
+                }}>
+                  Add Flatmate
+                </Button>
               </FormField>
 
               <Divider horizontal style={{ padding: 20 }}>What Date Do You Pay There Bills?</Divider>
@@ -193,8 +206,9 @@ class RegisterFlatDetails extends React.Component {
             </Segment>
           </Form>
         </Grid.Column>
-      </Grid>'
-       '<Footer />'     '</>
+      </Grid>
+      <Footer />
+      </>
     )
   }
 }
