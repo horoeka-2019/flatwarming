@@ -33,7 +33,7 @@ class Jobs extends React.Component {
               {
                 this.props.jobDetail.map((job, index) => (
                   <List.Item as='li' key={index}>
-                    <label>name: {job.name} - job:{job.job}</label>
+                    <label>name: {job.name} - job:{job.job} - due day:{job.dueDay}</label>
                   </List.Item>
                 ))
               }

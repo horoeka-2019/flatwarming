@@ -11,7 +11,6 @@ import {
   Button,
   Form,
   Input,
-  Container,
   FormField,
   List,
   Dropdown,
@@ -19,8 +18,7 @@ import {
   Segment,
   Header,
   Image,
-  Divider,
-  Icon
+  Divider
 } from 'semantic-ui-react'
 
 const options = [
@@ -101,7 +99,7 @@ class RegisterFlatDetails extends React.Component {
 
   render () {
     return (
-      <>'       '<Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
+      <><Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 800 }}>
           <Header as='h1' color='orange' textAlign='center'>
             <Image src='/favicon.png' /> Almost There! Register Your Flat Details Below:
@@ -138,7 +136,7 @@ class RegisterFlatDetails extends React.Component {
                       <FlatMate key={index} id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
                   }
                 </List>
-                <label>FlatMate:</label><input type="text" onChange={(e) => this.changeHandle(e.target.value)}></input>
+                <label>FlatMate:</label><Input type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
                 <Button style={{ margin: 5 }} onClick={() => this.props.addFlatmate(this.state.inputValue)}>Add Flatmate</Button>
               </FormField>
 
@@ -193,8 +191,7 @@ class RegisterFlatDetails extends React.Component {
             </Segment>
           </Form>
         </Grid.Column>
-      </Grid>'
-       '<Footer />'     '</>
+      </Grid><Footer /></>
     )
   }
 }
