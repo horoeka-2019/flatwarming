@@ -8,7 +8,7 @@ class Internet extends React.Component {
 
   render () {
     return (
-      <>'   '<Card color='orange'>
+      <><Card color='orange'>
         <img src='/wifi-1.jpg' size='large' rounded style={{ height: '50vh', width: 'auto' }} />
         <Card.Content>
 
@@ -19,7 +19,7 @@ class Internet extends React.Component {
           </Card.Meta>
 
         </Card.Content>
-      </Card>'     '</>
+      </Card></>
     )
   }
 }

@@ -14,7 +14,11 @@ module.exports = {
   deleteName,
   editPower,
   editWater,
-  editWifi
+  editWifi,
+  addJobRelationship,
+  getJobDetailByFlatmate,
+  getJobsList,
+  getFlatmatesList
 }
 
 function createUser (user, db = connection) {
@@ -28,6 +32,35 @@ function createUser (user, db = connection) {
     .then(passwordHash => {
       return db('users').insert({ email: user.username, password: passwordHash })
     })
+}
+
+function addJobRelationship (jobDetail, db = connection) {
+  return db('jobs_relationships')
+    .insert({
+      usersId: jobDetail.usersId,
+      jobId: jobDetail.jobId,
+      flatmateId: jobDetail.flatmateId,
+      dueDay: jobDetail.dueDay
+    })
+}
+
+function getJobDetailByFlatmate (userId, db = connection) {
+  return db('jobs')
+    .join('jobs_relationships', 'jobs.id', 'jobs_relationships.jobId')
+    .join('flatmates', 'jobs_relationships.flatmateId', 'flatmates.id')
+    .where('flatmates.usersId', userId)
+    .select('flatmates.names as name', 'jobs.job as job', 'jobs_relationships.dueDay as dueDay')
+}
+
+function getJobsList (db = connection) {
+  return db('jobs')
+    .select('jobs.id as id', 'jobs.job as job')
+}
+
+function getFlatmatesList (userId, db = connection) {
+  return db('flatmates')
+    .where('usersId', userId)
+    .select('flatmates.id as id', 'flatmates.names as name')
 }
 
 function userExists (email, db = connection) {
@@ -78,7 +111,7 @@ function addAddress (id, address, suburb, db = connection) {
 }
 
 function addName (id, names, db = connection) {
-  let array = []
+  const array = []
   for (let i = 0; i < names.length; i++) {
     const obj = {}
     obj.usersId = id
