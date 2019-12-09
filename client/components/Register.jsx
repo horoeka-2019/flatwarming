@@ -34,7 +34,7 @@ function Register (props) {
             .then(user => props.history.push(`/register-flat/${user.id}`))
         }
       })
-      .catch(err => props.setError(err.message))
+      .catch(err => props.setError('Oops! Have you previously registered your flat with this email address?  ' + err.message))
   }
 
   const color = {
