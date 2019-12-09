@@ -8,7 +8,7 @@ class ErrorComponent extends React.Component {
       <>
 
       {this.props.error &&
-        <Message negative>
+        <Message negative style={{ marginTop: 150 }}>
           <Message.Header>
             Dangit! An error has occurred!
           </Message.Header>

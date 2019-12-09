@@ -34,7 +34,7 @@ function Register (props) {
             .then(user => props.history.push(`/register-flat/${user.id}`))
         }
       })
-      .catch(setError)
+      .catch(err => props.setError(err.message))
   }
 
   return (
@@ -94,4 +94,14 @@ function Register (props) {
   )
 }
 
-export default connect()(Register)
+const mapDispatchToProps = {
+  setError
+}
+
+const mapStateToProps = state => {
+  return {
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)
