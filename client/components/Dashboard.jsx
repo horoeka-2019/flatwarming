@@ -59,7 +59,7 @@ class Dashboard extends React.Component {
             </Grid.Column>
 
             <Grid.Column>
-              <Rubbish />
+              <Rubbish day={this.state.details.dayOfWeek}/>
             </Grid.Column>
 
           </Grid.Row>

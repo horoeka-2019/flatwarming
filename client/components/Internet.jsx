@@ -10,7 +10,7 @@ class Internet extends React.Component {
     return ( 
       <>
     <Card color='orange'>
-      <img src='/wifi.png' size='large' rounded style={{backgroundColor: '#ffaf7a', height: '30vh', width: 'auto'}} />
+      <img src='/wifi.png' size='large' style={{backgroundColor: '#ffaf7a', height: '30vh', width: 'auto'}} />
       <Card.Content>
 
         <Card.Header>INTERNET BILL</Card.Header>

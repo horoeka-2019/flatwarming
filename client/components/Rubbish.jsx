@@ -4,9 +4,12 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 
 class Rubbish extends React.Component {
   state = { 
-
+    day: ''
    }
+
   render() { 
+
+
     return ( 
       <>
         <Card color='green'>
@@ -16,7 +19,7 @@ class Rubbish extends React.Component {
           <Card.Header>RUBBISH DAY</Card.Header>
 
           <Card.Meta>
-            MONDAY - 2 MORE DAYS
+            Your Rubbish Day is {this.props.day}
           </Card.Meta>
 
         </Card.Content> 
