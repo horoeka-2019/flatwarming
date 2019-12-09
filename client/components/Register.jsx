@@ -6,8 +6,9 @@ import { getUserByName } from '../api/registerFlatDetails'
 import { setError } from '../actions/error'
 
 import Footer from './Footer'
+import { connect } from 'react-redux'
 
-export default function Register (props) {
+function Register (props) {
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -31,9 +32,9 @@ export default function Register (props) {
         if (isAuthenticated()) {
           getUserByName(form.email)
             .then(user => props.history.push(`/register-flat/${user.id}`))
-            .catch(setError)
         }
       })
+      .catch(setError)
   }
 
   return (
@@ -92,3 +93,5 @@ export default function Register (props) {
     </React.Fragment>
   )
 }
+
+export default connect()(Register)

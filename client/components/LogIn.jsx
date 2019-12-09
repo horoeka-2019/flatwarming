@@ -7,7 +7,6 @@ import Footer from './Footer'
 import { getUserByName } from '../api/registerFlatDetails'
 
 import { setError } from '../actions/error'
-import ErrorComponent from './ErrorComponent'
 
 
 function LogIn (props) {
@@ -40,7 +39,10 @@ function LogIn (props) {
           props.dispatch(showLogout())
         }
       })
-      .catch(setError)
+    .catch(setError)
+      if (!isAuthenticated()) {
+        props.dispatch(setError)
+      }   
   }
 
   return (
@@ -59,9 +61,9 @@ function LogIn (props) {
                 value={form.email}
                 onChange={handleChange}
                 fluid
-                icon='user' 
-                iconPosition='left' 
-                placeholder='E-mail address' 
+                icon='user'
+                iconPosition='left'
+                placeholder='E-mail address'
               />
 
               <Form.Input
@@ -76,13 +78,13 @@ function LogIn (props) {
               />
 
               <Button
-                color='orange' 
+                color='orange'
                 fluid size='large'
                 onClick={handleClick}
                 disabled={
-                !form.password ||
-                !form.email ||
-                !form.email.includes('@')
+                  !form.password ||
+                  !form.email ||
+                  !form.email.includes('@')
                 }
               >
                 Login
