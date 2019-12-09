@@ -2,15 +2,26 @@ import React from 'react'
 import {
   Button,
   Form,
-  Container
+  Container,
+  Dropdown
 } from 'semantic-ui-react'
 
 import JobList from './JobList'
 import FlatmateList from './FlatmateList'
-import * as api from '../api/registerFlatDetails'
+import * as jobsApi from '../api/jobs'
 import { getJobsByUserId } from '../actions/jobs.action'
 import { connect } from 'react-redux'
+import { setError } from '../actions/error'
 
+const options = [
+  { key: 1, text: 'Monday', value: 'Monday' },
+  { key: 2, text: 'Tuesday', value: 'Tuesday' },
+  { key: 3, text: 'Wednesday', value: 'Wednesday' },
+  { key: 4, text: 'Thursday', value: 'Thursday' },
+  { key: 5, text: 'Friday', value: 'Friday' },
+  { key: 6, text: 'Saturday', value: 'Saturday' },
+  { key: 7, text: 'Sunday', value: 'Sunday' }
+]
 class AddNewJob extends React.Component {
   state = {
     name: null,
@@ -24,10 +35,15 @@ class AddNewJob extends React.Component {
     })
   }
 
+  onChangeDropdownList = (event, data) => {
+    this.setState({
+      [data.name]: data.value
+    })
+  }
+
   onSubmit = () => {
-    const { jobId, flatmateId } = this.state
+    const { jobId, flatmateId, dueDay } = this.state
     const userId = this.props.userId
-    const dueDay = ''
 
     const obj = {
       userId,
@@ -35,7 +51,9 @@ class AddNewJob extends React.Component {
       flatmateId,
       dueDay
     }
-    api.addJobToFlatmate(userId, obj).then(() => this.props.dispatch(getJobsByUserId(userId)))
+    jobsApi.addJobToFlatmate(userId, obj)
+      .then(() => this.props.dispatch(getJobsByUserId(userId)))
+      .catch(setError)
   }
 
   eventHandlerJob = (job) => {
@@ -52,12 +70,6 @@ class AddNewJob extends React.Component {
 
   render () {
     return (
-    //   <>'       '<Card
-    //       href='#'
-    //       header='ADD NEW JOB'
-    //       image={'#'}
-    //     />'
-    //  '</>
       <Container>
         <Form onSubmit={this.onSubmit}>
           <JobList
@@ -72,6 +84,16 @@ class AddNewJob extends React.Component {
             label='Flatmate:'
             required={true}
             eventHandlerFlatmate={this.eventHandlerFlatmate}
+          />
+          <Form.Field control={Dropdown}
+            selection
+            clearable
+            placeholder="Due Day:"
+            onChange={this.onChangeDropdownList}
+            options={options}
+            name="dueDay"
+            label="Due Day"
+            required={true}
           />
           <Form.Field
             control={Button}
