@@ -13,7 +13,7 @@ class Rubbish extends React.Component {
     return ( 
       <>
         <Card color='green'>
-        <img src='/rubbish.png' style={{backgroundColor: 'lavender', height: '30vh', width: 'auto'}} />
+        <img src='/rubbish-1.jpg' style={{ height: '50vh', width: 'auto'}} />
         <Card.Content>
 
           <Card.Header>RUBBISH DAY</Card.Header>
