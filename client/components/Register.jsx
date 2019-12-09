@@ -31,7 +31,12 @@ function Register (props) {
       .then(() => {
         if (isAuthenticated()) {
           getUserByName(form.email)
-            .then(user => props.history.push(`/register-flat/${user.id}`))
+
+            .then(user => {
+              setTimeout(() => window.location.reload(), 500)
+              props.history.push(`/register-flat/${user.id}`)
+            }
+            )
         }
       })
       .catch(err => props.setError(err.message))
@@ -53,7 +58,7 @@ function Register (props) {
 
               <Form.Input
                 name='email'
-                type='email'
+                // type='email'
                 value={form.email}
                 onChange={handleChange}
                 fluid
