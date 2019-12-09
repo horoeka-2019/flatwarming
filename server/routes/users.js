@@ -6,16 +6,25 @@ const router = express.Router()
 
 module.exports = router
 
+const sendGenericErrorMessage = (res) => {
+  res.status(500).send(
+    "An Unexpected error has occurred and we'er looking into it"
+  )
+}
+
 router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
   return db.getUserDetail(id)
     .then(userDetail => res.json(userDetail))
+    .catch(() => sendGenericErrorMessage(res))
 })
+//done
 
 router.get('/user/:username', (req, res) => {
   const username = req.params.username
   return db.getUserByName(username)
     .then(user => res.json(user))
+    .catch(() => sendGenericErrorMessage(res))
 })
 
 router.post('/register/:id', (req, res) => {
@@ -30,9 +39,11 @@ router.post('/register/:id', (req, res) => {
   obj.wifiDay = req.body.wifiDay
   return db.addDetail(obj)
     .then(userDetail => res.json(userDetail))
+    .catch(() => sendGenericErrorMessage(res))
 })
+//done
 
-router.post('/jobs/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = Number(req.params.id)
   const newJob = {
     id: req.body.usersId,
@@ -43,6 +54,7 @@ router.post('/jobs/:id', (req, res) => {
 
   return db.addJobs(newJob)
     .then(newJob => res.json(newJob))
+    .catch(() => sendGenericErrorMessage(res))
 })
 
 // router.post('/setting/:id',(req, res) => {
@@ -64,4 +76,5 @@ router.post('/flatmate/:id', (req, res) => {
   }
   return db.addName(newName)
     .then(newName => res.json(newName))
+    .catch(() => sendGenericErrorMessage(res))
 })

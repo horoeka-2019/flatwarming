@@ -4,9 +4,11 @@ import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui
 import { connect } from 'react-redux' 
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 import Footer from './Footer'
+import { getUserByName } from '../api/registerFlatDetails'
 
 
 function LogIn (props) {
+  
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -28,7 +30,8 @@ function LogIn (props) {
     })
       .then((token) => {
         if (isAuthenticated()) {
-          props.history.push('/dashboard')
+          getUserByName(form.email)
+            .then(user => props.history.push(`/dashboard/${user.id}`))
           props.dispatch(hideReg())
           props.dispatch(hideLogin())
           props.dispatch(showLogout())
