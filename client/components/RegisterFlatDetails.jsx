@@ -96,7 +96,7 @@ class RegisterFlatDetails extends React.Component {
 
     this.props.addRegisterFlatmateDetail(obj)
       .then(() => this.props.history.push('/'))
-      .catch(err => this.props.setError(err.message))
+      // .catch(err => this.props.setError(err.message))
   }
 
   render () {
