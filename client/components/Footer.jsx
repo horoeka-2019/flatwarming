@@ -13,25 +13,21 @@ class footer extends React.Component {
   }
 
   footerStyleRight ={
-    // backgroundColor:'#000000',
     textAlign: 'justify',
     padding: '1em 5em 3em 1em',
-    // color:'#fbc707',
     fontWeight: 'bold'
   }
 
   iconStyle = {
     paddingTop: '1em',
     marginLeft: '0.5em'
-    // backgroundColor:'#000000',
-    // color:'#fbc707'
   }
 
   render () {
     return (
       <div>
         <Responsive minWidth={320} maxWidth={2559}>
-          <Segment inverted vertical fixed='bottom' style={{ padding: '3em 0em', width: '100%' }}>
+          <Segment inverted vertical fixed='bottom' style={{ padding: '3em 0em', width: '100%', position: 'sticky', bottom:0 }}>
             <Grid>
               <Grid.Row>
 
