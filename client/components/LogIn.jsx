@@ -37,7 +37,7 @@ function LogIn (props) {
           props.dispatch(showLogout())
         }
       })
-      .catch(err => props.setError('Oops! Are you Trying to sign-up? Press Register! ', err))
+      .catch(err => props.setError('Oops! Are you trying to sign-up? Press Register! ', err))
   }
 
   return (
