@@ -50,7 +50,7 @@ class Nav extends React.Component {
               }
 
               {this.props.logout && <Menu.Item as={Link} to={settingLink}>
-                Setting
+                Settings
               </Menu.Item>
               }
 

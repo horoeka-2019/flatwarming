@@ -115,6 +115,10 @@ class Settings extends React.Component {
             <Header as='h2' color='orange' textAlign='center'>
               <Image src='/favicon.png' /> Change Your Details Below:
             </Header>
+
+
+
+            
             <Form size='huge'>
               <Segment stacked>
                 <Divider horizontal style={{ padding: 20 }}>Need to Add or Remove a flatmate?</Divider>
