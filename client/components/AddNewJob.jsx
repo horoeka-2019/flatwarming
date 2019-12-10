@@ -3,7 +3,12 @@ import {
   Button,
   Form,
   Container,
-  Dropdown
+  Dropdown,
+  Grid,
+  Header,
+  Image,
+  Segment,
+  Icon
 } from 'semantic-ui-react'
 
 import JobList from './JobList'
@@ -70,8 +75,16 @@ class AddNewJob extends React.Component {
 
   render () {
     return (
-      <Container>
+      // <Container>
+      <>
+      <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 600 }}>
+        <Header as='h1' color='orange' textAlign='center' icon>
+          <Icon name='arrow right'/>
+          Add A Job
+        </Header>
         <Form onSubmit={this.onSubmit}>
+        <Segment stacked>
           <JobList
             name='jobId'
             label='Job:'
@@ -100,8 +113,12 @@ class AddNewJob extends React.Component {
           >
             Submit
           </Form.Field>
+          </Segment>
         </Form>
-      </Container>
+        </Grid.Column>
+      </Grid>
+      {/* </Container> */}
+      </>
     )
   }
 }

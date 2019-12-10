@@ -13,86 +13,79 @@ exports[`<Register /> component tests render unchanged from previous snapshot 1`
     }
   }
 >
-  <Register>
-    <Grid
-      style={
-        Object {
-          "height": "80vh",
-        }
-      }
-      textAlign="center"
-      verticalAlign="middle"
+  <ConnectFunction>
+    <Register
+      setError={[Function]}
     >
-      <div
-        className="ui center aligned middle aligned grid"
+      <Grid
         style={
           Object {
             "height": "80vh",
           }
         }
+        textAlign="center"
+        verticalAlign="middle"
       >
-        <GridColumn
+        <div
+          className="ui center aligned middle aligned grid"
           style={
             Object {
-              "maxWidth": 600,
+              "height": "80vh",
             }
           }
         >
-          <div
-            className="column"
+          <GridColumn
             style={
               Object {
                 "maxWidth": 600,
               }
             }
           >
-            <Header
-              as="h1"
-              color="orange"
-              textAlign="center"
+            <div
+              className="column"
+              style={
+                Object {
+                  "maxWidth": 600,
+                }
+              }
             >
-              <h1
-                className="ui orange center aligned header"
+              <Header
+                as="h1"
+                color="orange"
+                textAlign="center"
               >
-                <Image
-                  as="img"
-                  src="/favicon.png"
-                  ui={true}
+                <h1
+                  className="ui orange center aligned header"
                 >
-                  <img
-                    className="ui image"
+                  <Image
+                    as="img"
                     src="/favicon.png"
-                  />
-                </Image>
-                 Register To Flat Warming
-              </h1>
-            </Header>
-            <Form
-              as="form"
-              size="huge"
-            >
-              <form
-                className="ui huge form"
-                onSubmit={[Function]}
-              >
-                <Segment
-                  stacked={true}
-                >
-                  <div
-                    className="ui stacked segment"
+                    ui={true}
                   >
-                    <FormInput
-                      as={[Function]}
-                      control={[Function]}
-                      fluid={true}
-                      icon="user"
-                      iconPosition="left"
-                      name="email"
-                      onChange={[Function]}
-                      placeholder="E-mail address"
-                      type="email"
+                    <img
+                      className="ui image"
+                      src="/favicon.png"
+                    />
+                  </Image>
+                   Register To Flat Warming
+                </h1>
+              </Header>
+              <Form
+                as="form"
+                size="huge"
+              >
+                <form
+                  className="ui huge form"
+                  onSubmit={[Function]}
+                >
+                  <Segment
+                    stacked={true}
+                  >
+                    <div
+                      className="ui stacked segment"
                     >
-                      <FormField
+                      <FormInput
+                        as={[Function]}
                         control={[Function]}
                         fluid={true}
                         icon="user"
@@ -102,55 +95,54 @@ exports[`<Register /> component tests render unchanged from previous snapshot 1`
                         placeholder="E-mail address"
                         type="email"
                       >
-                        <div
-                          className="field"
+                        <FormField
+                          control={[Function]}
+                          fluid={true}
+                          icon="user"
+                          iconPosition="left"
+                          name="email"
+                          onChange={[Function]}
+                          placeholder="E-mail address"
+                          type="email"
                         >
-                          <Input
-                            fluid={true}
-                            icon="user"
-                            iconPosition="left"
-                            name="email"
-                            onChange={[Function]}
-                            placeholder="E-mail address"
-                            type="email"
+                          <div
+                            className="field"
                           >
-                            <div
-                              className="ui fluid left icon input"
+                            <Input
+                              fluid={true}
+                              icon="user"
+                              iconPosition="left"
+                              name="email"
+                              onChange={[Function]}
+                              placeholder="E-mail address"
+                              type="email"
                             >
-                              <input
-                                name="email"
-                                onChange={[Function]}
-                                placeholder="E-mail address"
-                                type="email"
-                              />
-                              <Icon
-                                as="i"
-                                name="user"
+                              <div
+                                className="ui fluid left icon input"
                               >
-                                <i
-                                  aria-hidden="true"
-                                  className="user icon"
-                                  onClick={[Function]}
+                                <input
+                                  name="email"
+                                  onChange={[Function]}
+                                  placeholder="E-mail address"
+                                  type="email"
                                 />
-                              </Icon>
-                            </div>
-                          </Input>
-                        </div>
-                      </FormField>
-                    </FormInput>
-                    <FormInput
-                      as={[Function]}
-                      control={[Function]}
-                      fluid={true}
-                      icon="lock"
-                      iconPosition="left"
-                      name="password"
-                      onChange={[Function]}
-                      placeholder="Password"
-                      type="password"
-                      value=""
-                    >
-                      <FormField
+                                <Icon
+                                  as="i"
+                                  name="user"
+                                >
+                                  <i
+                                    aria-hidden="true"
+                                    className="user icon"
+                                    onClick={[Function]}
+                                  />
+                                </Icon>
+                              </div>
+                            </Input>
+                          </div>
+                        </FormField>
+                      </FormInput>
+                      <FormInput
+                        as={[Function]}
                         control={[Function]}
                         fluid={true}
                         icon="lock"
@@ -161,66 +153,64 @@ exports[`<Register /> component tests render unchanged from previous snapshot 1`
                         type="password"
                         value=""
                       >
-                        <div
-                          className="field"
+                        <FormField
+                          control={[Function]}
+                          fluid={true}
+                          icon="lock"
+                          iconPosition="left"
+                          name="password"
+                          onChange={[Function]}
+                          placeholder="Password"
+                          type="password"
+                          value=""
                         >
-                          <Input
-                            fluid={true}
-                            icon="lock"
-                            iconPosition="left"
-                            name="password"
-                            onChange={[Function]}
-                            placeholder="Password"
-                            type="password"
-                            value=""
+                          <div
+                            className="field"
                           >
-                            <div
-                              className="ui fluid left icon input"
+                            <Input
+                              fluid={true}
+                              icon="lock"
+                              iconPosition="left"
+                              name="password"
+                              onChange={[Function]}
+                              placeholder="Password"
+                              type="password"
+                              value=""
                             >
-                              <input
-                                name="password"
-                                onChange={[Function]}
-                                placeholder="Password"
-                                type="password"
-                                value=""
-                              />
-                              <Icon
-                                as="i"
-                                name="lock"
+                              <div
+                                className="ui fluid left icon input"
                               >
-                                <i
-                                  aria-hidden="true"
-                                  className="lock icon"
-                                  onClick={[Function]}
+                                <input
+                                  name="password"
+                                  onChange={[Function]}
+                                  placeholder="Password"
+                                  type="password"
+                                  value=""
                                 />
-                              </Icon>
-                            </div>
-                          </Input>
-                        </div>
-                      </FormField>
-                    </FormInput>
-                    <Button
-                      as="button"
-                      color="orange"
-                      disabled={true}
-                      fluid={true}
-                      onClick={[Function]}
-                      size="large"
-                    >
-                      <Ref
-                        innerRef={
-                          Object {
-                            "current": <button
-                              class="ui orange large fluid disabled button"
-                              disabled=""
-                              tabindex="-1"
-                            >
-                              Register
-                            </button>,
-                          }
-                        }
+                                <Icon
+                                  as="i"
+                                  name="lock"
+                                >
+                                  <i
+                                    aria-hidden="true"
+                                    className="lock icon"
+                                    onClick={[Function]}
+                                  />
+                                </Icon>
+                              </div>
+                            </Input>
+                          </div>
+                        </FormField>
+                      </FormInput>
+                      <Button
+                        as="button"
+                        color="orange"
+                        disabled={true}
+                        fluid={true}
+                        onClick={[Function]}
+                        size="large"
                       >
-                        <RefFindNode
+                        <Ref
                           innerRef={
                             Object {
                               "current": <button
@@ -233,255 +223,269 @@ exports[`<Register /> component tests render unchanged from previous snapshot 1`
                             }
                           }
                         >
-                          <button
-                            className="ui orange large fluid disabled button"
-                            disabled={true}
-                            onClick={[Function]}
-                            tabIndex={-1}
+                          <RefFindNode
+                            innerRef={
+                              Object {
+                                "current": <button
+                                  class="ui orange large fluid disabled button"
+                                  disabled=""
+                                  tabindex="-1"
+                                >
+                                  Register
+                                </button>,
+                              }
+                            }
                           >
-                            Register
-                          </button>
-                        </RefFindNode>
-                      </Ref>
-                    </Button>
-                  </div>
-                </Segment>
-              </form>
-            </Form>
-            <Message>
-              <div
-                className="ui message"
-              >
-                Already have an account? 
-                <a
-                  href="/register"
+                            <button
+                              className="ui orange large fluid disabled button"
+                              disabled={true}
+                              onClick={[Function]}
+                              tabIndex={-1}
+                            >
+                              Register
+                            </button>
+                          </RefFindNode>
+                        </Ref>
+                      </Button>
+                    </div>
+                  </Segment>
+                </form>
+              </Form>
+              <Message>
+                <div
+                  className="ui message"
                 >
-                  Log In 
-                </a>
-              </div>
-            </Message>
-          </div>
-        </GridColumn>
-      </div>
-    </Grid>
-    <footer>
-      <div>
-        <Responsive
-          getWidth={[Function]}
-          maxWidth={2559}
-          minWidth={320}
-        >
-          <div>
-            <Segment
-              fixed="bottom"
-              inverted={true}
-              style={
-                Object {
-                  "padding": "3em 0em",
-                  "width": "100%",
-                }
-              }
-              vertical={true}
-            >
-              <div
-                className="ui inverted vertical segment"
+                  Already have an account? 
+                  <a
+                    href="/register"
+                  >
+                    Log In 
+                  </a>
+                </div>
+              </Message>
+            </div>
+          </GridColumn>
+        </div>
+      </Grid>
+      <footer>
+        <div>
+          <Responsive
+            getWidth={[Function]}
+            maxWidth={2559}
+            minWidth={320}
+          >
+            <div>
+              <Segment
                 fixed="bottom"
+                inverted={true}
                 style={
                   Object {
                     "padding": "3em 0em",
                     "width": "100%",
                   }
                 }
+                vertical={true}
               >
-                <Grid>
-                  <div
-                    className="ui grid"
-                  >
-                    <GridRow>
-                      <div
-                        className="row"
-                      >
-                        <GridColumn
-                          width={2}
+                <div
+                  className="ui inverted vertical segment"
+                  fixed="bottom"
+                  style={
+                    Object {
+                      "padding": "3em 0em",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <Grid>
+                    <div
+                      className="ui grid"
+                    >
+                      <GridRow>
+                        <div
+                          className="row"
                         >
-                          <div
-                            className="two wide column"
+                          <GridColumn
+                            width={2}
                           >
-                            <Image
-                              as="img"
-                              size="large"
-                              src="/favicon.png"
-                              ui={true}
+                            <div
+                              className="two wide column"
                             >
-                              <img
-                                className="ui large image"
+                              <Image
+                                as="img"
+                                size="large"
                                 src="/favicon.png"
-                              />
-                            </Image>
-                          </div>
-                        </GridColumn>
-                        <GridColumn
-                          width={8}
-                        >
-                          <div
-                            className="eight wide column"
-                          >
-                            <Header
-                              as="h4"
-                              content="About"
-                              inverted={true}
-                            >
-                              <h4
-                                className="ui inverted header"
+                                ui={true}
                               >
-                                About
-                              </h4>
-                            </Header>
-                            <List
-                              inverted={true}
-                              link={true}
-                            >
-                              <div
-                                className="ui inverted link list"
-                                role="list"
-                              >
-                                <ListItem>
-                                  <div
-                                    className="item"
-                                    onClick={[Function]}
-                                    role="listitem"
-                                  >
-                                    Office: 12 Morgan St, New Market
-                                  </div>
-                                </ListItem>
-                                <ListItem>
-                                  <div
-                                    className="item"
-                                    onClick={[Function]}
-                                    role="listitem"
-                                  >
-                                    Phone Us @ 021 123456
-                                  </div>
-                                </ListItem>
-                                <ListItem>
-                                  <div
-                                    className="item"
-                                    onClick={[Function]}
-                                    role="listitem"
-                                  >
-                                    Email us @ FlatWarming@gmail.com
-                                  </div>
-                                </ListItem>
-                              </div>
-                            </List>
-                          </div>
-                        </GridColumn>
-                        <GridColumn
-                          width={2}
-                        >
-                          <div
-                            className="two wide column"
+                                <img
+                                  className="ui large image"
+                                  src="/favicon.png"
+                                />
+                              </Image>
+                            </div>
+                          </GridColumn>
+                          <GridColumn
+                            width={8}
                           >
-                            <Icon
-                              as="i"
-                              name="facebook"
-                              style={
-                                Object {
-                                  "marginLeft": "0.5em",
-                                  "paddingTop": "1em",
-                                }
-                              }
+                            <div
+                              className="eight wide column"
                             >
-                              <i
-                                aria-hidden="true"
-                                className="facebook icon"
-                                onClick={[Function]}
+                              <Header
+                                as="h4"
+                                content="About"
+                                inverted={true}
+                              >
+                                <h4
+                                  className="ui inverted header"
+                                >
+                                  About
+                                </h4>
+                              </Header>
+                              <List
+                                inverted={true}
+                                link={true}
+                              >
+                                <div
+                                  className="ui inverted link list"
+                                  role="list"
+                                >
+                                  <ListItem>
+                                    <div
+                                      className="item"
+                                      onClick={[Function]}
+                                      role="listitem"
+                                    >
+                                      Office: 12 Morgan St, New Market
+                                    </div>
+                                  </ListItem>
+                                  <ListItem>
+                                    <div
+                                      className="item"
+                                      onClick={[Function]}
+                                      role="listitem"
+                                    >
+                                      Phone Us @ 021 123456
+                                    </div>
+                                  </ListItem>
+                                  <ListItem>
+                                    <div
+                                      className="item"
+                                      onClick={[Function]}
+                                      role="listitem"
+                                    >
+                                      Email us @ FlatWarming@gmail.com
+                                    </div>
+                                  </ListItem>
+                                </div>
+                              </List>
+                            </div>
+                          </GridColumn>
+                          <GridColumn
+                            width={2}
+                          >
+                            <div
+                              className="two wide column"
+                            >
+                              <Icon
+                                as="i"
+                                name="facebook"
                                 style={
                                   Object {
                                     "marginLeft": "0.5em",
                                     "paddingTop": "1em",
                                   }
                                 }
-                              />
-                            </Icon>
-                            <Icon
-                              as="i"
-                              name="twitter square"
-                              style={
-                                Object {
-                                  "marginLeft": "0.5em",
-                                  "paddingTop": "1em",
-                                }
-                              }
-                            >
-                              <i
-                                aria-hidden="true"
-                                className="twitter square icon"
-                                onClick={[Function]}
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="facebook icon"
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "marginLeft": "0.5em",
+                                      "paddingTop": "1em",
+                                    }
+                                  }
+                                />
+                              </Icon>
+                              <Icon
+                                as="i"
+                                name="twitter square"
                                 style={
                                   Object {
                                     "marginLeft": "0.5em",
                                     "paddingTop": "1em",
                                   }
                                 }
-                              />
-                            </Icon>
-                            <Icon
-                              as="i"
-                              name="mail"
-                              style={
-                                Object {
-                                  "marginLeft": "0.5em",
-                                  "paddingTop": "1em",
-                                }
-                              }
-                            >
-                              <i
-                                aria-hidden="true"
-                                className="mail icon"
-                                onClick={[Function]}
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="twitter square icon"
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "marginLeft": "0.5em",
+                                      "paddingTop": "1em",
+                                    }
+                                  }
+                                />
+                              </Icon>
+                              <Icon
+                                as="i"
+                                name="mail"
                                 style={
                                   Object {
                                     "marginLeft": "0.5em",
                                     "paddingTop": "1em",
                                   }
                                 }
-                              />
-                            </Icon>
-                            <Icon
-                              as="i"
-                              name="instagram"
-                              style={
-                                Object {
-                                  "marginLeft": "0.5em",
-                                  "paddingTop": "1em",
-                                }
-                              }
-                            >
-                              <i
-                                aria-hidden="true"
-                                className="instagram icon"
-                                onClick={[Function]}
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="mail icon"
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "marginLeft": "0.5em",
+                                      "paddingTop": "1em",
+                                    }
+                                  }
+                                />
+                              </Icon>
+                              <Icon
+                                as="i"
+                                name="instagram"
                                 style={
                                   Object {
                                     "marginLeft": "0.5em",
                                     "paddingTop": "1em",
                                   }
                                 }
-                              />
-                            </Icon>
-                          </div>
-                        </GridColumn>
-                      </div>
-                    </GridRow>
-                  </div>
-                </Grid>
-              </div>
-            </Segment>
-          </div>
-        </Responsive>
-      </div>
-    </footer>
-  </Register>
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="instagram icon"
+                                  onClick={[Function]}
+                                  style={
+                                    Object {
+                                      "marginLeft": "0.5em",
+                                      "paddingTop": "1em",
+                                    }
+                                  }
+                                />
+                              </Icon>
+                            </div>
+                          </GridColumn>
+                        </div>
+                      </GridRow>
+                    </div>
+                  </Grid>
+                </div>
+              </Segment>
+            </div>
+          </Responsive>
+        </div>
+      </footer>
+    </Register>
+  </ConnectFunction>
 </Provider>
 `;

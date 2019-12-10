@@ -3,7 +3,12 @@ import {
   Card, Image,
   Button,
   FormField,
-  List
+  List,
+  Table,
+  Label,
+  Menu,
+  Icon,
+  Header
 } from 'semantic-ui-react'
 
 import { connect } from 'react-redux'
@@ -15,19 +20,56 @@ class Jobs extends React.Component {
   // }
 
   render () {
+    console.log(this.props.jobDetail)
     return (
-      <><Card>
-        <img src='/jobs-1.jpg' size='large' wrapped ui={false} rounded style={{ height: '40vh', width: 'auto' }}/>
+      <>
+      {/* <Card> */}
+      <Header as='h2' textAlign='center' block>
+        <Icon name='sticky note outline' />
+        <Header.Content>
+          Flat Jobs
+          <Header.Subheader>Manage your flat maintainence</Header.Subheader>
+        </Header.Content>
+      </Header>
+      <Table celled selectable>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Name</Table.HeaderCell>
+            <Table.HeaderCell>Job</Table.HeaderCell>
+            <Table.HeaderCell>Due Day</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
+          {
+            this.props.jobDetail.map((job, index) => (
+              <Table.Row key={index}>
+                <Table.Cell>
+                  {job.name}
+                </Table.Cell>
+                <Table.Cell key={index}>
+                  {job.job}
+                </Table.Cell>
+                <Table.Cell key={index}>
+                  {job.dueDay}
+                </Table.Cell>
+              </Table.Row>
+            ))
+          }
+        </Table.Body>
+
+      </Table>
+      {/* <img src='/jobs-1.jpg' size='large' wrapped ui={false} rounded style={{ height: '40vh', width: 'auto' }}/>
         <Card.Content>
           <Card.Header>
               JOBS
           </Card.Header>
-          {/* <Card.Meta>
+          <Card.Meta>
               DUE IN 5 DAYS
           </Card.Meta>
           <Card.Description>
               BY names from flatmate
-          </Card.Description> */}
+          </Card.Description>
           <FormField>
             <List as='ol'>
               {
@@ -44,9 +86,10 @@ class Jobs extends React.Component {
           <a>
               EDIT JOBS
           </a>
-        </Card.Content>
-        <Button attached="bottom">-</Button>
-      </Card></>
+        </Card.Content> */}
+        {/* <Button attached="bottom">-</Button>
+        </Card> */}
+        </>
     )
   }
 }

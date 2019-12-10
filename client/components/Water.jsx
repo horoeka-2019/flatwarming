@@ -1,25 +1,60 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Popup } from 'semantic-ui-react'
 
 class Water extends React.Component {
   state = {
+  }
 
+  componentDidMount () {
+    this.setState({
+      days: Number(this.props.dueWaterDay[0])
+    })
   }
 
   render () {
     return (
-    <><Card color='yellow'>
-      <img src='/water-1 (1).jpg' style={{ height: '40vh', width: 'auto' }} />
-      <Card.Content>
+    <>
+    {this.state.days ?
+    <Card color='yellow'>
+      <img src='/water-1 (1).jpg' style={{ height: '30vh', width: 'auto' }} />
+      <div className="countholder">
+        <h3>Water Bill</h3>
 
-        <Card.Header>WATER BILL</Card.Header>
+        <div style={{ padding: '4px 10px', display: 'inline-block' }}>{this.props.dueWaterDay[0]}<span></span><div className="smalltext">Days</div></div>
 
-        <Card.Meta>
-        DUE DAY IN {this.props.dueWaterDay}
-        </Card.Meta>
+        <div style={{ padding: '4px 10px', display: 'inline-block' }}>{this.props.dueWaterDay[1]}<span></span><div className="smalltext">Hours</div></div>
 
-      </Card.Content>
-    </Card></>
+        <div style={{ padding: '4px 10px', display: 'inline-block' }}>{this.props.dueWaterDay[2]}<span></span><div className="smalltext">Mins</div></div>
+
+        <div style={{ padding: '4px 10px', display: 'inline-block' }}>{this.props.dueWaterDay[3]}<span></span><div className="smalltext">Secs</div></div>
+      </div>
+
+    </Card>
+    : null }
+    
+    {!this.state.days &&
+    <Popup
+        content='DUE SOON'
+        open
+        position='top center'
+        trigger={
+    <Card color='yellow'>
+      <img src='/water-1 (1).jpg' style={{ height: '30vh', width: 'auto' }} />
+      <div className="countholder" style={{color: '#f78686'}}>
+        <h3>Water Bill</h3>
+
+        <div style={{ padding: '4px 10px', display: 'inline-block' }}>{this.props.dueWaterDay[0]}<span></span><div className="smalltext">Days</div></div>
+
+        <div style={{ padding: '4px 10px', display: 'inline-block' }}>{this.props.dueWaterDay[1]}<span></span><div className="smalltext">Hours</div></div>
+
+        <div style={{ padding: '4px 10px', display: 'inline-block' }}>{this.props.dueWaterDay[2]}<span></span><div className="smalltext">Mins</div></div>
+
+        <div style={{ padding: '4px 10px', display: 'inline-block' }}>{this.props.dueWaterDay[3]}<span></span><div className="smalltext">Secs</div></div>
+      </div>
+
+    </Card>}/>
+  }
+    </>
     )
   }
 }

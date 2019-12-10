@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Grid } from 'semantic-ui-react'
+import { Container, Grid, Image, Divider } from 'semantic-ui-react'
 
 import Power from './Power'
 import Internet from './Internet'
@@ -42,8 +42,7 @@ const countdownTime = function (then, today) {
   const hours = countdown.format('HH')
   const minutes = countdown.format('mm')
   const seconds = countdown.format('ss')
-
-  return `days: ${days}, hours: ${hours}, minutes: ${minutes}, seconds: ${seconds}`
+  return [days, hours, minutes, seconds]
 }
 
 class Dashboard extends React.Component {
@@ -99,44 +98,47 @@ class Dashboard extends React.Component {
     const dueWaterDay = calculateDueDay(waterDay)
     const dueWifiDay = calculateDueDay(wifiDay)
     return (
-      <><Container textAlign='center' style = {{ marginTop: 100 }}>
-        <Names />
-      </Container><Container>
-        <Grid columns='equal' style = {{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          marginTop: 20
-        }}>
-          <Grid.Row>
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Power duePowerDay={duePowerDay}/>
-            </Grid.Column>
+      <>
+      <Names/>
+      <Grid celled>
+        <Grid.Row width={15}>
+          <Grid.Column>
+        <Divider horizontal style={{ padding: 20 }}>BILLS</Divider>
+        </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Internet dueWifiDay={dueWifiDay}/>
-            </Grid.Column>
+          <Grid.Column mobile={12} tablet={8} computer={4}> 
+            <Power duePowerDay={duePowerDay}/>
+          </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Water dueWaterDay={dueWaterDay}/>
-            </Grid.Column>
+          <Grid.Column mobile={12} tablet={8} computer={4}>
+            <Internet dueWifiDay={dueWifiDay}/> 
+          </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Rubbish day={this.state.details.dayOfWeek}/>
-            </Grid.Column>
+          <Grid.Column mobile={12} tablet={8} computer={4}>
+            <Water dueWaterDay={dueWaterDay}/>
+          </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <Jobs userId={this.props.match.params.usersId}/>
-            </Grid.Column>
+          <Grid.Column mobile={12} tablet={8} computer={4}>
+            <Rubbish day={this.state.details.dayOfWeek}/>
+          </Grid.Column>
 
-            <Grid.Column mobile={12} tablet={8} computer={4}>
-              <AddNewJob userId={this.props.match.params.usersId}/>
-            </Grid.Column>
+        </Grid.Row>
 
-          </Grid.Row>
-        </Grid>
-      </Container><Footer /></>
+        <Grid.Row>
+
+          <Grid.Column mobile={12} tablet={8} computer={4}>
+            <AddNewJob userId={this.props.match.params.usersId}/>
+          </Grid.Column>
+
+          <Grid.Column computer={12}>
+            <Jobs userId={this.props.match.params.usersId}/>
+          </Grid.Column>
+
+        </Grid.Row>
+      </Grid>
+      <Footer /></>
     )
   }
 }
