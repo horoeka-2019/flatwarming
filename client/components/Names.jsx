@@ -10,18 +10,17 @@ class Names extends React.Component {
     for (let i = 0; i<flatmates.length; i++) {
       newArr.push(flatmates[i].name)
     }
-    const newString = newArr.join()
+    return newArr.join(' ')
   }
 
   render () {
     console.log(this.flatmateFunction())
     return (
       <>
-        <Header style={{color:'orange', marginTop: 150}}>
-          <p>Welcome back 
-          {this.props.flatmates.map(flatmate => 
-            {flatmate.name}
-          )}</p>
+        <Header style={{color:'orange', marginTop: 100}} textAlign='center'>
+          <p>
+            Welcome back {this.flatmateFunction()}!
+          </p>
         </Header>
       </>
     )
