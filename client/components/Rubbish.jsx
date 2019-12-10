@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Image, Segment } from 'semantic-ui-react'
+import { Card, Icon, Image, Segment, Popup } from 'semantic-ui-react'
 // import Countdown from 'react-countdown-now'
 // import { getSeconds, startTimer, tick } from '../helperFunctions'
 
@@ -82,27 +82,38 @@ class Rubbish extends React.Component {
 
   render () {
     return (
-      <>
-        <Card color='green'>
-          <img src='/rubbish-1 (1).jpg' style={{ height: '40vh', width: 'auto' }} />
-          <div id="countholder">
-            <h3>Rubbish Pickup: {this.props.day}</h3>
+    <>
+      {this.props.day ?
+      <Card color='green'>
+        <img src='/rubbish-1 (1).jpg' style={{ height: '30vh', width: 'auto' }} />
+        <div className="countholder">
+          <h3>Rubbish Pickup: {this.props.day}</h3>
           <div><span className="days" id="days"></span><div className="smalltext">Days</div></div>
           <div><span className="hours" id="hours"></span><div className="smalltext">Hours</div></div>
           <div><span className="minutes" id="minutes"></span><div className="smalltext">Mins</div></div>
           <div><span className="seconds" id="seconds"></span><div className="smalltext">Secs</div></div>
         </div>
-          {/* <Card.Content>
+      </Card>
+      : null }
 
-            <Card.Header>RUBBISH DAY</Card.Header>
-
-            <Card.Meta>
-            Your Rubbish Day is {this.props.day}
-            </Card.Meta>
-
-          </Card.Content> */}
-        </Card>
-      </>
+      {!this.props.day &&
+      <Popup
+        content='LESS THAN 1 DAY LEFT'
+        open
+        position='top center'
+        trigger={
+        <Card color='green'>
+        <img src='/rubbish-1 (1).jpg' style={{ height: '30vh', width: 'auto' }} />
+        <div className="countholder" style={{color: '#f78686'}}>
+          <h3>Rubbish Pickup: {this.props.day}</h3>
+          <div><span className="days" id="days"></span><div className="smalltext">Days</div></div>
+          <div><span className="hours" id="hours"></span><div className="smalltext">Hours</div></div>
+          <div><span className="minutes" id="minutes"></span><div className="smalltext">Mins</div></div>
+          <div><span className="seconds" id="seconds"></span><div className="smalltext">Secs</div></div>
+        </div>
+        </Card> } />
+      }
+    </>
     )
   }
 }

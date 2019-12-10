@@ -4,13 +4,23 @@ import {connect} from 'react-redux'
 
 class Names extends React.Component {
   
+  flatmateFunction = () => {
+    const newArr = []
+    const flatmates = this.props.flatmates
+    for (let i = 0; i<flatmates.length; i++) {
+      newArr.push(flatmates[i].name)
+    }
+    return newArr.join(' ')
+  }
 
   render () {
+    console.log(this.flatmateFunction())
     return (
       <>
-        <Header style={{color:'orange'}}>
-          Welcome back 
-          {this.props.flatmates.map(flatmate => <p key={flatmate.id}>{flatmate.name}</p>)}
+        <Header style={{color:'orange', marginTop: 100}} textAlign='center'>
+          <p>
+            Welcome back {this.flatmateFunction()}!
+          </p>
         </Header>
       </>
     )
