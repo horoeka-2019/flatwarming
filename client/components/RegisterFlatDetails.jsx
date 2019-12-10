@@ -73,7 +73,7 @@ class RegisterFlatDetails extends React.Component {
     })
   }
 
-  changeHandle (value) {
+  changeHandle(value) {
     this.setState(
       {
         inputValue: value
@@ -98,111 +98,114 @@ class RegisterFlatDetails extends React.Component {
   }
 
   clearFields = () => {
-    document.getElementById('textfield1').value = '';
+    document.getElementById('textfield1').value = ''
   }
 
-  render () {
+  render() {
     return (
-      <>'     '<Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 800 }}>
-          <Header as='h1' color='orange' textAlign='center'>
-            <Image src='/favicon.png' /> Almost There! Register Your Flat Details Below:
+      <>
+        <Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 800 }}>
+            <Header as='h1' color='orange' textAlign='center'>
+              <Image src='/favicon.png' /> Almost There! Register Your Flat Details Below:
           </Header>
-          <Form size='huge'>
-            <Segment stacked>
-              <Divider horizontal style={{ padding: 20 }}>Where Is Your Flat Located?</Divider>
-              <FormField
-                control={Input}
-                name='address'
-                type='text'
-                label='Address: '
-                placeholder='123 Onehunga Mall'
-                required={true}
-                onChange={this.onChange}
-              >
-              </FormField>
+            <Form size='huge'>
+              <Segment stacked>
+                <Divider horizontal style={{ padding: 20 }}>Where Is Your Flat Located?</Divider>
+                <FormField
+                  control={Input}
+                  name='address'
+                  type='text'
+                  label='Address: '
+                  placeholder='123 Onehunga Mall'
+                  required={true}
+                  onChange={this.onChange}
+                >
+                </FormField>
 
-              <FormField
-                control={Input}
-                name='suburb'
-                type='text'
-                label='Suburb: '
-                placeholder='Onehunga'
-                required={true}
-                onChange={this.onChange}>
-              </FormField>
+                <FormField
+                  control={Input}
+                  name='suburb'
+                  type='text'
+                  label='Suburb: '
+                  placeholder='Onehunga'
+                  required={true}
+                  onChange={this.onChange}>
+                </FormField>
 
-              <Divider horizontal style={{ padding: 20 }}>Who Lives There?</Divider>
-              <FormField>
-                <List>
-                  {
-                    this.props.flatmates.map((flatmate, index) =>
-                      <FlatMate key={index} id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
-                  }
-                </List>
-                <label>FlatMate:</label>
-                <Input id="textfield1" type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
+                <Divider horizontal style={{ padding: 20 }}>Who Lives There?</Divider>
+                <FormField>
+                  <List>
+                    {
+                      this.props.flatmates.map((flatmate, index) =>
+                        <FlatMate key={index} id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
+                    }
+                  </List>
+                  <label>FlatMate:</label>
+                  <Input id="textfield1" type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
 
-                <Button style={{ margin: 5 }}
-                  onClick={() => {
-                    this.props.addFlatmate(this.state.inputValue)
-                    this.clearFields()
-                  }}>
-                  Add Flatmate
+                  <Button style={{ margin: 5 }}
+                    onClick={() => {
+                      this.props.addFlatmate(this.state.inputValue)
+                      this.clearFields()
+                    }}>
+                    Add Flatmate
                 </Button>
-              </FormField>
+                </FormField>
 
-              <Divider horizontal style={{ padding: 20 }}>What Date Do You Pay Your Bills?</Divider>
-              <Form.Field control={Dropdown}
-                selection
-                clearable
-                placeholder="Power Due Date:"
-                onChange={this.onChangeDropdownList}
-                options={options}
-                name="powerDay"
-                label="Power Due Date"
-                required={true}
-              />
-              <Form.Field control={Dropdown}
-                selection
-                clearable
-                placeholder="Water Due Date:"
-                onChange={this.onChangeDropdownList}
-                options={options}
-                name="waterDay"
-                label="Water Due Date:"
-                required={true}
-              />
-              <Form.Field control={Dropdown}
-                selection
-                clearable
-                placeholder="Internet Due Date:"
-                onChange={this.onChangeDropdownList}
-                options={options}
-                name="wifiDay"
-                label="Internet Due Date:"
-                required={true}
-              />
+                <Divider horizontal style={{ padding: 20 }}>What Date Do You Pay Your Bills?</Divider>
+                <Form.Field control={Dropdown}
+                  selection
+                  clearable
+                  placeholder="Power Due Date:"
+                  onChange={this.onChangeDropdownList}
+                  options={options}
+                  name="powerDay"
+                  label="Power Due Date"
+                  required={true}
+                />
+                <Form.Field control={Dropdown}
+                  selection
+                  clearable
+                  placeholder="Water Due Date:"
+                  onChange={this.onChangeDropdownList}
+                  options={options}
+                  name="waterDay"
+                  label="Water Due Date:"
+                  required={true}
+                />
+                <Form.Field control={Dropdown}
+                  selection
+                  clearable
+                  placeholder="Internet Due Date:"
+                  onChange={this.onChangeDropdownList}
+                  options={options}
+                  name="wifiDay"
+                  label="Internet Due Date:"
+                  required={true}
+                />
 
-              <Button
-                color='orange'
-                fluid size='large'
-                onClick={() => this.onSubmit()}
-                disabled={
-                  this.props.flatmates.length <= 0 ||
+                <Button
+                  color='orange'
+                  fluid size='large'
+                  onClick={() => this.onSubmit()}
+                  disabled={
+                    this.props.flatmates.length <= 0 ||
                     !this.state.address ||
                     !this.state.powerDay ||
                     !this.state.wifiDay ||
                     !this.state.waterDay ||
                     !this.state.suburb
-                }
-              > Submit
+                  }
+                > Submit
               </Button>
 
-            </Segment>
-          </Form>
-        </Grid.Column>
-      </Grid>'     '<Footer />'     '</>
+              </Segment>
+            </Form>
+          </Grid.Column>
+        </Grid>
+        <Footer />
+      </>
     )
   }
 }
