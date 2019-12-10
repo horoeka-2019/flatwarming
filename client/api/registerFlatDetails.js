@@ -2,10 +2,35 @@ import request from 'superagent'
 
 const apiURL = 'http://localhost:3000/api/v1/users'
 
-// This call should POST the details to our many, many databases
-export function getUserDetails (details) {
-  return request.post(`${apiURL}/register`)
-    .then(res => console.log(res.body))
+// This call should GET the details given a userId
+export function getUserDetails (id) {
+  return request.get(`${apiURL}/${id}`)
+    .then(res => res.body)
+    .catch(err => {
+      if (err.message === 'Not Found') {
+        throw new Error('ID not found')
+      } else {
+        const errorMessage = 'An unknown error has occurred'
+        // eslint-disable-next-line no-console
+        console.error(errorMessage)
+        throw new Error(errorMessage)
+      }
+    })
+}
+
+export function getAllJobs () {
+  return request.get(`${apiURL}/jobs/all`)
+    .then(res => { const obj = {}; obj.jobs = res.body; return obj })
+    .catch(err => {
+      if (err.message === 'Not Found') {
+        throw new Error('ID not found')
+      } else {
+        const errorMessage = 'An unknown error has occurred'
+        // eslint-disable-next-line no-console
+        console.error(errorMessage)
+        throw new Error(errorMessage)
+      }
+    })
 }
 
 export function addUserDetail (userDetail) {
@@ -38,4 +63,8 @@ export function getUserByName (email) {
         throw new Error(errorMessage)
       }
     })
+}
+
+export function addJobs () {
+  return request.post(`${apiURL}/${id}`)
 }

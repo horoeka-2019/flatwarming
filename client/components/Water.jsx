@@ -1,28 +1,27 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 class Water extends React.Component {
-  state = { 
+  state = {
 
-   }
-  render() { 
-    return ( 
-      <>
-      <Card color='yellow'>
-        <img src='/water.png' style={{backgroundColor: '#acdf87', height: '30vh', width: 'auto'}} />
-        <Card.Content>
+  }
 
-          <Card.Header>WATER BILL</Card.Header>
+  render () {
+    return (
+    <><Card color='yellow'>
+      <img src='/water-1 (1).jpg' style={{ height: '40vh', width: 'auto' }} />
+      <Card.Content>
 
-          <Card.Meta>
-            DUE IN 20 DAYS
-          </Card.Meta>
+        <Card.Header>WATER BILL</Card.Header>
 
-        </Card.Content> 
-      </Card>
-      </>
-     );
+        <Card.Meta>
+        DUE DAY IN {this.props.dueWaterDay} DAYS
+        </Card.Meta>
+
+      </Card.Content>
+    </Card></>
+    )
   }
 }
- 
+
 export default Water

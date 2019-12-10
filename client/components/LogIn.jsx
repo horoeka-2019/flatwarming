@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { signIn, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
-import { connect } from 'react-redux' 
+import { connect } from 'react-redux'
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 import Footer from './Footer'
+import { getUserByName } from '../api/registerFlatDetails'
 
+import { setError } from '../actions/error'
 
 function LogIn (props) {
   const [form, setForm] = useState({
@@ -28,12 +30,14 @@ function LogIn (props) {
     })
       .then((token) => {
         if (isAuthenticated()) {
-          props.history.push('/dashboard')
+          getUserByName(form.email)
+            .then(user => props.history.push(`/dashboard/${user.id}`))
           props.dispatch(hideReg())
           props.dispatch(hideLogin())
           props.dispatch(showLogout())
         }
       })
+      .catch(err => props.setError('Oops! Are you trying to sign-up? Press Register! ', err))
   }
 
   return (
@@ -45,16 +49,16 @@ function LogIn (props) {
           </Header>
           <Form size='huge'>
             <Segment stacked>
-              
-              <Form.Input 
+
+              <Form.Input
                 name='email'
                 type='email'
                 value={form.email}
                 onChange={handleChange}
-                fluid 
-                icon='user' 
-                iconPosition='left' 
-                placeholder='E-mail address' 
+                fluid
+                icon='user'
+                iconPosition='left'
+                placeholder='E-mail address'
               />
 
               <Form.Input
@@ -66,17 +70,16 @@ function LogIn (props) {
                 icon='lock'
                 iconPosition='left'
                 placeholder='Password'
-                type='password'
               />
 
-              <Button 
-                color='orange' 
+              <Button
+                color='orange'
                 fluid size='large'
                 onClick={handleClick}
                 disabled={
-                !form.password ||
-                !form.email ||
-                !form.email.includes('@')
+                  !form.password ||
+                  !form.email ||
+                  !form.email.includes('@')
                 }
               >
                 Login
@@ -88,7 +91,7 @@ function LogIn (props) {
           </Message>
         </Grid.Column>
       </Grid>
-    <Footer />
+      <Footer />
     </>
   )
 }
@@ -97,8 +100,13 @@ const mapStateToProps = state => {
   return {
     login: state.login,
     register: state.register,
-    logout: state.logout
+    logout: state.logout,
+    error: state.error
   }
 }
 
-export default connect(mapStateToProps)(LogIn)
+const mapDispatchToProps = {
+  setError
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
