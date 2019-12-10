@@ -1,7 +1,5 @@
 import React from 'react'
-import { Card, Icon, Image, Segment, Popup } from 'semantic-ui-react'
-// import Countdown from 'react-countdown-now'
-// import { getSeconds, startTimer, tick } from '../helperFunctions'
+import { Card, Popup } from 'semantic-ui-react'
 
 var curday
 var secTime
@@ -88,10 +86,26 @@ class Rubbish extends React.Component {
         <img src='/rubbish-1 (1).jpg' style={{ height: '30vh', width: 'auto' }} />
         <div className="countholder">
           <h3>Rubbish Pickup: {this.props.day}</h3>
-          <div><span className="days" id="days"></span><div className="smalltext">Days</div></div>
-          <div><span className="hours" id="hours"></span><div className="smalltext">Hours</div></div>
-          <div><span className="minutes" id="minutes"></span><div className="smalltext">Mins</div></div>
-          <div><span className="seconds" id="seconds"></span><div className="smalltext">Secs</div></div>
+          
+          <div>
+            <span className="days" id="days"></span>
+            <div className="smalltext">Days</div>
+          </div>
+          
+          <div>
+            <span className="hours" id="hours"></span>
+            <div className="smalltext">Hours</div>
+          </div>
+          
+          <div>
+            <span className="minutes" id="minutes"></span>
+            <div className="smalltext">Mins</div>
+          </div>
+          
+          <div>
+            <span className="seconds" id="seconds"></span>
+            <div className="smalltext">Secs</div>
+          </div>
         </div>
       </Card>
       : null }

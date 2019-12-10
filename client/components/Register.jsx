@@ -31,7 +31,10 @@ function Register (props) {
       .then(() => {
         if (isAuthenticated()) {
           getUserByName(form.email)
-            .then(user => props.history.push(`/register-flat/${user.id}`))
+            .then(user => {
+              setTimeout(() => window.location.reload(), 100)
+              props.history.push(`/register-flat/${user.id}`)
+            })
         }
       })
       .catch(err => props.setError('Oops! Have you previously registered your flat with this email address? Log in below registration form! ', err))
