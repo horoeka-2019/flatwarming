@@ -152,7 +152,8 @@ const mapStateToProps = state => {
     login: state.login,
     register: state.register,
     logout: state.logout,
-    flatmateDetail: state.flatmateDetailReducer
+    flatmateDetail: state.flatmateDetailReducer,
+    error: state.error
   }
 }
 
