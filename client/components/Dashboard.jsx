@@ -91,6 +91,13 @@ class Dashboard extends React.Component {
     })
   }
 
+  gridStyle={
+    display: 'flex', 
+    justifyContent: 'center', 
+    flexWrap: 'wrap',
+    alignItems: 'center'
+  }
+
   render () {
     if (this.state.details === '') {
       return null
@@ -102,7 +109,7 @@ class Dashboard extends React.Component {
     return (
       <>
       <Names/>
-      <Grid celled>
+      <Grid celled style={this.gridStyle}>
         <Grid.Row width={15}>
           <Grid.Column>
         <Divider horizontal style={{ padding: 20 }}>BILLS</Divider>
