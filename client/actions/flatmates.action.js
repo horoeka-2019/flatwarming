@@ -3,6 +3,7 @@ import * as api from '../api/flatmates'
 
 export const GET_FLATMATES_PENDING = 'GET_FLATMATES_PENDING'
 export const GET_FLATMATES_SUCCESS = 'GET_FLATMATES_SUCCESS'
+export const ADD_FLATMATE_SETTING = 'ADD_FLATMATE_SETTING'
 
 export function getFlatmatesPending () {
   return {
@@ -26,3 +27,25 @@ export function getFlatmates (userId) {
       .catch(err => dispatch(setError(err.message)))
   }
 }
+
+export function removeFlatmateByUserId (userId, flatmateId) {
+  return dispatch => {
+    return api.removeFlatmateByUserId(userId,flatmateId)
+      .then(flatmates => dispatch(getFlatmatesSuccess(flatmates.flatmates)))
+      .catch(err => dispatch(setError(err.message)))
+    }
+}
+
+export const addFlatmateSetting = (flatmate) => ({
+  type: ADD_FLATMATE_SETTING,
+  payload: flatmate
+})
+
+export const addFlatmateSettingIntoDB = (userId, flatmate) =>{
+  return dispatch => {
+    return api.addFlatmateByUserId(userId, flatmate)
+      .then(flatmates => dispatch(getFlatmatesSuccess(flatmates.flatmates)))
+      .catch(err => dispatch(setError(err.message)))
+    }
+}
+

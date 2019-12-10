@@ -7,6 +7,7 @@ import flatmateReducer from './flatmate.reducer'
 import flatmateDetailReducer from './flatmateDetails.reducer'
 import jobsReducer from './jobs.reducer'
 import flatmatesReducer from './flatmates.reducer'
+import userReducer from './user'
 import error from './error'
 
 export default combineReducers({
@@ -17,5 +18,6 @@ export default combineReducers({
   flatmateDetailReducer,
   jobsReducer,
   flatmatesReducer,
+  userReducer,
   error
 })

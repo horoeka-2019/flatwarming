@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 import Footer from './Footer'
 import { getUserByName } from '../api/registerFlatDetails'
+import {newUser} from '../actions/user'
 
 import { setError } from '../actions/error'
 
@@ -32,10 +33,15 @@ function LogIn (props) {
       .then((token) => {
         if (isAuthenticated()) {
           getUserByName(form.email)
-            .then(user => props.history.push(`/dashboard/${user.id}`))
+            .then(user => {
+              props.newUser(user.id);
+              props.history.push(`/dashboard/${user.id}`)
+            })
           props.hideReg()
           props.hideLogin()
           props.showLogout()
+
+          
         }
       })
       .catch(err => {
@@ -112,7 +118,8 @@ const mapDispatchToProps = {
   setError,
   hideReg,
   hideLogin,
-  showLogout
+  showLogout,
+  newUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
