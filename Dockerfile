@@ -21,8 +21,6 @@ COPY --from=builder /build/knexfile.js .
 COPY --from=builder /build/migrations ./migrations
 COPY --from=builder /build/seeds ./seeds
 
-
-
 RUN npm run db:migrate 
 
 CMD ["npm", "start"]
