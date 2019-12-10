@@ -29,6 +29,6 @@
             "error", { "max": 1, "maxEOF": 0, "maxBOF": 0 }
         ],
         "object-curly-spacing": [2, "always"],
-        "react/prop-types": "off"
+        "react/prop-types": "on"
     }
 }
