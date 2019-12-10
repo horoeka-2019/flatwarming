@@ -7,17 +7,17 @@ import { Container } from 'semantic-ui-react'
 import RegisterFlatFetails from './RegisterFlatDetails'
 import Dashboard from './Dashboard'
 import Welcome from './Welcome'
-// import Countdown from './CountDown'
+import Setting from './Setting'
 
 class App extends React.Component {
   render () {
     return (
       <div>
-        {/* <Countdown/> */}
         <Router>
 
           <Route path='/' component={Nav} />
           <Route exact path='/' component={Welcome} />
+          <Route exact path='/setting/:userid' component={Setting} />
 
           <Switch>
             <Route exact path='/register-flat/:userid' component={RegisterFlatFetails} ></Route>
