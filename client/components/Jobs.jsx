@@ -20,7 +20,6 @@ class Jobs extends React.Component {
   // }
 
   render () {
-    console.log(this.props.jobDetail)
     return (
       <>
       {/* <Card> */}

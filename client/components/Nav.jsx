@@ -28,6 +28,9 @@ class Nav extends React.Component {
   }
 
   render () {
+    const user =  this.props.user
+    const userId = user[0]
+    const settingLink = `/setting/${userId}`
     return (
       <>
         <Container>
@@ -43,6 +46,11 @@ class Nav extends React.Component {
 
               {this.props.login && <Menu.Item as={Link} to='/log-in' onClick={this.clickLogin}>
                 Log In
+              </Menu.Item>
+              }
+
+              {this.props.logout && <Menu.Item as={Link} to={settingLink}>
+                Setting
               </Menu.Item>
               }
 
@@ -66,7 +74,8 @@ const mapStateToProps = state => {
   return {
     login: state.login,
     register: state.register,
-    logout: state.logout
+    logout: state.logout,
+    user: state.userReducer
   }
 }
 
