@@ -7,6 +7,7 @@ import { Container } from 'semantic-ui-react'
 import RegisterFlatFetails from './RegisterFlatDetails'
 import Dashboard from './Dashboard'
 import Welcome from './Welcome'
+import Setting from './Setting'
 
 class App extends React.Component {
   render () {
@@ -23,7 +24,7 @@ class App extends React.Component {
             <Route exact path='/log-in' component={LogIn} ></Route>
             <Route path='/dashboard/:usersId' component={Dashboard} ></Route>
           </Switch>
-
+          <Route exact path='/setting/:id' component={Setting} />
         </Router>
       </div>
     )
