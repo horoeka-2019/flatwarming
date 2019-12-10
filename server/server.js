@@ -2,8 +2,9 @@ const path = require('path')
 const express = require('express')
 
 const authRoutes = require('./routes/auth')
-const server = express()
 const users = require('./routes/users')
+
+const server = express()
 
 server.use(express.json())
 server.use('/', authRoutes)

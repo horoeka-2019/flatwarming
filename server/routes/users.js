@@ -8,7 +8,7 @@ module.exports = router
 
 const sendGenericErrorMessage = (res) => {
   res.status(500).send(
-    "An Unexpected error has occurred and we'er looking into it"
+    "An Unexpected error has occurred and we're looking into it"
   )
 }
 

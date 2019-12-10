@@ -91,7 +91,7 @@ function Register (props) {
             </Segment>
           </Form>
           <Message>
-            Already have an account? <a href='/register'>Log In </a>
+            Already have an account? <a href='/log-in'>Log In </a>
           </Message>
         </Grid.Column>
       </Grid>
