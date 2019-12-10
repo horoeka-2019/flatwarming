@@ -1,20 +1,26 @@
 import React from 'react'
 import { Header } from 'semantic-ui-react'
+import {connect} from 'react-redux'
 
 class Names extends React.Component {
-  state = {
-
-  }
+  
 
   render () {
     return (
       <>
-        <Header>
-          Welcome back Elly, Matt, Pat, Rhiannon, Emma and Brittany!
+        <Header style={{color:'orange'}}>
+          Welcome back 
+          {this.props.flatmates.map(flatmate => <p key={flatmate.id}>{flatmate.name}</p>)}
         </Header>
       </>
     )
   }
 }
 
-export default Names
+const mapStateToProps = state => {
+  return {
+    flatmates: state.flatmatesReducer
+  }
+}
+
+export default connect(mapStateToProps)(Names)
