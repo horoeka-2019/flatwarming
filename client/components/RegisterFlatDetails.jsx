@@ -97,10 +97,13 @@ class RegisterFlatDetails extends React.Component {
       .catch(err => this.props.setError('Oops! An unknown error has occured. Please refresh this page', err))
   }
 
+  clearFields = () => {
+    document.getElementById('textfield1').value = '';
+  }
+
   render () {
     return (
-      <>
-      <Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
+      <>'     '<Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 800 }}>
           <Header as='h1' color='orange' textAlign='center'>
             <Image src='/favicon.png' /> Almost There! Register Your Flat Details Below:
@@ -137,8 +140,16 @@ class RegisterFlatDetails extends React.Component {
                       <FlatMate key={index} id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
                   }
                 </List>
-                <label>FlatMate: </label><Input type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
-                <Button style={{ margin: 5 }} onClick={() => this.props.addFlatmate(this.state.inputValue)}>Add Flatmate</Button>
+                <label>FlatMate:</label>
+                <Input id="textfield1" type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
+
+                <Button style={{ margin: 5 }}
+                  onClick={() => {
+                    this.props.addFlatmate(this.state.inputValue)
+                    this.clearFields()
+                  }}>
+                  Add Flatmate
+                </Button>
               </FormField>
 
               <Divider horizontal style={{ padding: 20 }}>What Date Do You Pay Your Bills?</Divider>
@@ -191,9 +202,7 @@ class RegisterFlatDetails extends React.Component {
             </Segment>
           </Form>
         </Grid.Column>
-      </Grid>
-      <Footer />
-      </>
+      </Grid>'     '<Footer />'     '</>
     )
   }
 }
