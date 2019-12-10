@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { signIn, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
@@ -9,6 +9,18 @@ import { getUserByName } from '../api/registerFlatDetails'
 import { setError } from '../actions/error'
 
 function LogIn (props) {
+
+//   const showNavButtons = () => {
+//     props.showReg()
+//     props.hideLogin()
+//     props.hideLogout()
+//   }
+
+//   useEffect(() => {
+//     showNavButtons()
+// }, [])
+
+
   const [form, setForm] = useState({
     username: '',
     password: ''

@@ -99,9 +99,12 @@ class Dashboard extends React.Component {
     const duePowerDay = calculateDueDay(powerDay)
     const dueWaterDay = calculateDueDay(waterDay)
     const dueWifiDay = calculateDueDay(wifiDay)
+
+    // console.log(this.state.details)
+
     return (
       <>
-      <Names/>
+      <Names flatId={this.state.details.usersId}/>
       <Grid celled>
         <Grid.Row width={15}>
           <Grid.Column>
