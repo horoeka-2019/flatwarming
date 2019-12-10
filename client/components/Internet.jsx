@@ -15,7 +15,7 @@ class Internet extends React.Component {
           <Card.Header>INTERNET BILL</Card.Header>
 
           <Card.Meta>
-        DUE DAY IN {this.props.dueWifiDay} DAYS
+        DUE DAY IN {this.props.dueWifiDay}
           </Card.Meta>
 
         </Card.Content>
