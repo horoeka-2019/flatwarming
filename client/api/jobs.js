@@ -3,7 +3,7 @@ import request from 'superagent'
 const apiURL = process.env.NODE_ENV === 'test' ? 'http://localhost:3000' : ''
 
 export function addJobToFlatmate (userId, jobDetails) {
-  return request.post(`${apiURL}/jobs/flatmates/${userId}`)
+  return request.post(`/api/v1/jobs/flatmates/${userId}`)
     .send(jobDetails)
     .then(res => { const obj = {}; obj.jobDetailsByUserId = res.body; return obj })
     .catch(err => {
@@ -19,7 +19,7 @@ export function addJobToFlatmate (userId, jobDetails) {
 }
 
 export function getAllJobs () {
-  return request.get(`${apiURL}/jobs/all`)
+  return request.get(`/api/v1/jobs/all`)
     .then(res => { const obj = {}; obj.jobs = res.body; return obj })
     .catch(err => {
       if (err.message === 'Not Found') {
@@ -34,5 +34,5 @@ export function getAllJobs () {
 }
 
 export function addJobs () {
-  return request.post(`${apiURL}/${id}`)
+  return request.post(`/api/v1/${id}`)
 }

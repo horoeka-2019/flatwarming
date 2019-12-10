@@ -3,7 +3,7 @@ import request from 'superagent'
 const apiURL = process.env.NODE_ENV === 'test' ? 'http://localhost:3000' : ''
 
 export function getAllFlatmates (userId) {
-  return request.get(`${apiURL}/flatmatelist/${userId}`)
+  return request.get(`/api/v1/flatmatelist/${userId}`)
     .then(res => { const obj = {}; obj.flatmates = res.body; return obj })
     .catch(err => {
       if (err.message === 'Not Found') {
