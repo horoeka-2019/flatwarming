@@ -7,11 +7,13 @@ import { Container } from 'semantic-ui-react'
 import RegisterFlatFetails from './RegisterFlatDetails'
 import Dashboard from './Dashboard'
 import Welcome from './Welcome'
+// import Countdown from './CountDown'
 
 class App extends React.Component {
   render () {
     return (
       <div>
+        {/* <Countdown/> */}
         <Router>
 
           <Route path='/' component={Nav} />

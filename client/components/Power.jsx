@@ -9,7 +9,7 @@ class Power extends React.Component {
         <Card.Content>
           <Card.Header>POWER BILL</Card.Header>
           <Card.Meta>
-            <span className='date'>DUE DAY IN {this.props.duePowerDay} DAYS</span>
+            <span className='date'>DUE DAY IN {this.props.duePowerDay}</span>
           </Card.Meta>
         </Card.Content>
       </Card></>

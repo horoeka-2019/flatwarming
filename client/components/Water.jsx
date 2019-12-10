@@ -15,7 +15,7 @@ class Water extends React.Component {
         <Card.Header>WATER BILL</Card.Header>
 
         <Card.Meta>
-        DUE DAY IN {this.props.dueWaterDay} DAYS
+        DUE DAY IN {this.props.dueWaterDay}
         </Card.Meta>
 
       </Card.Content>
