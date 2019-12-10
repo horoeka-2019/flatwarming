@@ -4,7 +4,7 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Register from './Register'
 import Nav from './Nav'
 import { Container } from 'semantic-ui-react'
-import RegisterFlatFetails from './RegisterFlatDetails'
+import RegisterFlatDetails from './RegisterFlatDetails'
 import Dashboard from './Dashboard'
 import Welcome from './Welcome'
 import Setting from './Setting'
@@ -20,7 +20,7 @@ class App extends React.Component {
           
 
           <Switch>
-            <Route exact path='/register-flat/:userid' component={RegisterFlatFetails} ></Route>
+            <Route exact path='/register-flat/:userid' component={RegisterFlatDetails} ></Route>
             <Route path='/register' component={Register} />
             <Route exact path='/log-in' component={LogIn} ></Route>
             <Route path='/dashboard/:usersId' component={Dashboard} ></Route>
