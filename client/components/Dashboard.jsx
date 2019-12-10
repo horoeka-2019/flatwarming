@@ -20,29 +20,27 @@ import { getJobsByUserId } from '../actions/jobs.action'
 import moment from 'moment'
 
 const calculateDueDay = function (dayPay) {
-  const now = moment(new Date(), 'YYYY-MM-DD HH:mm')
-  const newDate = new Date()
-  const date = newDate.getDate()
-  const month = (newDate.getMonth() === 12 ? 1 : newDate.getMonth() + 1)
-  const year = (newDate.getMonth() === 12 ? newDate.getFullYear() + 1 : newDate.getFullYear())
-  const nextMonth = (newDate.getMonth() + 1 === 12 ? 1 : newDate.getMonth() + 1)
-
+  const now = moment()
+  const date = now.date()
+  const month = now.month() === 11? 0 : now.month()+1
+  const year = now.month() === 11? now.year() + 1 : now.year()
+  const nextMonth = (month === 11? 0 : month+1)
   const daypay = Number(dayPay)
   if (date <= daypay) {
-    const then = moment(`${year}-${month}-${daypay} 23:59`, 'YYYY-MM-DD HH:mm')
+    const then = moment({ year, month: month, day: daypay, hour: 23, minute: 59, second: 59  });
     return countdownTime(then, now)
   } else {
-    const then = moment(`${year}-${nextMonth}-${daypay} 23:59`, 'YYYY-MM-DD HH:mm')
+    const then = moment({ year, month: nextMonth, day: daypay, hour: 23, minute: 59, second: 59  });
     return countdownTime(then, now)
   }
 }
 
 const countdownTime = function (then, today) {
-  const countdown = moment(then - today)
-  const days = countdown.format('D')
-  const hours = countdown.format('HH')
-  const minutes = countdown.format('mm')
-  const seconds = countdown.format('ss')
+  const countdown = moment.duration(then.diff(today))
+  const days = countdown.days()
+  const hours = countdown.hours()
+  const minutes = countdown.minutes()
+  const seconds = countdown.seconds()
   return [days, hours, minutes, seconds]
 }
 
