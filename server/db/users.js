@@ -18,7 +18,17 @@ module.exports = {
   addJobRelationship,
   getJobDetailByFlatmate,
   getJobsList,
-  getFlatmatesList
+  getFlatmatesList,
+  deleteFlatmate,
+  addNewFlatmate
+}
+
+function addNewFlatmate(userId, name, db = connection){
+  return db('flatmates')
+  .insert({
+    usersId: userId,
+    names: name
+  })
 }
 
 function createUser (user, db = connection) {
@@ -147,6 +157,12 @@ function deleteJobs (id, db = connection) {
   return db('jobs')
     .where('jobs.id', id)
     .del()
+}
+
+function deleteFlatmate(id, db = connection){
+  return db('flatmates')
+  .where('flatmates.id',id)
+  .del()
 }
 
 function editName (editedName, db = connection) {

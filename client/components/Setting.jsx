@@ -1,26 +1,43 @@
 import React from 'react'
 import {
-  Card, Image,
   Button,
   FormField,
   List,
-  Table,
-  Label,
-  Menu,
+  Input,
   Icon,
   Header
 } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
+import {getFlatmates, removeFlatmateByUserId, addFlatmateSetting,addFlatmateSettingIntoDB} from '../actions/flatmates.action'
+import { setError } from '../actions/error'
 
 class Setting extends React.Component {
+
+  state = {
+    inputValue: ''
+  }
+
+  changeHandle(value) {
+    this.setState(
+      {
+        inputValue: value
+      }
+    )
+  }
+
   componentDidMount () {
-    this.props.dispatch(getJobsByUserId(this.props.userId))
-      .catch(setError)
+    const user = this.props.user
+    const userId = user[0]
+    this.props.dispatch(getFlatmates(userId))
+    .catch(setError)   
   }
 
   render () {
-    console.log(this.props.user)
+    const user = this.props.user
+    const userId = user[0]
+    const dashboardLink = `/dashboard/${userId}`
     return (
       <>
       <Header as='h2' textAlign='center' block>
@@ -30,34 +47,28 @@ class Setting extends React.Component {
           <Header.Subheader>Manage your flatmates</Header.Subheader>
         </Header.Content>
       </Header>
-      <Table celled selectable>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Job</Table.HeaderCell>
-            <Table.HeaderCell>Due Day</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-
-        <Table.Body>
-          {
-            this.props.flatmates.map((flatmate, index) => (
-              <Table.Row key={index}>
-                <Table.Cell>
-                  {flatmate.id}
-                </Table.Cell>
-                <Table.Cell key={index}>
-                {flatmate.name}
-                </Table.Cell>
-                <Table.Cell key={index}>
-                  {job.dueDay}
-                </Table.Cell>
-              </Table.Row>
-            ))
-          }
-        </Table.Body>
-
-      </Table>
+      <List>
+        { this.props.flatmates.map((flatmate, index) => (
+        <List.Item as='li' key={index}>
+        <label>Flatmate:</label>
+        <Input value={flatmate.name} type="text"/>
+        <Button style={{ margin: 5 }} onClick={()=>{this.props.dispatch(removeFlatmateByUserId(userId, flatmate.id)); this.props.dispatch(getFlatmates(5))}}>Remove Flatmate</Button>
+      </List.Item>))
+        }
+      </List> 
+      <FormField >
+        <Input id="textfield1" type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
+        <Button style={{ margin: 5 }}
+          onClick={() => {
+          this.props.dispatch(addFlatmateSettingIntoDB(userId,this.state.inputValue))
+          this.props.dispatch(getFlatmates(userId))
+          this.clearFields()
+          }}>
+          Add Flatmate
+        </Button>
+        <Link to={dashboardLink}>Go Back To DashBoard</Link> 
+      </FormField> 
+              
       </>
     )
   }

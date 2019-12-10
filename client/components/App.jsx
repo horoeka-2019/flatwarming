@@ -17,13 +17,14 @@ class App extends React.Component {
 
           <Route path='/' component={Nav} />
           <Route exact path='/' component={Welcome} />
-          <Route exact path='/setting/:userid' component={Setting} />
+          
 
           <Switch>
             <Route exact path='/register-flat/:userid' component={RegisterFlatFetails} ></Route>
             <Route path='/register' component={Register} />
             <Route exact path='/log-in' component={LogIn} ></Route>
             <Route path='/dashboard/:usersId' component={Dashboard} ></Route>
+            <Route path='/setting/:userid' component={Setting} />
           </Switch>
 
         </Router>

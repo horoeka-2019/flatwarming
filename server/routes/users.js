@@ -31,6 +31,18 @@ router.get('/flatmatelist/:userId', (req, res) => {
     .then(flatmates => res.json(flatmates))
     .catch(() => sendGenericErrorMessage(res))
 })
+
+router.delete('/flatmatelist/:userId/:flatmateId', (req, res) => {
+  
+  const flatmateId = req.params.flatmateId
+  const userId = req.params.userId
+  return db.deleteFlatmate(flatmateId)
+    .then(
+      () => db.getFlatmatesList(userId)
+      .then(flatmates => res.json(flatmates))
+      )
+    .catch(() => sendGenericErrorMessage(res))
+})
 // done
 
 router.get('/user/:username', (req, res) => {
@@ -79,16 +91,6 @@ router.post('/:id', (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
-// router.post('/setting/:id',(req, res) => {
-//     const id = Number(req.params.id)
-//     const powerDay=req.body.powerDay
-//     const waterDay=req.body.waterDay
-//     const wifiDay=req.body.wifiDay
-
-// })
-
-// need to be finished, to edit expense due day.
-
 router.post('/flatmate/:id', (req, res) => {
   const id = Number(req.params.id)
   const names = req.body.names
@@ -98,5 +100,14 @@ router.post('/flatmate/:id', (req, res) => {
   }
   return db.addName(newName)
     .then(newName => res.json(newName))
+    .catch(() => sendGenericErrorMessage(res))
+})
+
+router.post('/flatmates/:userId', (req, res) => {
+  const userId = Number(req.params.userId)
+  const name = req.body.name
+  return db.addNewFlatmate(userId, name)
+  .then(()=>db.getFlatmatesList(userId)
+  .then(flatmates => res.json(flatmates)))
     .catch(() => sendGenericErrorMessage(res))
 })
