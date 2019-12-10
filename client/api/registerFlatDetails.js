@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const apiURL = 'http://localhost:3000/api/v1/users'
+const apiURL = process.env.NODE_ENV === 'test' ? 'http://localhost:3000' : ''
 
 // This call should GET the details given a userId
 export function getUserDetails (id) {
