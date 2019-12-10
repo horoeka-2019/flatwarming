@@ -12,17 +12,9 @@ class Internet extends React.Component {
         <img src='/wifi-1 (1).jpg' size='large' rounded style={{ height: '30vh', width: 'auto' }} />
         <div className="countholder">
           <h3>Internet Bill</h3>
-          <div className="smalltext"> Due in {this.props.dueInternetDay} days</div>
+
+          <div style={{ padding: '4px 10px', display: 'inline-block' }}>To be paid in:<span></span><div className="smalltext">{this.props.dueWifiDay} Days</div></div>
         </div>
-        {/* <Card.Content>
-
-          <Card.Header>INTERNET BILL</Card.Header>
-
-          <Card.Meta>
-        DUE DAY IN {this.props.dueWifiDay} DAYS
-          </Card.Meta>
-
-        </Card.Content> */}
       </Card></>
     )
   }

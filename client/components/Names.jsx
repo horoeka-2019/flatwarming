@@ -9,7 +9,7 @@ class Names extends React.Component {
   render () {
     return (
       <>
-        <Header>
+        <Header style = {{ textAlign: 'center', marginTop: 100}}>
           Welcome back Elly, Matt, Pat, Rhiannon, Emma and Brittany!
         </Header>
       </>
