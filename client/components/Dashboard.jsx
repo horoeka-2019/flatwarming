@@ -42,8 +42,7 @@ const countdownTime = function (then, today) {
   const hours = countdown.format('HH')
   const minutes = countdown.format('mm')
   const seconds = countdown.format('ss')
-
-  return `days: ${days}, hours: ${hours}, minutes: ${minutes}, seconds: ${seconds}`
+  return [days, hours, minutes, seconds]
 }
 
 class Dashboard extends React.Component {
@@ -129,11 +128,11 @@ class Dashboard extends React.Component {
 
         <Grid.Row>
 
-          <Grid.Column width={4}>
+          <Grid.Column mobile={12} tablet={8} computer={4}>
             <AddNewJob userId={this.props.match.params.usersId}/>
           </Grid.Column>
 
-          <Grid.Column width={12}>
+          <Grid.Column computer={12}>
             <Jobs userId={this.props.match.params.usersId}/>
           </Grid.Column>
 
