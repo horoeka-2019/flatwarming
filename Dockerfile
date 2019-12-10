@@ -1,4 +1,3 @@
-
 FROM node:10-alpine AS builder 
 
 WORKDIR /build

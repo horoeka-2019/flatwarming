@@ -20,8 +20,8 @@ jobs:
     - name: push
       uses: actions/heroku@master
       with: 
-        args: container:push web -a $HEROKU_APP_NAME web
+        args: container:push -a $HEROKU_APP_NAME web
     - name: release
       uses: actions/heroku@master
       with: 
-        args: container:release web -a $HEROKU_APP_NAME web
+        args: container:release -a $HEROKU_APP_NAME web
