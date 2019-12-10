@@ -2,11 +2,14 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {List, Divider, FormField, Button, Grid, Form, Segment} from 'semantic-ui-react'
+import { addFlatmate, removeFlatmate } from '../actions/flatmates.action'
+import { setError } from '../actions/error'
 
 class Setting extends React.Component {
   
 
   render() {
+    console.log('this.props.flatmates flatmates reducer', this.props.flatmates)
     return (
       <>
         <Grid textAlign='center' style={{ alignItems:'center', padding: '8em 0em'}} verticalAlign='middle'>
@@ -19,7 +22,7 @@ class Setting extends React.Component {
                 <FormField>
                   <List>
                     {
-                      this.props.flatmates.map(flatmate => <li key={flatmate.id}>{flatmate.name}<button onClick={() => this.props.removeFlatmate(flatmate.id)}>-</button></li>)
+                      this.props.flatmates.map(flatmate => {console.log('id', flatmate.id); return <li key={flatmate.id}>{flatmate.name}<button onClick={() => this.props.dispatch(removeFlatmate(flatmate.id))}>-</button></li>})
                     }
                   </List>
                   <label>FlatMate:</label>
