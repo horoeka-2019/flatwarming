@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Grid } from 'semantic-ui-react'
+import { Container, Grid, Button } from 'semantic-ui-react'
 
 import Power from './Power'
 import Internet from './Internet'
@@ -16,6 +16,7 @@ import { getUserDetails } from '../api/registerFlatDetails'
 import { setError } from '../actions/error'
 import { getJobs } from '../actions/jobs.action'
 import { getFlatmates } from '../actions/flatmates.action'
+import { Link } from 'react-router-dom'
 
 const getDaysInMonth = function (month, year) {
   return new Date(year, month, 0).getDate()
@@ -72,10 +73,26 @@ class Dashboard extends React.Component {
     const dueWaterDay = calculateDueDay(waterDay)
     const dueWifiDay = calculateDueDay(wifiDay)
 
+    const id = this.props.match.params.usersId
+
     return (
       <><Container textAlign='center' style = {{ marginTop: 100 }}>
-        <Names />
-      </Container><Container>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column mobile={12} tablet={8} computer={13}>
+              <Names />
+            </Grid.Column>
+            <Grid.Column mobile={12} tablet={8} computer={3}>
+              <Link to={`/setting/${id}`}>
+               <Button color='gray'>Flatmates Settings</Button>
+              </Link>
+
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
+      
+      <Container>
         <Grid columns='equal' style = {{
           display: 'flex',
           justifyContent: 'center',
