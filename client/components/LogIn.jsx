@@ -32,12 +32,14 @@ function LogIn (props) {
         if (isAuthenticated()) {
           getUserByName(form.email)
             .then(user => props.history.push(`/dashboard/${user.id}`))
-          props.dispatch(hideReg())
-          props.dispatch(hideLogin())
-          props.dispatch(showLogout())
+          props.hideReg()
+          props.hideLogin()
+          props.showLogout()
         }
       })
-      .catch(err => props.setError('Oops! Are you trying to sign-up? Press Register! ', err))
+      .catch(err => {
+        props.setError('Oops! Are you trying to sign-up? Press Register! ', err)
+      })
   }
 
   return (
@@ -106,7 +108,10 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  setError
+  setError,
+  hideReg,
+  hideLogin,
+  showLogout
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

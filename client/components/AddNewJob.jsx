@@ -77,7 +77,7 @@ class AddNewJob extends React.Component {
     return (
       // <Container>
       <>
-      <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
+      <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 600 }}>
         <Header as='h1' color='orange' textAlign='center' icon>
           <Icon name='arrow right'/>
