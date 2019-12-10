@@ -16,28 +16,41 @@ import { getUserDetails } from '../api/registerFlatDetails'
 import { setError } from '../actions/error'
 import { getJobs } from '../actions/jobs.action'
 import { getFlatmates } from '../actions/flatmates.action'
-
-const getDaysInMonth = function (month, year) {
-  return new Date(year, month, 0).getDate()
-}
+import moment from 'moment'
 
 const calculateDueDay = function (dayPay) {
+  const now = moment(new Date(), 'YYYY-MM-DD HH:mm')
   const newDate = new Date()
   const date = newDate.getDate()
-  const month = newDate.getMonth() + 1
-  const year = newDate.getFullYear()
-  const days = getDaysInMonth(month, year)
+  const month = (newDate.getMonth() === 12 ? 1 : newDate.getMonth() + 1)
+  const year = (newDate.getMonth() === 12 ? newDate.getFullYear() + 1 : newDate.getFullYear())
+  const nextMonth = (newDate.getMonth() + 1 === 12 ? 1 : newDate.getMonth() + 1)
+
   const daypay = Number(dayPay)
   if (date <= daypay) {
-    return daypay - date
+    const then = moment(`${year}-${month}-${daypay} 23:59`, 'YYYY-MM-DD HH:mm')
+    return countdownTime(then, now)
   } else {
-    return (days - date + daypay)
+    const then = moment(`${year}-${nextMonth}-${daypay} 23:59`, 'YYYY-MM-DD HH:mm')
+    return countdownTime(then, now)
   }
+}
+
+const countdownTime = function (then, today) {
+  const countdown = moment(then - today)
+  const days = countdown.format('D')
+  const hours = countdown.format('HH')
+  const minutes = countdown.format('mm')
+  const seconds = countdown.format('ss')
+
+  return `days: ${days}, hours: ${hours}, minutes: ${minutes}, seconds: ${seconds}`
 }
 
 class Dashboard extends React.Component {
   state = {
-    details: ''
+    details: '',
+    secondsLeft: null,
+    time: new Date().toLocaleString()
   }
 
   removeNavButtons = () => {
@@ -60,18 +73,31 @@ class Dashboard extends React.Component {
 
     this.props.dispatch(getFlatmates(this.props.match.params.usersId))
       .catch(setError)
+
+    this.intervalID = setInterval(
+      () => this.tick(),
+      1000
+    )
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.intervalID)
+  }
+
+  tick () {
+    this.setState({
+      time: new Date().toLocaleString()
+    })
   }
 
   render () {
     if (this.state.details === '') {
       return null
     }
-
     const { powerDay, waterDay, wifiDay } = this.state.details
     const duePowerDay = calculateDueDay(powerDay)
     const dueWaterDay = calculateDueDay(waterDay)
     const dueWifiDay = calculateDueDay(wifiDay)
-
     return (
       <><Container textAlign='center' style = {{ marginTop: 100 }}>
         <Names />
