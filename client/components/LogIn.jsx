@@ -37,10 +37,7 @@ function LogIn (props) {
           props.dispatch(showLogout())
         }
       })
-      .catch(setError)
-    if (!isAuthenticated()) {
-      props.dispatch(setError)
-    }
+      .catch(err => props.setError('Oops! Are you trying to sign-up? Press Register! ', err))
   }
 
   return (
@@ -108,4 +105,8 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(LogIn)
+const mapDispatchToProps = {
+  setError
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

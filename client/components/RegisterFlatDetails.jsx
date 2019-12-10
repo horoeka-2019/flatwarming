@@ -11,7 +11,6 @@ import {
   Button,
   Form,
   Input,
-  Container,
   FormField,
   List,
   Dropdown,
@@ -19,8 +18,7 @@ import {
   Segment,
   Header,
   Image,
-  Divider,
-  Icon
+  Divider
 } from 'semantic-ui-react'
 
 const options = [
@@ -96,17 +94,16 @@ class RegisterFlatDetails extends React.Component {
 
     this.props.addRegisterFlatmateDetail(obj)
       .then(() => this.props.history.push(`/dashboard/${userId}`))
-      .catch(setError)
+      .catch(err => this.props.setError('Oops! An unknown error has occured. Please refresh this page', err))
   }
 
   clearFields = () => {
-
-    document.getElementById("textfield1").value = "";
-}
+    document.getElementById('textfield1').value = '';
+  }
 
   render () {
     return (
-      <>'       '<Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
+      <>'     '<Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 800 }}>
           <Header as='h1' color='orange' textAlign='center'>
             <Image src='/favicon.png' /> Almost There! Register Your Flat Details Below:
@@ -137,25 +134,25 @@ class RegisterFlatDetails extends React.Component {
 
               <Divider horizontal style={{ padding: 20 }}>Who Lives There?</Divider>
               <FormField>
-                <List as='ol'>
+                <List>
                   {
                     this.props.flatmates.map((flatmate, index) =>
                       <FlatMate key={index} id={index} flatmate={flatmate} removeFlatmate={this.props.removeFlatmate}></FlatMate>)
                   }
                 </List>
                 <label>FlatMate:</label>
-                <input id="textfield1" type="text" onChange={(e) => this.changeHandle(e.target.value)}/>
-                
-                <Button style={{ margin: 5 }} 
-                onClick={() => {
-                  this.props.addFlatmate(this.state.inputValue)
-                  this.clearFields()
-                }}>
+                <Input id="textfield1" type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
+
+                <Button style={{ margin: 5 }}
+                  onClick={() => {
+                    this.props.addFlatmate(this.state.inputValue)
+                    this.clearFields()
+                  }}>
                   Add Flatmate
                 </Button>
               </FormField>
 
-              <Divider horizontal style={{ padding: 20 }}>What Date Do You Pay There Bills?</Divider>
+              <Divider horizontal style={{ padding: 20 }}>What Date Do You Pay Your Bills?</Divider>
               <Form.Field control={Dropdown}
                 selection
                 clearable
@@ -191,7 +188,6 @@ class RegisterFlatDetails extends React.Component {
                 color='orange'
                 fluid size='large'
                 onClick={() => this.onSubmit()}
-                control={Button}
                 disabled={
                   this.props.flatmates.length <= 0 ||
                     !this.state.address ||
@@ -206,22 +202,22 @@ class RegisterFlatDetails extends React.Component {
             </Segment>
           </Form>
         </Grid.Column>
-      </Grid>
-      <Footer />
-      </>
+      </Grid>'     '<Footer />'     '</>
     )
   }
 }
 
 const mapStateToProps = state => ({
   flatmates: state.flatmateReducer.flatmates,
-  flatmateDetail: state.flatmateDetailReducer.flatmateDetail
+  flatmateDetail: state.flatmateDetailReducer.flatmateDetail,
+  error: state.error
 })
 
 const mapDispatchToProps = dispatch => ({
   addFlatmate: flatmate => dispatch(addFlatmate(flatmate)),
   removeFlatmate: index => dispatch(removeFlatmate(index)),
-  addRegisterFlatmateDetail: obj => dispatch(addRegisterFlatmateDetail(obj))
+  addRegisterFlatmateDetail: obj => dispatch(addRegisterFlatmateDetail(obj)),
+  setError
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterFlatDetails)

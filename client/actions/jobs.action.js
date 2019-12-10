@@ -1,8 +1,10 @@
 import { setError } from './error'
 import * as api from '../api/registerFlatDetails'
+import * as jobsApi from '../api/jobs'
 
 export const GET_JOBS_PENDING = 'GET_JOBS_PENDING'
 export const GET_JOBS_SUCCESS = 'GET_JOBS_SUCCESS'
+export const GET_JOBS_BY_USER_PENDING = 'GET_JOBS_BY_USER_PENDING'
 export const GET_JOBSBYUSER_SUCCESS = 'GET_JOBSBYUSER_SUCCESS'
 
 export function getJobsPending () {
@@ -28,6 +30,12 @@ export function getJobs () {
   }
 }
 
+export function getJobsByUserIdPending () {
+  return {
+    type: GET_JOBS_BY_USER_PENDING
+  }
+}
+
 export function getJobsByUserIdSuccess (jobsDetail) {
   return {
     type: GET_JOBSBYUSER_SUCCESS,
@@ -36,7 +44,7 @@ export function getJobsByUserIdSuccess (jobsDetail) {
 }
 export function getJobsByUserId (userId, jobDetail) {
   return dispatch => {
-    return api.addJobToFlatmate(userId, jobDetail)
+    return jobsApi.addJobToFlatmate(userId, jobDetail)
       .then(jobDetail => dispatch(getJobsByUserIdSuccess(jobDetail.jobDetailsByUserId)))
       .catch(err => dispatch(setError(err.message)))
   }
