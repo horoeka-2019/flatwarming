@@ -84,14 +84,14 @@ class Rubbish extends React.Component {
     return (
       <>
         <Card color='green'>
-          <img src='/rubbish-1 (1).jpg' style={{ height: '40vh', width: 'auto' }} />
+          <img src='/rubbish-1 (1).jpg' style={{ height: '30vh', width: 'auto' }} />
           <div id="countholder">
             <h3>Rubbish Pickup: {this.props.day}</h3>
-          <div><span className="days" id="days"></span><div className="smalltext">Days</div></div>
-          <div><span className="hours" id="hours"></span><div className="smalltext">Hours</div></div>
-          <div><span className="minutes" id="minutes"></span><div className="smalltext">Mins</div></div>
-          <div><span className="seconds" id="seconds"></span><div className="smalltext">Secs</div></div>
-        </div>
+            <div><span className="days" id="days"></span><div className="smalltext">Days</div></div>
+            <div><span className="hours" id="hours"></span><div className="smalltext">Hours</div></div>
+            <div><span className="minutes" id="minutes"></span><div className="smalltext">Mins</div></div>
+            <div><span className="seconds" id="seconds"></span><div className="smalltext">Secs</div></div>
+          </div>
           {/* <Card.Content>
 
             <Card.Header>RUBBISH DAY</Card.Header>

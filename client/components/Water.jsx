@@ -9,8 +9,12 @@ class Water extends React.Component {
   render () {
     return (
     <><Card color='yellow'>
-      <img src='/water-1 (1).jpg' style={{ height: '40vh', width: 'auto' }} />
-      <Card.Content>
+      <img src='/water-1 (1).jpg' style={{ height: '30vh', width: 'auto' }} />
+      <div className="countholder">
+        <h3>Water Bill</h3>
+        <div className="smalltext"> Due in {this.props.dueWaterDay} days</div>
+      </div>
+      {/* <Card.Content>
 
         <Card.Header>WATER BILL</Card.Header>
 
@@ -18,7 +22,7 @@ class Water extends React.Component {
         DUE DAY IN {this.props.dueWaterDay} DAYS
         </Card.Meta>
 
-      </Card.Content>
+      </Card.Content> */}
     </Card></>
     )
   }
