@@ -16,6 +16,7 @@ import { getUserDetails } from '../api/registerFlatDetails'
 import { setError } from '../actions/error'
 import { getJobs } from '../actions/jobs.action'
 import { getFlatmates } from '../actions/flatmates.action'
+import { getJobsByUserId } from '../actions/jobs.action'
 import moment from 'moment'
 
 const calculateDueDay = function (dayPay) {
@@ -73,6 +74,9 @@ class Dashboard extends React.Component {
     this.props.dispatch(getFlatmates(this.props.match.params.usersId))
       .catch(setError)
 
+    this.props.dispatch(getJobsByUserId(this.props.match.params.usersId))
+    .catch(setError)
+    
     this.intervalID = setInterval(
       () => this.tick(),
       1000
