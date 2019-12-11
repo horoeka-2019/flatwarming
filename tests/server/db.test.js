@@ -53,15 +53,58 @@ describe('getUserDetail database function', () => {
   })
 })
 
-describe('job list', () => {
-  it('getJobList to get a list of job', () => {
-    const expected = 4
+describe('delete jobs by id', () => {
+  it('delete jobs by id', () => {
+    const expected = 1
+    const id = 2
+    return db.deleteJobs(id,testDb)
+      .then(number => 
+        expect(number).toEqual(expected)
+      )
+  })
+})
 
-    return db.getJobsList(testDb)
-      .then(jobs => {
-        const actual = jobs.length
-        expect(actual).toEqual(expected)
-      })
+describe('delete jobs by id', () => {
+  it('delete jobs by id', () => {
+    const expected = 1
+    const id = 2
+    return db.deleteFlatmate(id,testDb)
+      .then(number => 
+        expect(number).toEqual(expected)
+      )
+  })
+})
+
+describe('add new job', () => {
+  it('add new job', () => {
+    const expected = 1
+    const id = 2
+    return db.deleteFlatmate(id,testDb)
+      .then(number => 
+        expect(number).toEqual(expected)
+      )
+  })
+})
+
+describe('userExists', () => {
+  it('user exists', () => {
+    const expected = true
+    const email = 'row1@gmail.com'
+    return db.userExists(email,testDb)
+      .then(actualResult => 
+        expect(actualResult).toEqual(expected)
+      )
+  })
+})
+
+describe('user does not Exists', () => {
+  it('user does not exists', () => {
+    const expected = false
+    const email = 'roxw1@gmail.com'
+    return db.userExists(email,testDb)
+      .then(actualResult => 
+        expect(actualResult).toEqual(expected)
+      )
   })
 })
 

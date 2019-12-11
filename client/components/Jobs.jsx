@@ -19,6 +19,12 @@ class Jobs extends React.Component {
   //     .catch(setError)
   // }
 
+  clearJobs = (userId) => {
+    jobsApi.addJobToFlatmate(userId, obj)
+      .then(() => this.props.dispatch(getJobsByUserId(userId)))
+      .catch(setError)
+  }
+
   render () {
     return (
       <>
@@ -56,8 +62,8 @@ class Jobs extends React.Component {
             ))
           }
         </Table.Body>
-
       </Table>
+      <Button onClick={this.clearJobs(this.props.userId)}>Clear Jobs</Button>
       {/* <img src='/jobs-1.jpg' size='large' wrapped ui={false} rounded style={{ height: '40vh', width: 'auto' }}/>
         <Card.Content>
           <Card.Header>
