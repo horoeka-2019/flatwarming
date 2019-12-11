@@ -66,7 +66,7 @@ function Register (props) {
             <Segment stacked>
 
               <Form.Input
-                name='username'
+                name='email'
                 type='email'
                 value={form.email}
                 onChange={handleChange}
