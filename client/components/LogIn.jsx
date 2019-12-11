@@ -58,7 +58,7 @@ function LogIn (props) {
             <Segment stacked>
 
               <Form.Input
-                name='email'
+                name='username'
                 type='email'
                 value={form.email}
                 onChange={handleChange}
