@@ -13,7 +13,7 @@ class FlatMate extends React.Component {
       <List.Item as='li' key={id}>
         <label>Flatmate:</label>
         <input value={flatmate}/>
-        <Button style={{ margin: 5 }} onClick={() => removeFlatmate(id)}>Remove Flatmate</Button>
+        <Button color='red' style={{ margin: 5 }} onClick={() => removeFlatmate(id)}>Remove Flatmate</Button>
       </List.Item>
     )
   }

@@ -5,9 +5,14 @@ import {
   List,
   Input,
   Icon,
-  Header
+  Header,
+  Grid,
+  Image,
+  Table
 } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { hideLogin, hideReg, showLogout } from '../actions/nav-buttons'
+
 
 import { connect } from 'react-redux'
 import {getFlatmates, removeFlatmateByUserId, addFlatmateSetting,addFlatmateSettingIntoDB} from '../actions/flatmates.action'
@@ -27,49 +32,86 @@ class Setting extends React.Component {
     )
   }
 
+  hideNavButtons = () => {
+    this.props.dispatch(hideReg())
+    this.props.dispatch(hideLogin())
+    this.props.dispatch(showLogout())
+  }
+
   componentDidMount () {
-    
+    this.hideNavButtons()
     const user = this.props.user
-    const userId = user[0]
+    const userId = user[user.length-1]
     this.props.dispatch(getFlatmates(userId))
     .catch(setError)   
   }
 
   render () {
     const user = this.props.user
-    const userId = user[0]
+    const userId = user[user.length-1]
     const dashboardLink = `/dashboard/${userId}`
     return (
       <>
-      <Header as='h2' textAlign='center' block>
-        <Icon name='sticky note outline' />
-        <Header.Content>
-          Setting
-          <Header.Subheader>Manage your flatmates</Header.Subheader>
-        </Header.Content>
-      </Header>
-      <List>
-        { this.props.flatmates.map((flatmate, index) => (
-        <List.Item as='li' key={index}>
-        <label>Flatmate:</label>
-        <Input value={flatmate.name} type="text"/>
-        <Button style={{ margin: 5 }} onClick={()=>{this.props.dispatch(removeFlatmateByUserId(userId, flatmate.id)); this.props.dispatch(getFlatmates(userId))}}>Remove Flatmate</Button>
-      </List.Item>))
-        }
-      </List> 
-      <FormField >
-        <Input id="textfield1" type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
-        <Button style={{ margin: 5 }}
-          onClick={() => {
-          this.props.dispatch(addFlatmateSettingIntoDB(userId,this.state.inputValue))
-          this.props.dispatch(getFlatmates(userId))
-          this.clearFields()
-          }}>
-          Add Flatmate
-        </Button>
-        <Link to={dashboardLink}>Go Back To DashBoard</Link> 
-      </FormField> 
-              
+      <Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 800 }} textAlign='center'>
+        <Header as='h2' textAlign='center'>
+          <Icon name='settings' />
+            Account Settings
+        </Header>
+
+        <Header as='h2' color='orange' textAlign='center'>
+          <Image src='/favicon.png' /> Change Your Details Below:
+        </Header>
+
+        <Table celled selectable>
+        <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Remove?</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+
+          { this.props.flatmates.map((flatmate, index) => (
+            <Table.Row key={index}>
+
+              <Table.Cell textAlign='center'>
+                {flatmate.name}
+              </Table.Cell>
+
+              <Table.Cell textAlign='center'>
+              <Button style={{ margin: 5 }} color='red' onClick={()=>{this.props.dispatch(removeFlatmateByUserId(userId, flatmate.id)); this.props.dispatch(getFlatmates(userId))}}>
+                X
+                </Button>
+              </Table.Cell>
+
+            </Table.Row>))
+            }
+
+          </Table.Body>
+        </Table> 
+
+         
+
+          <FormField >
+            <Input id="textfield1" type="text" onChange={(e) => this.changeHandle(e.target.value)}></Input>
+            <Button style={{ margin: 5 }}
+              color='green'
+              onClick={() => {
+              this.props.dispatch(addFlatmateSettingIntoDB(userId,this.state.inputValue))
+              this.props.dispatch(getFlatmates(userId))
+              this.clearFields()
+              }}>
+              Add Flatmate
+            </Button>
+            
+          <Link to={dashboardLink}>Go Back To DashBoard</Link>  
+          </FormField> 
+        </Grid.Column>
+      </Grid>
+
+               
       </>
     )
   }

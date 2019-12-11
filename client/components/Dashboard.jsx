@@ -106,9 +106,11 @@ class Dashboard extends React.Component {
     const duePowerDay = calculateDueDay(powerDay)
     const dueWaterDay = calculateDueDay(waterDay)
     const dueWifiDay = calculateDueDay(wifiDay)
+
+
     return (
       <>
-        <Names />
+        <Names/>
         <Responsive>
           <Grid celled style={this.gridStyle}>
             <Grid.Row width={16}>

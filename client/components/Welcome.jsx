@@ -3,6 +3,8 @@ import {Image} from 'semantic-ui-react'
 import WelcomeText from './WelcomeText'
 import { connect } from 'react-redux'
 import { showLogin, showReg, hideLogout } from '../actions/nav-buttons'
+import { setError } from '../actions/error'
+
 
 
 class welcomeImg extends React.Component {
@@ -15,6 +17,7 @@ class welcomeImg extends React.Component {
 
    componentDidMount() {
     this.showNavButtons()
+    this.props.dispatch(setError(''))
    }
 
   render() {
@@ -35,7 +38,8 @@ class welcomeImg extends React.Component {
       return {
         login: state.login,
         register: state.register,
-        logout: state.logout
+        logout: state.logout,
+        setError
       }
     }
 
