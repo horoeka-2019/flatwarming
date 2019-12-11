@@ -30,14 +30,14 @@ class Names extends React.Component {
       <>
         <Header size='large' style={{color:'orange', marginTop: 100}} textAlign='center'>
             Welcome back {this.flatmateFunction()}!  
-              <Link to={`/settings/${this.props.flatId}`}>
+              {/* <Link to={`/settings/${this.props.flatId}`}>
                 <Button 
                   style={{marginLeft: 20}} 
                   >
                   <Icon name='settings' />
                   Change Details
                 </Button>
-              </Link>
+              </Link> */}
         </Header>
       </>
     )
