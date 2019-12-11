@@ -28,6 +28,7 @@ class Setting extends React.Component {
   }
 
   componentDidMount () {
+    
     const user = this.props.user
     const userId = user[0]
     this.props.dispatch(getFlatmates(userId))
@@ -52,7 +53,7 @@ class Setting extends React.Component {
         <List.Item as='li' key={index}>
         <label>Flatmate:</label>
         <Input value={flatmate.name} type="text"/>
-        <Button style={{ margin: 5 }} onClick={()=>{this.props.dispatch(removeFlatmateByUserId(userId, flatmate.id)); this.props.dispatch(getFlatmates(5))}}>Remove Flatmate</Button>
+        <Button style={{ margin: 5 }} onClick={()=>{this.props.dispatch(removeFlatmateByUserId(userId, flatmate.id)); this.props.dispatch(getFlatmates(userId))}}>Remove Flatmate</Button>
       </List.Item>))
         }
       </List> 
