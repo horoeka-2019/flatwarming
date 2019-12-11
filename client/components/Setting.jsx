@@ -41,14 +41,14 @@ class Setting extends React.Component {
   componentDidMount () {
     this.hideNavButtons()
     const user = this.props.user
-    const userId = user[0]
+    const userId = user[user.length-1]
     this.props.dispatch(getFlatmates(userId))
     .catch(setError)   
   }
 
   render () {
     const user = this.props.user
-    const userId = user[0]
+    const userId = user[user.length-1]
     const dashboardLink = `/dashboard/${userId}`
     return (
       <>
