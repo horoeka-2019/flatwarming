@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { getUserByName } from '../api/registerFlatDetails'
 
 import { setError } from '../actions/error'
+import { showLogin, hideReg, hideLogout } from '../actions/nav-buttons'
+
 
 import Footer from './Footer'
 import { connect } from 'react-redux'
 
 function Register (props) {
+
+  useEffect(() => {
+    props.dispatch(hideReg())
+    props.dispatch(showLogin())
+    props.dispatch(hideLogout())
+  }, [])
+
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -37,7 +46,7 @@ function Register (props) {
             })
         }
       })
-      .catch(err => props.setError('Oops! Have you previously registered your flat with this email address? Log in below registration form! ', err))
+      .catch(err => props.dispatch(setError('Oops! Have you previously registered your flat with this email address? Log in below registration form! ', err)))
   }
 
   const color = {
@@ -101,14 +110,11 @@ function Register (props) {
   )
 }
 
-const mapDispatchToProps = {
-  setError
-}
-
 const mapStateToProps = state => {
   return {
-    error: state.error
+    error: state.error,
+    setError
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default connect(mapStateToProps)(Register)

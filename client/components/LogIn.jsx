@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { signIn, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
+import { hideLogin, showReg, hideLogout } from '../actions/nav-buttons'
 import Footer from './Footer'
 import { getUserByName } from '../api/registerFlatDetails'
 
@@ -10,14 +10,10 @@ import { setError } from '../actions/error'
 
 function LogIn (props) {
 
-  const showNavButtons = () => {
+  useEffect(() => {
     props.dispatch(showReg())
     props.dispatch(hideLogin())
     props.dispatch(hideLogout())
-  }
-
-  useEffect(() => {
-    showNavButtons()
   }, [])
 
 
@@ -44,9 +40,6 @@ function LogIn (props) {
         if (isAuthenticated()) {
           getUserByName(form.email)
             .then(user => props.history.push(`/dashboard/${user.id}`))
-          props.hideReg()
-          props.hideLogin()
-          props.showLogout()
         }
       })
       .catch(err => {
@@ -119,9 +112,5 @@ const mapStateToProps = state => {
     setError
   }
 }
-
-// const mapDispatchToProps = {
-//   setError
-// }
 
 export default connect(mapStateToProps)(LogIn)
