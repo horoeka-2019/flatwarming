@@ -1,9 +1,6 @@
 import flatmateReducer from '../../../client/reducers/flatmate.reducer'
 
-
-import { ADD_FLATMATE, REMOVE_FLATMATE } from '../../../client/actions/flatmate.action'
-
-describe ('Error reducer tests', () => {
+describe ('flatmate reducer and action tests', () => {
   it('case ADD_FLATMATE', () => {
     // Arrange
     const INITIAL_STATE = {
@@ -14,14 +11,14 @@ describe ('Error reducer tests', () => {
       flatmates: ['Ash']
     }
     const action = {
-      type: ADD_FLATMATE,
+      type: 'ADD_FLATMATE',
       payload: 'Ash'
     }
-    console.log(flatmateReducer(INITIAL_STATE, action))
+    console.log(flatmateReducer({flatmates: []}, action))
     // Act
     const actual = flatmateReducer(INITIAL_STATE, action)
     // Assert
-    expect(actual).toBe(expected)
+    expect(actual).toEqual(expected)
   })
 
   it('case REMOVE_FLATMATE', () => {
@@ -34,7 +31,7 @@ describe ('Error reducer tests', () => {
       flatmates: ['Elly', 'Jackie']
     }
     const action = {
-      type: REMOVE_FLATMATE,
+      type: 'REMOVE_FLATMATE',
       payload: 0
     }
 
@@ -42,7 +39,7 @@ describe ('Error reducer tests', () => {
     const actual = flatmateReducer(INITIAL_STATE, action)
 
     // Assert
-    expect(actual).toBe(expected)
+    expect(actual).toEqual(expected)
   })
   
 })
