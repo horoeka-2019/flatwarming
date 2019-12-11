@@ -11,12 +11,13 @@ describe ('Error reducer tests', () => {
     }
 
     const expected = {
-      flatmates: 'Ash'
+      flatmates: ['Ash']
     }
     const action = {
       type: ADD_FLATMATE,
       payload: 'Ash'
     }
+    console.log(flatmateReducer(INITIAL_STATE, action))
     // Act
     const actual = flatmateReducer(INITIAL_STATE, action)
     // Assert
