@@ -43,6 +43,7 @@ function Register (props) {
           getUserByName(form.email)
             .then(user => {
               props.newUser(user.id)
+              
               props.history.push(`/register-flat/${user.id}`)
             })
         }
