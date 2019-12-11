@@ -14,7 +14,6 @@ describe ('flatmate reducer and action tests', () => {
       type: 'ADD_FLATMATE',
       payload: 'Ash'
     }
-    console.log(flatmateReducer({flatmates: []}, action))
     // Act
     const actual = flatmateReducer(INITIAL_STATE, action)
     // Assert
