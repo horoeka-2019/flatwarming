@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { getUserByName } from '../api/registerFlatDetails'
 
 import { setError } from '../actions/error'
+import { showLogin, hideReg, hideLogout } from '../actions/nav-buttons'
+
 import {newUser} from '../actions/user'
 
 import Footer from './Footer'
 import { connect } from 'react-redux'
 
 function Register (props) {
+
+  // useEffect(() => {
+  //   props.dispatch(hideReg())
+  //   props.dispatch(showLogin())
+  //   props.dispatch(hideLogout())
+  // }, [])
+
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -34,6 +43,7 @@ function Register (props) {
           getUserByName(form.email)
             .then(user => {
               props.newUser(user.id)
+              
               props.history.push(`/register-flat/${user.id}`)
             })
         }
@@ -109,7 +119,8 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => {
   return {
-    error: state.error
+    error: state.error,
+    setError
   }
 }
 
