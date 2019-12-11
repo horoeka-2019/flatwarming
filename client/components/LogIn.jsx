@@ -5,11 +5,21 @@ import { connect } from 'react-redux'
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 import Footer from './Footer'
 import { getUserByName } from '../api/registerFlatDetails'
-import {newUser} from '../actions/user'
 
 import { setError } from '../actions/error'
 
 function LogIn (props) {
+
+  const showNavButtons = () => {
+    props.dispatch(showReg())
+    props.dispatch(hideLogin())
+    props.dispatch(hideLogout())
+  }
+
+  useEffect(() => {
+    showNavButtons()
+  }, [])
+
 
   const [form, setForm] = useState({
     username: '',
@@ -33,19 +43,14 @@ function LogIn (props) {
       .then((token) => {
         if (isAuthenticated()) {
           getUserByName(form.email)
-            .then(user => {
-              props.newUser(user.id);
-              props.history.push(`/dashboard/${user.id}`)
-            })
+            .then(user => props.history.push(`/dashboard/${user.id}`))
           props.hideReg()
           props.hideLogin()
           props.showLogout()
-
-          
         }
       })
       .catch(err => {
-        props.setError('Oops! Are you trying to sign-up? Press Register! ', err)
+        props.dispatch(setError('Oops! Are you trying to sign-up? Press Register! ', err))
       })
   }
 
@@ -110,16 +115,13 @@ const mapStateToProps = state => {
     login: state.login,
     register: state.register,
     logout: state.logout,
-    error: state.error
+    error: state.error,
+    setError
   }
 }
 
-const mapDispatchToProps = {
-  setError,
-  hideReg,
-  hideLogin,
-  showLogout,
-  newUser
-}
+// const mapDispatchToProps = {
+//   setError
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
+export default connect(mapStateToProps)(LogIn)
