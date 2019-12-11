@@ -17,7 +17,7 @@ class Internet extends React.Component {
       
 
     {this.state.days ?
-      <Card color='orange'>
+      <Card color='yellow'>
         <img src='/wifi-1 (1).jpg' size='large' rounded style={{ height: '30vh', width: 'auto' }} />
         <div className="countholder">
           <h3>Internet Bill</h3>
@@ -35,11 +35,11 @@ class Internet extends React.Component {
 
       {!this.state.days &&
        <Popup
-        content='DUE SOON'
+        content='LESS THAN 1 DAY LEFT'
         open
         position='top center'
         trigger={
-        <Card color='orange'>
+        <Card color='yellow'>
           <img src='/wifi-1 (1).jpg' size='large' rounded style={{ height: '30vh', width: 'auto' }} />
           <div className="countholder" style={{color: '#f78686'}}>
           <h3>Internet Bill</h3>

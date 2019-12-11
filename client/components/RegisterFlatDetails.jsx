@@ -148,7 +148,8 @@ class RegisterFlatDetails extends React.Component {
                     onClick={() => {
                       this.props.addFlatmate(this.state.inputValue)
                       this.clearFields()
-                    }}>
+                    }}
+                    color='green'>
                     Add Flatmate
                 </Button>
                 </FormField>

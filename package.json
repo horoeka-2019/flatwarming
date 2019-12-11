@@ -18,9 +18,7 @@
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
     "db:delete": "rm -f dev.sqlite3",
-    "test": "jest --verbose --noStackTrace",
-    "test:watch": "npm test -- --watchAll",
-    "pretest": "eslint --ignore-path .gitignore ."
+    "test": "jest --watchAll"
   },
   "babel": {
     "presets": [
@@ -77,6 +75,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "jest": "^24.7.1",
+    "nock": "^11.7.0",
     "react": "^16.8.6",
     "react-datepicker": "^2.10.1",
     "react-dom": "^16.8.6",
