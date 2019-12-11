@@ -15,6 +15,7 @@ exports[`<Register /> component tests render unchanged from previous snapshot 1`
 >
   <ConnectFunction>
     <Register
+      newUser={[Function]}
       setError={[Function]}
     >
       <Grid

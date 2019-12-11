@@ -1,4 +1,4 @@
-import error from '../../../client/reducers/flatmate.reducer'
+import flatmateReducer from '../../../client/reducers/flatmate.reducer'
 
 
 import { ADD_FLATMATE, REMOVE_FLATMATE } from '../../../client/actions/flatmate.action'
@@ -6,30 +6,42 @@ import { ADD_FLATMATE, REMOVE_FLATMATE } from '../../../client/actions/flatmate.
 describe ('Error reducer tests', () => {
   it('case ADD_FLATMATE', () => {
     // Arrange
+    const INITIAL_STATE = {
+      flatmates: []
+    }
 
-
-    const expected = 'notsure'
+    const expected = {
+      flatmates: 'Ash'
+    }
     const action = {
       type: ADD_FLATMATE,
-      payload:
+      payload: 'Ash'
     }
     // Act
-    const actual = error(null, action)
+    const actual = flatmateReducer(INITIAL_STATE, action)
     // Assert
     expect(actual).toBe(expected)
   })
 
-  // it('case REMOVE_FLATMATE', () => {
-  //   // Arrange
-  //   const expected = 
-  //   const action = {
-  //     type: SET_ERROR,
-  //     message: 'uh oh, an error!'
-  //   }
-  //   // Act
-  //   const actual = error(null, action)
-  //   // Assert
-  //   expect(actual).toBe(expected)
-  // })
+  it('case REMOVE_FLATMATE', () => {
+    // Arrange
+    const INITIAL_STATE = {
+      flatmates: ['Ash', 'Elly', 'Jackie']
+    }
+
+    const expected = {
+      flatmates: ['Elly', 'Jackie']
+    }
+    const action = {
+      type: REMOVE_FLATMATE,
+      payload: 0
+    }
+
+    // Act
+    const actual = flatmateReducer(INITIAL_STATE, action)
+
+    // Assert
+    expect(actual).toBe(expected)
+  })
   
 })
