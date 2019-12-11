@@ -35,7 +35,7 @@ class Internet extends React.Component {
 
       {!this.state.days &&
        <Popup
-        content='DUE SOON'
+        content='LESS THAN 1 DAY LEFT'
         open
         position='top center'
         trigger={

@@ -18,9 +18,7 @@
     "db:migrate": "npm run knex migrate:latest",
     "db:seed": "npm run knex seed:run",
     "db:delete": "rm -f dev.sqlite3",
-    "test": "jest --verbose --noStackTrace",
-    "test:watch": "npm test -- --watchAll",
-    "pretest": "eslint --ignore-path .gitignore ."
+    "test": "jest --watchAll"
   },
   "babel": {
     "presets": [

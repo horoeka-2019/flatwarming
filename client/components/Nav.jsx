@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Header, Menu } from 'semantic-ui-react'
+import { Container, Header, Menu, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 
@@ -29,7 +29,7 @@ class Nav extends React.Component {
 
   render () {
     const user =  this.props.user
-    const userId = user[0]
+    const userId = user[user.length-1]
     const settingLink = `/setting/${userId}`
     return (
       <>
@@ -40,22 +40,22 @@ class Nav extends React.Component {
             <Menu.Menu position='right' style={{ fontSize: '1.2rem' }}>
 
               {this.props.register && <Menu.Item as={Link} to='/register' onClick={this.clickRegister}>
-                Register
+                <Icon name='pencil alternate' />Register
               </Menu.Item>
               }
 
               {this.props.login && <Menu.Item as={Link} to='/log-in' onClick={this.clickLogin}>
-                Log In
+                <Icon name='sign in' />Log In
               </Menu.Item>
               }
 
               {this.props.logout && <Menu.Item as={Link} to={settingLink}>
-                Setting
+                <Icon name='settings'/>Settings
               </Menu.Item>
               }
 
               {this.props.logout && <Menu.Item as={Link} to='/log-in' onClick={this.clickLogout}>
-                Log Out
+                <Icon name='log out' />Log Out
               </Menu.Item>
               }
 

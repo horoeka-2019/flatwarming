@@ -1,15 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { signIn, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
+import { hideLogin, showReg, hideLogout } from '../actions/nav-buttons'
 import Footer from './Footer'
 import { getUserByName } from '../api/registerFlatDetails'
-import {newUser} from '../actions/user'
 
 import { setError } from '../actions/error'
 
 function LogIn (props) {
+
+  useEffect(() => {
+    props.dispatch(showReg())
+    props.dispatch(hideLogin())
+    props.dispatch(hideLogout())
+  }, [])
+
+
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -32,19 +39,11 @@ function LogIn (props) {
       .then((token) => {
         if (isAuthenticated()) {
           getUserByName(form.email)
-            .then(user => {
-              props.newUser(user.id);
-              props.history.push(`/dashboard/${user.id}`)
-            })
-          props.hideReg()
-          props.hideLogin()
-          props.showLogout()
-
-          
+            .then(user => props.history.push(`/dashboard/${user.id}`))
         }
       })
       .catch(err => {
-        props.setError('Oops! Are you trying to sign-up? Press Register! ', err)
+        props.dispatch(setError('Oops! Are you trying to sign-up? Press Register! ', err))
       })
   }
 
@@ -109,16 +108,9 @@ const mapStateToProps = state => {
     login: state.login,
     register: state.register,
     logout: state.logout,
-    error: state.error
+    error: state.error,
+    setError
   }
 }
 
-const mapDispatchToProps = {
-  setError,
-  hideReg,
-  hideLogin,
-  showLogout,
-  newUser
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
+export default connect(mapStateToProps)(LogIn)
