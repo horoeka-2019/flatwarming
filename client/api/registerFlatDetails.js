@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const apiURL = 'http://localhost:3000/api/v1/users'
+const apiURL = '/api/v1/users'
 
 // This call should GET the details given a userId
 export function getUserDetails (id) {
