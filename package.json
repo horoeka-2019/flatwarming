@@ -83,6 +83,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^24.7.1",
+    "nock": "^11.7.0",
     "react": "^16.8.6",
     "react-datepicker": "^2.10.1",
     "react-dom": "^16.8.6",
