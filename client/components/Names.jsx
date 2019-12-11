@@ -14,7 +14,6 @@ class Names extends React.Component {
   }
 
   render () {
-    console.log(this.flatmateFunction())
     return (
       <>
         <Header style={{color:'orange', marginTop: 100}} textAlign='center'>

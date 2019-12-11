@@ -4,6 +4,7 @@ import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui
 import { getUserByName } from '../api/registerFlatDetails'
 
 import { setError } from '../actions/error'
+import {newUser} from '../actions/user'
 
 import Footer from './Footer'
 import { connect } from 'react-redux'
@@ -32,7 +33,7 @@ function Register (props) {
         if (isAuthenticated()) {
           getUserByName(form.email)
             .then(user => {
-              setTimeout(() => window.location.reload(), 100)
+              props.newUser(user.id)
               props.history.push(`/register-flat/${user.id}`)
             })
         }
@@ -102,7 +103,8 @@ function Register (props) {
 }
 
 const mapDispatchToProps = {
-  setError
+  setError,
+  newUser
 }
 
 const mapStateToProps = state => {
