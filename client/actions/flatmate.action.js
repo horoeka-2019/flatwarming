@@ -1,3 +1,4 @@
+
 export const addFlatmate = (flatmate) => ({
   type: 'ADD_FLATMATE',
   payload: flatmate

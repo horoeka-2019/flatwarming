@@ -2,11 +2,9 @@ import React from 'react'
 import {
   Button,
   Form,
-  Container,
   Dropdown,
   Grid,
   Header,
-  Image,
   Segment,
   Icon
 } from 'semantic-ui-react'
@@ -75,7 +73,6 @@ class AddNewJob extends React.Component {
 
   render () {
     return (
-      // <Container>
       <>
       <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 600 }}>
@@ -108,7 +105,7 @@ class AddNewJob extends React.Component {
             label="Due Day"
             required={true}
           />
-          <Form.Field
+          <Form.Field color='green'
             control={Button}
           >
             Submit
@@ -117,7 +114,6 @@ class AddNewJob extends React.Component {
         </Form>
         </Grid.Column>
       </Grid>
-      {/* </Container> */}
       </>
     )
   }
