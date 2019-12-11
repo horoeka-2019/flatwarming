@@ -29,7 +29,7 @@ class Nav extends React.Component {
 
   render () {
     const user =  this.props.user
-    const userId = user[0]
+    const userId = user[user.length-1]
     const settingLink = `/setting/${userId}`
     return (
       <>
