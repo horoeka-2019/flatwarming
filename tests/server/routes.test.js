@@ -20,7 +20,10 @@ const mockUser = {
 
 jest.mock('../../server/db/users', () => ({
   getUserDetail: () => Promise.resolve(mockUser),
-  addDetail: () => Promise.resolve(mockUser)
+  addDetail: () => Promise.resolve(mockUser),
+  deleteJobs:()=> Promise.resolve(mockUser),
+  deleteFlatmate:()=> Promise.resolve(mockUser),
+  userExists:()=> Promise.resolve(mockUser)
 }))
 
 describe('Gets user detail by id', () => {

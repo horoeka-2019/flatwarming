@@ -17,8 +17,8 @@ class Internet extends React.Component {
       
 
     {this.state.days ?
-      <Card color='orange'>
-        <img src='/wifi-1 (1).jpg' size='large' style={{ height: '30vh', width: 'auto' }} />
+      <Card color='yellow'>
+        <img src='/wifi-1 (1).jpg' size='large' rounded style={{ height: '30vh', width: 'auto' }} />
         <div className="countholder">
           <h3>Internet Bill</h3>
 
@@ -39,8 +39,8 @@ class Internet extends React.Component {
         open
         position='top center'
         trigger={
-        <Card color='orange'>
-          <img src='/wifi-1 (1).jpg' size='large' style={{ height: '30vh', width: 'auto' }} />
+        <Card color='yellow'>
+          <img src='/wifi-1 (1).jpg' size='large' rounded style={{ height: '30vh', width: 'auto' }} />
           <div className="countholder" style={{color: '#f78686'}}>
           <h3>Internet Bill</h3>
 
