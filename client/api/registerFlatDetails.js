@@ -1,10 +1,10 @@
 import request from 'superagent'
 
-const apiURL = process.env.NODE_ENV === 'test' ? 'http://localhost:3000' : ''
+const apiURL = 'http://localhost:3000/api/v1/users'
 
 // This call should GET the details given a userId
 export function getUserDetails (id) {
-  return request.get(`${apiURL}/api/v1/${id}`)
+  return request.get(`${apiURL}/${id}`)
     .then(res => res.body)
     .catch(err => {
       if (err.message === 'Not Found') {
@@ -19,7 +19,7 @@ export function getUserDetails (id) {
 }
 
 export function getAllJobs () {
-  return request.get(`${apiURL}/api/v1/jobs/all`)
+  return request.get(`${apiURL}/jobs/all`)
     .then(res => { const obj = {}; obj.jobs = res.body; return obj })
     .catch(err => {
       if (err.message === 'Not Found') {
@@ -35,7 +35,7 @@ export function getAllJobs () {
 
 export function addUserDetail (userDetail) {
   const userId = userDetail.userId
-  return request.post(`${apiURL}/api/v1/register/${userId}`)
+  return request.post(`${apiURL}/register/${userId}`)
     .send(userDetail)
     .then(res => res.body)
     .catch(err => {
@@ -51,7 +51,7 @@ export function addUserDetail (userDetail) {
 }
 
 export function getUserByName (email) {
-  return request.get(`${apiURL}/api/v1/user/${email}`)
+  return request.get(`${apiURL}/user/${email}`)
     .then(res => res.body)
     .catch(err => {
       if (err.message === 'Not Found') {
@@ -66,5 +66,5 @@ export function getUserByName (email) {
 }
 
 export function addJobs () {
-  return request.post(`${apiURL}/api/v1/${id}`)
+  return request.post(`${apiURL}/${id}`)
 }
