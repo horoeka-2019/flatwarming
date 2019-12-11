@@ -28,6 +28,22 @@ describe('getUserByName function', () => {
   })
 })
 
+describe('getFlatmatesList function', () => {
+  it('should get flatmates names by users id', () => {
+    const userId = 3
+    const expected = [{
+      "id":3,
+      "name":'rowValue3'
+    }]
+    return db.getFlatmatesList(userId, testDb)
+      .then(user => { 
+        const actual = user
+        expect(actual).toEqual(expected)
+
+      })
+  })
+})
+
 describe('getUserDetail database function', () => {
   it('get correct user details', () => {
     const id = 1
@@ -51,6 +67,7 @@ describe('getUserDetail database function', () => {
         expect(actual).toEqual(expected)
       })
   })
+
 })
 
 describe('delete jobs by id', () => {
@@ -107,6 +124,8 @@ describe('user does not Exists', () => {
       )
   })
 })
+
+
 
 
 
