@@ -9,9 +9,6 @@ import {newUser} from '../actions/user'
 
 import { setError } from '../actions/error'
 
-let baseApiURL = process.env.BASE_API_URL
-if (!baseApiURL) baseApiURL = 'http://localhost:3000'
-
 function LogIn (props) {
   const [form, setForm] = useState({
     username: '',
@@ -30,7 +27,7 @@ function LogIn (props) {
       username: form.email,
       password: form.password
     }, {
-      baseUrl: baseApiURL
+      baseUrl: process.env.BASE_API_URL
     })
       .then((token) => {
         if (isAuthenticated()) {
