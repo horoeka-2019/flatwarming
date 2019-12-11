@@ -18,11 +18,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  plugins: [
-    process.env.NODE_ENV === 'production'
-      ? new Dotenv({ path: './.prod.env' })
-      : new Dotenv()
-  ],
+  plugins: [new Dotenv()],
   devtool: 'source-map',
   devServer: {
     contentBase: './server/public'
