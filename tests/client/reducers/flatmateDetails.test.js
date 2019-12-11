@@ -12,7 +12,6 @@ describe ('flatmateDetails reducer and action tests', () => {
       type: 'ADD_FLATMATE_DETAIL',
       payload: 'A Detail!'
     }
-    console.log(flatmateDetailReducer({flatmates: []}, action))
     // Act
     const actual = flatmateDetailReducer(INITIAL_STATE, action)
     // Assert
