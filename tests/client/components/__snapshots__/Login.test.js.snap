@@ -15,9 +15,13 @@ exports[`<Login /> component tests render unchanged from previous snapshot 1`] =
 >
   <ConnectFunction>
     <LogIn
+      hideLogin={[Function]}
+      hideReg={[Function]}
       login={true}
+      newUser={[Function]}
       register={true}
       setError={[Function]}
+      showLogout={[Function]}
     >
       <Grid
         style={
