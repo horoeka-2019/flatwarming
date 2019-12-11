@@ -8,6 +8,9 @@ import { setError } from '../actions/error'
 import Footer from './Footer'
 import { connect } from 'react-redux'
 
+let baseApiURL = process.env.BASE_API_URL
+if (!baseApiURL) baseApiURL = 'http://localhost:3000'
+
 function Register (props) {
   const [form, setForm] = useState({
     username: '',
@@ -26,7 +29,7 @@ function Register (props) {
       username: form.email,
       password: form.password
     }, {
-      baseUrl: process.env.BASE_API_URL
+      baseUrl: baseApiURL
     })
       .then(() => {
         if (isAuthenticated()) {
