@@ -15,6 +15,7 @@ exports[`<Register /> component tests render unchanged from previous snapshot 1`
 >
   <ConnectFunction>
     <Register
+      newUser={[Function]}
       setError={[Function]}
     >
       <Grid
@@ -257,7 +258,7 @@ exports[`<Register /> component tests render unchanged from previous snapshot 1`
                 >
                   Already have an account? 
                   <a
-                    href="/register"
+                    href="/log-in"
                   >
                     Log In 
                   </a>

@@ -15,6 +15,7 @@ exports[`<Login /> component tests render unchanged from previous snapshot 1`] =
 >
   <ConnectFunction>
     <LogIn
+      dispatch={[Function]}
       login={true}
       register={true}
       setError={[Function]}
