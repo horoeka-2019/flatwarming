@@ -43,7 +43,7 @@ class Setting extends React.Component {
     const user = this.props.user
     const userId = user[0]
     this.props.dispatch(getFlatmates(userId))
-    // .catch(setError)   
+    .catch(setError)   
   }
 
   render () {
@@ -57,17 +57,6 @@ class Setting extends React.Component {
         <Header as='h2' textAlign='center'>
           <Icon name='settings' />
             Account Settings
-        </Header>
-
-        <Header>
-          <Link to={`/dashboard/${this.props.flatId}`}>
-            <Button 
-              style={{marginLeft: 20}} 
-              >
-              <Icon name='redo' />
-              <Link to={dashboardLink}>Go Back To DashBoard</Link> 
-            </Button>
-          </Link>
         </Header>
 
         <Header as='h2' color='orange' textAlign='center'>
@@ -92,7 +81,7 @@ class Setting extends React.Component {
               </Table.Cell>
 
               <Table.Cell textAlign='center'>
-                <Button color='red' onClick={()=>{this.props.dispatch(removeFlatmateByUserId(userId, flatmate.id)); this.props.dispatch(getFlatmates(5))}}>
+              <Button style={{ margin: 5 }} color='red' onClick={()=>{this.props.dispatch(removeFlatmateByUserId(userId, flatmate.id)); this.props.dispatch(getFlatmates(userId))}}>
                 X
                 </Button>
               </Table.Cell>
@@ -117,9 +106,12 @@ class Setting extends React.Component {
               Add Flatmate
             </Button>
             
+          <Link to={dashboardLink}>Go Back To DashBoard</Link>  
           </FormField> 
         </Grid.Column>
       </Grid>
+
+               
       </>
     )
   }

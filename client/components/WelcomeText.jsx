@@ -29,7 +29,7 @@ const WelcomeText = () => {
               </p>
             </Grid.Column>
             <Grid.Column floated='right' width={6}>
-              <Image bordered rounded size='large' src='flat2.jpg' />
+              <Image bordered size='large' src='flat2.jpg' />
             </Grid.Column>
           </Grid.Row>
       </Grid>

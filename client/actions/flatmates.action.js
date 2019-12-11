@@ -23,7 +23,7 @@ export function getFlatmates (userId) {
     dispatch(getFlatmatesPending())
 
     return api.getAllFlatmates(userId)
-      .then(flatmates => dispatch(getFlatmatesSuccess(flatmates.flatmates)))
+      .then(flatmates => {console.log('getAllFlatMates:', flatmates); dispatch(getFlatmatesSuccess(flatmates.flatmates))})
       .catch(err => dispatch(setError(err.message)))
   }
 }
@@ -31,7 +31,7 @@ export function getFlatmates (userId) {
 export function removeFlatmateByUserId (userId, flatmateId) {
   return dispatch => {
     return api.removeFlatmateByUserId(userId,flatmateId)
-      .then(flatmates => dispatch(getFlatmatesSuccess(flatmates.flatmates)))
+      .then(flatmates => dispatch(getFlatmatesSuccess(flatmates)))
       .catch(err => dispatch(setError(err.message)))
     }
 }
@@ -44,7 +44,7 @@ export const addFlatmateSetting = (flatmate) => ({
 export const addFlatmateSettingIntoDB = (userId, flatmate) =>{
   return dispatch => {
     return api.addFlatmateByUserId(userId, flatmate)
-      .then(flatmates => dispatch(getFlatmatesSuccess(flatmates.flatmates)))
+      .then(flatmates => dispatch(getFlatmatesSuccess(flatmates)))
       .catch(err => dispatch(setError(err.message)))
     }
 }

@@ -6,17 +6,18 @@ import { getUserByName } from '../api/registerFlatDetails'
 import { setError } from '../actions/error'
 import { showLogin, hideReg, hideLogout } from '../actions/nav-buttons'
 
+import {newUser} from '../actions/user'
 
 import Footer from './Footer'
 import { connect } from 'react-redux'
 
 function Register (props) {
 
-  useEffect(() => {
-    props.dispatch(hideReg())
-    props.dispatch(showLogin())
-    props.dispatch(hideLogout())
-  }, [])
+  // useEffect(() => {
+  //   props.dispatch(hideReg())
+  //   props.dispatch(showLogin())
+  //   props.dispatch(hideLogout())
+  // }, [])
 
   const [form, setForm] = useState({
     username: '',
@@ -41,12 +42,12 @@ function Register (props) {
         if (isAuthenticated()) {
           getUserByName(form.email)
             .then(user => {
-              setTimeout(() => window.location.reload(), 100)
+              props.newUser(user.id)
               props.history.push(`/register-flat/${user.id}`)
             })
         }
       })
-      .catch(err => props.dispatch(setError('Oops! Have you previously registered your flat with this email address? Log in below registration form! ', err)))
+      .catch(err => props.setError('Oops! Have you previously registered your flat with this email address? Log in below registration form! ', err))
   }
 
   const color = {
@@ -110,6 +111,11 @@ function Register (props) {
   )
 }
 
+const mapDispatchToProps = {
+  setError,
+  newUser
+}
+
 const mapStateToProps = state => {
   return {
     error: state.error,
@@ -117,4 +123,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Register)
+export default connect(mapStateToProps, mapDispatchToProps)(Register)
