@@ -19,16 +19,15 @@ class Jobs extends React.Component {
   //     .catch(setError)
   // }
 
-  clearJobs = (userId) => {
-    jobsApi.addJobToFlatmate(userId, obj)
-      .then(() => this.props.dispatch(getJobsByUserId(userId)))
-      .catch(setError)
-  }
+  // clearJobs = (userId) => {
+  //   jobsApi.addJobToFlatmate(userId, obj)
+  //     .then(() => this.props.dispatch(getJobsByUserId(userId)))
+  //     .catch(setError)
+  // }
 
   render () {
     return (
       <>
-      {/* <Card> */}
       <Header as='h2' textAlign='center' block>
         <Icon name='sticky note outline' />
         <Header.Content>
@@ -63,37 +62,8 @@ class Jobs extends React.Component {
           }
         </Table.Body>
       </Table>
-      <Button onClick={this.clearJobs(this.props.userId)}>Clear Jobs</Button>
-      {/* <img src='/jobs-1.jpg' size='large' wrapped ui={false} rounded style={{ height: '40vh', width: 'auto' }}/>
-        <Card.Content>
-          <Card.Header>
-              JOBS
-          </Card.Header>
-          <Card.Meta>
-              DUE IN 5 DAYS
-          </Card.Meta>
-          <Card.Description>
-              BY names from flatmate
-          </Card.Description>
-          <FormField>
-            <List as='ol'>
-              {
-                this.props.jobDetail.map((job, index) => (
-                  <List.Item as='li' key={index}>
-                    <label>name: {job.name} - job:{job.job} - due day:{job.dueDay}</label>
-                  </List.Item>
-                ))
-              }
-            </List>
-          </FormField>
-        </Card.Content>
-        <Card.Content>
-          <a>
-              EDIT JOBS
-          </a>
-        </Card.Content> */}
-        {/* <Button attached="bottom">-</Button>
-        </Card> */}
+      {/* <Button onClick={this.clearJobs(this.props.userId)}>Clear Jobs</Button> */}
+      
         </>
     )
   }
